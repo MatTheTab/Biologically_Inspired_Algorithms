@@ -4,6 +4,11 @@
 
 using namespace std;
 
+/**
+ * @brief Test function, iterates over a double loop and assigns a value to a variable squared n times.
+ * 
+ * @param n Number of iterations of the double nested loop.
+ */
 void test_func1(int n){
     int val = 0;
     for (int i=0; i<n; i++){
@@ -13,6 +18,12 @@ void test_func1(int n){
     }
 }
 
+/**
+ * @brief Test function, iterates over a double loop and assigns a value to a variable n x m times.
+ * 
+ * @param n Number of iterations of the outside loop.
+ * @param m Number of iterations of the inner loop.
+ */
 void test_func2(int n, int m){
     int val = 0;
     for (int i=0; i<n; i++){
@@ -22,8 +33,8 @@ void test_func2(int n, int m){
     }
 }
 
-// Test with: g++ -o my_program main.cpp random.cpp -std=c++17
-// ./my_program
+// Test with: g++ -o bio_alg main.cpp random.cpp -std=c++17
+// ./bio_alg
 
 int main() {
     srand(time(0));

@@ -10,6 +10,15 @@
 using namespace std;
 using namespace std::chrono;
 
+/**
+ * @brief Measures the execution time of a function passed as a function pointer or lambda expression.
+ * 
+ * @tparam Func Function type, like a pointer of a lambda expression.
+ * @tparam Args Function argument types.
+ * @param func The function whose runtime is going to be measured.
+ * @param args Arguments to pass to the function.
+ * @return The average execution time per call in nanoseconds as a 'double' datatype.
+ */
 template<typename Func, typename... Args>
 double measureFunctionRuntime(Func func, Args... args) {
     auto start = high_resolution_clock::now();
