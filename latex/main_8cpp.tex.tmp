@@ -1,11 +1,11 @@
-\hypertarget{main_8cpp}{}\doxysection{main.\+cpp File Reference}
-\label{main_8cpp}\index{main.cpp@{main.cpp}}
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
 {\ttfamily \#include $<$iostream$>$}\newline
-{\ttfamily \#include \char`\"{}random.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}time\+\_\+measure.\+h\char`\"{}}\newline
+{\ttfamily \#include "{}random.\+h"{}}\newline
+{\ttfamily \#include "{}time\+\_\+measure.\+h"{}}\newline
 Include dependency graph for main.\+cpp\+:
 % FIG 0
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{main_8cpp_a63fa3f48c5e3a217686183dbb434f063}{test\+\_\+func1}} (int n)
@@ -17,17 +17,17 @@ int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
-\index{main.cpp@{main.cpp}!main@{main}}
+\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{main.cpp@{main.cpp}!main@{main}}
 \index{main@{main}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
-{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{main_8cpp_a63fa3f48c5e3a217686183dbb434f063}\label{main_8cpp_a63fa3f48c5e3a217686183dbb434f063}} 
-\index{main.cpp@{main.cpp}!test\_func1@{test\_func1}}
+\Hypertarget{main_8cpp_a63fa3f48c5e3a217686183dbb434f063}\index{main.cpp@{main.cpp}!test\_func1@{test\_func1}}
 \index{test\_func1@{test\_func1}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{test\_func1()}{test\_func1()}}
-{\footnotesize\ttfamily void test\+\_\+func1 (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{main_8cpp_a63fa3f48c5e3a217686183dbb434f063} 
+void test\+\_\+func1 (\begin{DoxyParamCaption}\item[{int}]{n}{}\end{DoxyParamCaption})}
 
 
 
@@ -38,11 +38,11 @@ Test function, iterates over a double loop and assigns a value to a variable squ
 {\em n} & Number of iterations of the double nested loop. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{main_8cpp_a307f09f5de4b5d3f31d4490c84c29a65}\label{main_8cpp_a307f09f5de4b5d3f31d4490c84c29a65}} 
-\index{main.cpp@{main.cpp}!test\_func2@{test\_func2}}
+\Hypertarget{main_8cpp_a307f09f5de4b5d3f31d4490c84c29a65}\index{main.cpp@{main.cpp}!test\_func2@{test\_func2}}
 \index{test\_func2@{test\_func2}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{test\_func2()}{test\_func2()}}
-{\footnotesize\ttfamily void test\+\_\+func2 (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{int}]{m }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{main_8cpp_a307f09f5de4b5d3f31d4490c84c29a65} 
+void test\+\_\+func2 (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{int}]{m}{}\end{DoxyParamCaption})}
 
 
 
