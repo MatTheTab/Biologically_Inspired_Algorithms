@@ -24,7 +24,7 @@ int* generateRandomPerturbation(int n) {
     return arr;
 }
 
-std::pair<int, int> getRandomPair(int n) {
+pair<int, int> getRandomPair(int n) {
     if (n <= 2) {
         cerr << "Error: n must be greater than 2 for getRandomPair.\n";
         return {-1, -1};
