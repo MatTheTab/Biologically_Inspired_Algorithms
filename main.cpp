@@ -8,7 +8,7 @@ using namespace std;
 void test_func1(int n);
 void test_func2(int n, int m);
 
-// Test with: g++ -o bio_alg main.cpp random.cpp -std=c++17
+// Test with: g++ -o bio_alg main.cpp random.cpp Problem.cpp -std=c++17
 // ./bio_alg
 
 int main() {

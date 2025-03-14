@@ -17,6 +17,11 @@ class Problem {
          * @param filename Path to instance .dat file.
          */
         Problem(const std::string& filename);
+
+        /**
+         * @brief Destructor to clean up dynamically allocated memory.
+         */
+        ~Problem();
         
         /**
          * @brief Loads instance from a .dat file.
@@ -31,7 +36,7 @@ class Problem {
 
     private:
         int size;  ///< Instance size.
-        std::vector<std::vector<int>> matrixA; ///< Matrix A.
-        std::vector<std::vector<int>> matrixB; ///< Matrix B.
+        int** matrixA; ///< Matrix A.
+        int** matrixB; ///< Matrix B.
 };
 #endif
