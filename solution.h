@@ -23,7 +23,7 @@ int calculateScore(int size, int* permutation, int** matrixA, int** matrixB);
  * @param matrixB matrix B of QAP, matrix of distances.
  * @return An array representing the permutation (solution).
  */
-int* heuristicSolve(int size, int** matrixA, int** matrixB);
+int* heuristicSolve(int size, int** matrixA, int** matrixB, int* solution);
 
 /**
  * @brief Produces a simple 2-Opt Neighborhood for the QAP.
@@ -65,7 +65,7 @@ int calculateDelta(int size, int score, int* permutation, std::pair<int, int> mo
  * @param numEvaluations the number of perfomed delta evaluations, at the start should be 0.
  * @param numMoves the number of performed moves, at the start should be 0.
  */
-void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int &currentScore, int &numEvaluations, int &numMoves);
+void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numMoves);
 
 /**
  * @brief Solves a QAP instance with steepest local search.
@@ -78,7 +78,6 @@ void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** mat
  * @param numEvaluations the number of perfomed delta evaluations, at the start should be 0.
  * @param numMoves the number of performed moves, at the start should be 0.
  */
-void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int &currentScore, int &numEvaluations, int &numMoves);
-
+void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
 
 #endif

@@ -11,7 +11,7 @@ Include dependency graph for solution.\+cpp\+:
 \item 
 int \mbox{\hyperlink{solution_8cpp_accfc1c59c8a91df2e59cd8f603654934}{calculate\+Score}} (int size, int $\ast$permutation, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB)
 \begin{DoxyCompactList}\small\item\em Calculates score for the QAP problem. \end{DoxyCompactList}\item 
-int $\ast$ \mbox{\hyperlink{solution_8cpp_a34db5a06f450f62969885887003f041b}{heuristic\+Solve}} (int size, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB)
+int $\ast$ \mbox{\hyperlink{solution_8cpp_a795c639287ac417a381e7d3a92baaea1}{heuristic\+Solve}} (int size, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int $\ast$solution)
 \begin{DoxyCompactList}\small\item\em Solves the QAP problem with a simple heuristics. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{solution_8cpp_a9a98833e9773a9874e489dd76c8f7443}{get2\+Neighborhood\+Moves}} (std\+::pair$<$ int, int $>$ $\ast$pairs, int n)
 \item 
@@ -19,9 +19,9 @@ void \mbox{\hyperlink{solution_8cpp_a308b4e0b974d56b5a480cdc116df8aa1}{perform\+
 \begin{DoxyCompactList}\small\item\em Performs a move exchanging two elements by index. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{solution_8cpp_a3b074e44762d4d4947d406151eedbc04}{calculate\+Delta}} (int size, int score, int $\ast$permutation, std\+::pair$<$ int, int $>$ move, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB)
 \begin{DoxyCompactList}\small\item\em Calculates the change in the QAP score. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{solution_8cpp_ae137a2f00e40710e0b79c3b2f49fe70a}{greedy\+Local\+Search\+Solve}} (int size, int $\ast$permutation, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int \&current\+Score, int \&num\+Evaluations, int \&num\+Performed\+Moves)
+void \mbox{\hyperlink{solution_8cpp_a79b7e4b3839070f0bdfcc5e544fa9c84}{greedy\+Local\+Search\+Solve}} (int size, int $\ast$permutation, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int $\ast$current\+Score, int $\ast$num\+Evaluations, int $\ast$num\+Performed\+Moves)
 \begin{DoxyCompactList}\small\item\em Solves a QAP instance with greedy local search. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{solution_8cpp_a7063157fe549b26a5c70b6972a321727}{steepest\+Local\+Search\+Solve}} (int size, int $\ast$permutation, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int \&current\+Score, int \&num\+Evaluations, int \&num\+Performed\+Moves)
+void \mbox{\hyperlink{solution_8cpp_af280e161ed4d1f70cd903bd297d76818}{steepest\+Local\+Search\+Solve}} (int size, int $\ast$permutation, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int $\ast$current\+Score, int $\ast$num\+Evaluations, int $\ast$num\+Performed\+Moves)
 \begin{DoxyCompactList}\small\item\em Solves a QAP instance with steepest local search. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -82,11 +82,11 @@ A score representing the final solution.
 \doxysubsubsection{\texorpdfstring{get2NeighborhoodMoves()}{get2NeighborhoodMoves()}}
 {\footnotesize\ttfamily void get2\+Neighborhood\+Moves (\begin{DoxyParamCaption}\item[{std\+::pair$<$ int, int $>$ $\ast$}]{pairs,  }\item[{int}]{n }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{solution_8cpp_ae137a2f00e40710e0b79c3b2f49fe70a}\label{solution_8cpp_ae137a2f00e40710e0b79c3b2f49fe70a}} 
+\mbox{\Hypertarget{solution_8cpp_a79b7e4b3839070f0bdfcc5e544fa9c84}\label{solution_8cpp_a79b7e4b3839070f0bdfcc5e544fa9c84}} 
 \index{solution.cpp@{solution.cpp}!greedyLocalSearchSolve@{greedyLocalSearchSolve}}
 \index{greedyLocalSearchSolve@{greedyLocalSearchSolve}!solution.cpp@{solution.cpp}}
 \doxysubsubsection{\texorpdfstring{greedyLocalSearchSolve()}{greedyLocalSearchSolve()}}
-{\footnotesize\ttfamily void greedy\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$}]{permutation,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int \&}]{current\+Score,  }\item[{int \&}]{num\+Evaluations,  }\item[{int \&}]{num\+Moves }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void greedy\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$}]{permutation,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int $\ast$}]{current\+Score,  }\item[{int $\ast$}]{num\+Evaluations,  }\item[{int $\ast$}]{num\+Moves }\end{DoxyParamCaption})}
 
 
 
@@ -109,11 +109,11 @@ Solves a QAP instance with greedy local search.
 {\em num\+Moves} & the number of performed moves, at the start should be 0. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{solution_8cpp_a34db5a06f450f62969885887003f041b}\label{solution_8cpp_a34db5a06f450f62969885887003f041b}} 
+\mbox{\Hypertarget{solution_8cpp_a795c639287ac417a381e7d3a92baaea1}\label{solution_8cpp_a795c639287ac417a381e7d3a92baaea1}} 
 \index{solution.cpp@{solution.cpp}!heuristicSolve@{heuristicSolve}}
 \index{heuristicSolve@{heuristicSolve}!solution.cpp@{solution.cpp}}
 \doxysubsubsection{\texorpdfstring{heuristicSolve()}{heuristicSolve()}}
-{\footnotesize\ttfamily int$\ast$ heuristic\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int$\ast$ heuristic\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int $\ast$}]{solution }\end{DoxyParamCaption})}
 
 
 
@@ -148,11 +148,11 @@ Performs a move exchanging two elements by index.
 {\em move} & pair representing the move by indexes. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{solution_8cpp_a7063157fe549b26a5c70b6972a321727}\label{solution_8cpp_a7063157fe549b26a5c70b6972a321727}} 
+\mbox{\Hypertarget{solution_8cpp_af280e161ed4d1f70cd903bd297d76818}\label{solution_8cpp_af280e161ed4d1f70cd903bd297d76818}} 
 \index{solution.cpp@{solution.cpp}!steepestLocalSearchSolve@{steepestLocalSearchSolve}}
 \index{steepestLocalSearchSolve@{steepestLocalSearchSolve}!solution.cpp@{solution.cpp}}
 \doxysubsubsection{\texorpdfstring{steepestLocalSearchSolve()}{steepestLocalSearchSolve()}}
-{\footnotesize\ttfamily void steepest\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$}]{permutation,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int \&}]{current\+Score,  }\item[{int \&}]{num\+Evaluations,  }\item[{int \&}]{num\+Moves }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void steepest\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$}]{permutation,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int $\ast$}]{current\+Score,  }\item[{int $\ast$}]{num\+Evaluations,  }\item[{int $\ast$}]{num\+Performed\+Moves }\end{DoxyParamCaption})}
 
 
 

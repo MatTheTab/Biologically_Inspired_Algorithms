@@ -82,9 +82,9 @@ Functions</h2></td></tr>
 <tr class="memitem:accfc1c59c8a91df2e59cd8f603654934"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#accfc1c59c8a91df2e59cd8f603654934">calculateScore</a> (int size, int *permutation, int **matrixA, int **matrixB)</td></tr>
 <tr class="memdesc:accfc1c59c8a91df2e59cd8f603654934"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates score for the QAP problem.  <a href="solution_8cpp.html#accfc1c59c8a91df2e59cd8f603654934">More...</a><br /></td></tr>
 <tr class="separator:accfc1c59c8a91df2e59cd8f603654934"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34db5a06f450f62969885887003f041b"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#a34db5a06f450f62969885887003f041b">heuristicSolve</a> (int size, int **matrixA, int **matrixB)</td></tr>
-<tr class="memdesc:a34db5a06f450f62969885887003f041b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the QAP problem with a simple heuristics.  <a href="solution_8cpp.html#a34db5a06f450f62969885887003f041b">More...</a><br /></td></tr>
-<tr class="separator:a34db5a06f450f62969885887003f041b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a795c639287ac417a381e7d3a92baaea1"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#a795c639287ac417a381e7d3a92baaea1">heuristicSolve</a> (int size, int **matrixA, int **matrixB, int *solution)</td></tr>
+<tr class="memdesc:a795c639287ac417a381e7d3a92baaea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the QAP problem with a simple heuristics.  <a href="solution_8cpp.html#a795c639287ac417a381e7d3a92baaea1">More...</a><br /></td></tr>
+<tr class="separator:a795c639287ac417a381e7d3a92baaea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a98833e9773a9874e489dd76c8f7443"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#a9a98833e9773a9874e489dd76c8f7443">get2NeighborhoodMoves</a> (std::pair&lt; int, int &gt; *pairs, int n)</td></tr>
 <tr class="separator:a9a98833e9773a9874e489dd76c8f7443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a308b4e0b974d56b5a480cdc116df8aa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#a308b4e0b974d56b5a480cdc116df8aa1">performMove</a> (int *permutation, std::pair&lt; int, int &gt; move)</td></tr>
@@ -93,12 +93,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a3b074e44762d4d4947d406151eedbc04"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#a3b074e44762d4d4947d406151eedbc04">calculateDelta</a> (int size, int score, int *permutation, std::pair&lt; int, int &gt; move, int **matrixA, int **matrixB)</td></tr>
 <tr class="memdesc:a3b074e44762d4d4947d406151eedbc04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the change in the QAP score.  <a href="solution_8cpp.html#a3b074e44762d4d4947d406151eedbc04">More...</a><br /></td></tr>
 <tr class="separator:a3b074e44762d4d4947d406151eedbc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae137a2f00e40710e0b79c3b2f49fe70a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#ae137a2f00e40710e0b79c3b2f49fe70a">greedyLocalSearchSolve</a> (int size, int *permutation, int **matrixA, int **matrixB, int &amp;currentScore, int &amp;numEvaluations, int &amp;numPerformedMoves)</td></tr>
-<tr class="memdesc:ae137a2f00e40710e0b79c3b2f49fe70a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a QAP instance with greedy local search.  <a href="solution_8cpp.html#ae137a2f00e40710e0b79c3b2f49fe70a">More...</a><br /></td></tr>
-<tr class="separator:ae137a2f00e40710e0b79c3b2f49fe70a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7063157fe549b26a5c70b6972a321727"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#a7063157fe549b26a5c70b6972a321727">steepestLocalSearchSolve</a> (int size, int *permutation, int **matrixA, int **matrixB, int &amp;currentScore, int &amp;numEvaluations, int &amp;numPerformedMoves)</td></tr>
-<tr class="memdesc:a7063157fe549b26a5c70b6972a321727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a QAP instance with steepest local search.  <a href="solution_8cpp.html#a7063157fe549b26a5c70b6972a321727">More...</a><br /></td></tr>
-<tr class="separator:a7063157fe549b26a5c70b6972a321727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b7e4b3839070f0bdfcc5e544fa9c84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#a79b7e4b3839070f0bdfcc5e544fa9c84">greedyLocalSearchSolve</a> (int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves)</td></tr>
+<tr class="memdesc:a79b7e4b3839070f0bdfcc5e544fa9c84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a QAP instance with greedy local search.  <a href="solution_8cpp.html#a79b7e4b3839070f0bdfcc5e544fa9c84">More...</a><br /></td></tr>
+<tr class="separator:a79b7e4b3839070f0bdfcc5e544fa9c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af280e161ed4d1f70cd903bd297d76818"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#af280e161ed4d1f70cd903bd297d76818">steepestLocalSearchSolve</a> (int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves)</td></tr>
+<tr class="memdesc:af280e161ed4d1f70cd903bd297d76818"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a QAP instance with steepest local search.  <a href="solution_8cpp.html#af280e161ed4d1f70cd903bd297d76818">More...</a><br /></td></tr>
+<tr class="separator:af280e161ed4d1f70cd903bd297d76818"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a3b074e44762d4d4947d406151eedbc04"></a>
@@ -246,8 +246,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae137a2f00e40710e0b79c3b2f49fe70a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae137a2f00e40710e0b79c3b2f49fe70a">&#9670;&nbsp;</a></span>greedyLocalSearchSolve()</h2>
+<a id="a79b7e4b3839070f0bdfcc5e544fa9c84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79b7e4b3839070f0bdfcc5e544fa9c84">&#9670;&nbsp;</a></span>greedyLocalSearchSolve()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -279,19 +279,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>currentScore</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>numEvaluations</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>numMoves</em>&#160;</td>
         </tr>
         <tr>
@@ -318,8 +318,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a34db5a06f450f62969885887003f041b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34db5a06f450f62969885887003f041b">&#9670;&nbsp;</a></span>heuristicSolve()</h2>
+<a id="a795c639287ac417a381e7d3a92baaea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a795c639287ac417a381e7d3a92baaea1">&#9670;&nbsp;</a></span>heuristicSolve()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -340,7 +340,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int **&#160;</td>
-          <td class="paramname"><em>matrixB</em>&#160;</td>
+          <td class="paramname"><em>matrixB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>solution</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -400,8 +406,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7063157fe549b26a5c70b6972a321727"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7063157fe549b26a5c70b6972a321727">&#9670;&nbsp;</a></span>steepestLocalSearchSolve()</h2>
+<a id="af280e161ed4d1f70cd903bd297d76818"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af280e161ed4d1f70cd903bd297d76818">&#9670;&nbsp;</a></span>steepestLocalSearchSolve()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -433,20 +439,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>currentScore</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>numEvaluations</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>numMoves</em>&#160;</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>numPerformedMoves</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

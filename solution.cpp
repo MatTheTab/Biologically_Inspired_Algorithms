@@ -13,12 +13,11 @@ int calculateScore(int size, int* permutation, int** matrixA, int** matrixB){
     return score;
 }
 
-int* heuristicSolve(int size, int** matrixA, int** matrixB){
+int* heuristicSolve(int size, int** matrixA, int** matrixB, int* solution){
     int* rowSumA = new int[size]();
     int* rowSumB = new int[size]();
     int* indexesA = new int[size];
     int* indexesB = new int[size];
-    int* solution = new int[size];
 
     for (int i = 0; i < size; i++){
         indexesA[i] = i;
@@ -96,9 +95,7 @@ int calculateDelta(int size, int score, int* permutation, std::pair<int, int> mo
     return delta;
 }
 
-
-
-void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int &currentScore, int &numEvaluations, int &numPerformedMoves){
+void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves){
     bool improvement = true;
     int numAvailableMoves = (size * (size - 1)) / 2;
     std::pair<int, int>* moves = new std::pair<int, int>[numAvailableMoves];
@@ -110,12 +107,12 @@ void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** mat
         get2NeighborhoodMoves(moves, size);
         for (int i = 0; i < numAvailableMoves; i++){
             move = moves[i];
-            deltaScore = calculateDelta(size, currentScore, permutation, move, matrixA, matrixB);
-            numEvaluations += 1;
+            deltaScore = calculateDelta(size, *currentScore, permutation, move, matrixA, matrixB);
+            *numEvaluations += 1;
             if (deltaScore < 0){
-                currentScore += deltaScore;
+                *currentScore += deltaScore;
                 performMove(permutation, move);
-                numPerformedMoves += 1;
+                *numPerformedMoves += 1;
                 improvement = true;
                 break;
             }
@@ -127,7 +124,7 @@ void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** mat
     delete[] moves;
 }
 
-void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int &currentScore, int &numEvaluations, int &numPerformedMoves){
+void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves){
     bool improvement = true;
     int numAvailableMoves = (size * (size - 1)) / 2;
     std::pair<int, int>* moves = new std::pair<int, int>[numAvailableMoves];
@@ -143,8 +140,8 @@ void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** m
         get2NeighborhoodMoves(moves, size);
         for (int i = 0; i < numAvailableMoves; i++){
             move = moves[i];
-            deltaScore = calculateDelta(size, currentScore, permutation, move, matrixA, matrixB);
-            numEvaluations += 1;
+            deltaScore = calculateDelta(size, *currentScore, permutation, move, matrixA, matrixB);
+            *numEvaluations += 1;
             if (deltaScore < best_delta){
                 best_delta = deltaScore;
                 best_move = move;
@@ -155,9 +152,9 @@ void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** m
             break;
         }
         else{
-            currentScore += best_delta;
+            *currentScore += best_delta;
             performMove(permutation, best_move);
-            numPerformedMoves += 1;
+            *numPerformedMoves += 1;
         }
     }
     delete[] moves;

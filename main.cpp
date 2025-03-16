@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "random.h"
 #include "time_measure.h"
 #include "Problem.h"
@@ -7,93 +8,54 @@
 
 using namespace std;
 
-//TODO: startuj z konsoli
-
 // For documentation: doxygen Doxyfile
 // Test with: g++ -o bio_alg main.cpp random.cpp Problem.cpp solution.cpp utils.cpp -std=c++17
-// ./bio_alg
+// ./bio_alg heuristic data/qap/bur26a.dat results.txt
+// ./bio_alg greedy_LS data/qap/bur26a.dat results.txt
+// ./bio_alg steepest_LS data/qap/bur26a.dat results.txt
 
-int main() {
-    //string filename = "data/qap/bur26a.dat";
-    //Problem problem(filename);
-    //problem.displayInstance();
-
-    int size = 3;
-
-    int** A = createMatrix(size);
-    int flowData[3][3] = {
-        {0, 5, 2},
-        {5, 0, 3},
-        {2, 3, 0}
-    };
-    for (int i = 0; i < size; i++)
-        for (int j = 0; j < size; j++)
-            A[i][j] = flowData[i][j];
-
-    int** B = createMatrix(size);
-    int distData[3][3] = {
-        {0, 2, 3},
-        {2, 0, 1},
-        {3, 1, 0}
-    };
-    for (int i = 0; i < size; i++)
-        for (int j = 0; j < size; j++)
-            B[i][j] = distData[i][j];
-
-    int* P1 = new int[size] {0, 1, 2};
-    int* P2 = new int[size] {0, 1, 2};
-
-    int score_1 = calculateScore(size, P1, A, B);
-    int score_2 = calculateScore(size, P2, A, B);
-    cout << "score 1: " << score_1 << "\n";
-    cout << "score 2: " << score_2 << "\n";
-
-    int numEvaluations1 = 0;
-    int numMoves1 = 0;
-    int numEvaluations2 = 0;
-    int numMoves2 = 0;
-
+int main(int argc, char* argv[]) {
+    if (argc < 4) {
+        cerr << "Usage: " << argv[0] << " <algorithm> <problem_file> <results_file>" << endl;
+        return 1;
+    }
     
-    greedyLocalSearchSolve(size, P1, A, B, score_1, numEvaluations1, numMoves1);
-    steepestLocalSearchSolve(size, P2, A, B, score_2, numEvaluations2, numMoves2);
-    cout << "Permutation (Greedy): " << P1[0] << " " << P1[1] << " " << P1[2] << "\n";
-    cout << "Permutation (Steepest): " << P2[0] << " " << P2[1] << " " << P2[2] << "\n";
-    cout << "Final Score 1: " << score_1 << " number of evaluations: " << numEvaluations1 << " number of moves: " << numMoves1 << "\n";
-    cout << "Final Score 2: " << score_2 << " number of evaluations: " << numEvaluations2 << " number of moves: " << numMoves2 << "\n";
-
-    string filename = "results.txt";
-    string algorithmName1 = "Greedy_Algorithm";
-    string algorithmName2 = "Steepest_Algorithm";
-    string instance = "Test_Instance_1";
-
-    double runtime1 = measureFunctionRuntime(greedyLocalSearchSolve, size, P1, A, B, score_1, numEvaluations1, numMoves1);
-    double runtime2 = measureFunctionRuntime(steepestLocalSearchSolve, size, P2, A, B, score_2, numEvaluations2, numMoves2);
-
-    saveResultsToFile(filename, algorithmName1, instance, runtime1, score_1, size, P1, numEvaluations1, numMoves1);
-    saveResultsToFile(filename, algorithmName2, instance, runtime2, score_1, size, P1, numEvaluations1, numMoves1);
- 
-    // srand(time(0));
-    // int n = 10;
-    // int* arr = generateRandomPerturbation(n);
-    // cout << "Generated array: ";
-    // for (int i = 0; i < n; i++) {
-    //     std::cout << arr[i] << " ";
-    // }
-    // cout << "\n";
-    // delete[] arr;
+    string algorithm = argv[1];
+    string filename = argv[2];
+    string results_filename = argv[3];
+    string instanceName = filename;
     
-    // pair<int, int> randomValues = getRandomPair(n);
-    // int first = randomValues.first;
-    // int second = randomValues.second;
-    // cout << "Random values: " << first << " and " << second << "\n";
-
-    // cout << "Time Measuring \n";
-    // double speed_test_1;
-    // double speed_test_2;
-    // speed_test_1 = measureFunctionRuntime(test_func1, 1000);
-    // speed_test_2 = measureFunctionRuntime(test_func2, 3000, 5000);
-
-    // cout << "Speed test 1" << speed_test_1 << " nanoseconds" << "\n";
-    // cout << "Speed test 2" << speed_test_2 << " nanoseconds" << "\n";
+    Problem problem(filename);
+    int size = problem.size;
+    int** matrixA = problem.matrixA;
+    int** matrixB = problem.matrixB;
+    
+    int *P = new int[size];
+    double runtime_heuristic = measureFunctionRuntime(heuristicSolve, size, matrixA, matrixB, P);
+    int scoreHeuristic = calculateScore(size, P, matrixA, matrixB);
+    
+    if (algorithm == "heuristic") {
+        saveResultsToFile(results_filename, "Heuristic", instanceName, runtime_heuristic, scoreHeuristic, size, P, 1, 1);
+    } else if (algorithm == "greedy_LS" || algorithm == "steepest_LS") {
+        string intermediate_name = (algorithm == "greedy_LS") ? "Heuristic_Greedy" : "Heuristic_Steepest";
+        saveResultsToFile(results_filename, intermediate_name, instanceName, runtime_heuristic, scoreHeuristic, size, P, 1, 1);
+        
+        int tempMoves = 0;
+        int tempNumEvaluations = 0;
+        int* scoreLS = &scoreHeuristic;
+        int* numMoves = &tempMoves;
+        int* numEvaluations = &tempNumEvaluations;
+        
+        double runtime_LS;
+        if (algorithm == "greedy_LS"){runtime_LS = measureFunctionRuntime(greedyLocalSearchSolve, size, P, matrixA, matrixB, scoreLS, numEvaluations, numMoves);}
+        else {runtime_LS = measureFunctionRuntime(steepestLocalSearchSolve, size, P, matrixA, matrixB, scoreLS, numEvaluations, numMoves);}
+        
+        saveResultsToFile(results_filename, algorithm, instanceName, runtime_LS, *scoreLS, size, P, *numEvaluations, *numMoves);
+    } else {
+        cerr << "Unknown algorithm: " << algorithm << endl;
+        return 1;
+    }
+    
+    delete[] P;
     return 0;
 }

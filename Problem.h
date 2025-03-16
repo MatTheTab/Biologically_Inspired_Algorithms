@@ -34,7 +34,7 @@ class Problem {
          */
         void displayInstance() const;
 
-    private:
+    //private:
         int size;  ///< Instance size.
         int** matrixA; ///< Matrix A.
         int** matrixB; ///< Matrix B.
