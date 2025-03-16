@@ -1,0 +1,129 @@
+\hypertarget{classProblem}{}\doxysection{Problem Class Reference}
+\label{classProblem}\index{Problem@{Problem}}
+
+
+Class for storing and loading problem instances.  
+
+
+
+
+{\ttfamily \#include $<$Problem.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classProblem_af0ccc7ef6893d9f3f92af85af7d6dddd}{Problem}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classProblem}{Problem}}, loads data from a .dat file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProblem_a839a525ed01c34d57fff42583003d3e7}{$\sim$\+Problem}} ()
+\begin{DoxyCompactList}\small\item\em Destructor to clean up dynamically allocated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProblem_af4aa21a140288c6ff402f0fd979c026f}{load\+Instance}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Loads instance from a .dat file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProblem_a7e3e66227f7a78ffe5ee5527194797d2}{display\+Instance}} () const
+\begin{DoxyCompactList}\small\item\em Displays the matrices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classProblem_a35685319c66e423658fc32ee9eefcaa2}{size}}
+\begin{DoxyCompactList}\small\item\em Instance size. \end{DoxyCompactList}\item 
+int $\ast$$\ast$ \mbox{\hyperlink{classProblem_a5402633b1b02665afb922a4a1666ef4c}{matrixA}}
+\begin{DoxyCompactList}\small\item\em Matrix A. \end{DoxyCompactList}\item 
+int $\ast$$\ast$ \mbox{\hyperlink{classProblem_a814dfb2def9c4afb803ee30e63166c2b}{matrixB}}
+\begin{DoxyCompactList}\small\item\em Matrix B. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for storing and loading problem instances. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classProblem_af0ccc7ef6893d9f3f92af85af7d6dddd}\label{classProblem_af0ccc7ef6893d9f3f92af85af7d6dddd}} 
+\index{Problem@{Problem}!Problem@{Problem}}
+\index{Problem@{Problem}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{Problem()}{Problem()}}
+{\footnotesize\ttfamily Problem\+::\+Problem (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classProblem}{Problem}}, loads data from a .dat file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to instance .dat file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classProblem_a839a525ed01c34d57fff42583003d3e7}\label{classProblem_a839a525ed01c34d57fff42583003d3e7}} 
+\index{Problem@{Problem}!````~Problem@{$\sim$Problem}}
+\index{````~Problem@{$\sim$Problem}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{$\sim$Problem()}{~Problem()}}
+{\footnotesize\ttfamily Problem\+::$\sim$\+Problem (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor to clean up dynamically allocated memory. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classProblem_a7e3e66227f7a78ffe5ee5527194797d2}\label{classProblem_a7e3e66227f7a78ffe5ee5527194797d2}} 
+\index{Problem@{Problem}!displayInstance@{displayInstance}}
+\index{displayInstance@{displayInstance}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{displayInstance()}{displayInstance()}}
+{\footnotesize\ttfamily void Problem\+::display\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Displays the matrices. 
+
+\mbox{\Hypertarget{classProblem_af4aa21a140288c6ff402f0fd979c026f}\label{classProblem_af4aa21a140288c6ff402f0fd979c026f}} 
+\index{Problem@{Problem}!loadInstance@{loadInstance}}
+\index{loadInstance@{loadInstance}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{loadInstance()}{loadInstance()}}
+{\footnotesize\ttfamily void Problem\+::load\+Instance (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads instance from a .dat file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to instance .dat file. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classProblem_a5402633b1b02665afb922a4a1666ef4c}\label{classProblem_a5402633b1b02665afb922a4a1666ef4c}} 
+\index{Problem@{Problem}!matrixA@{matrixA}}
+\index{matrixA@{matrixA}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{matrixA}{matrixA}}
+{\footnotesize\ttfamily int$\ast$$\ast$ Problem\+::matrixA\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Matrix A. 
+
+\mbox{\Hypertarget{classProblem_a814dfb2def9c4afb803ee30e63166c2b}\label{classProblem_a814dfb2def9c4afb803ee30e63166c2b}} 
+\index{Problem@{Problem}!matrixB@{matrixB}}
+\index{matrixB@{matrixB}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{matrixB}{matrixB}}
+{\footnotesize\ttfamily int$\ast$$\ast$ Problem\+::matrixB\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Matrix B. 
+
+\mbox{\Hypertarget{classProblem_a35685319c66e423658fc32ee9eefcaa2}\label{classProblem_a35685319c66e423658fc32ee9eefcaa2}} 
+\index{Problem@{Problem}!size@{size}}
+\index{size@{size}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily int Problem\+::size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Instance size. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Problem_8h}{Problem.\+h}}\item 
+\mbox{\hyperlink{Problem_8cpp}{Problem.\+cpp}}\end{DoxyCompactItemize}

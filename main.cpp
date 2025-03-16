@@ -3,30 +3,15 @@
 #include "time_measure.h"
 #include "Problem.h"
 #include "solution.h"
+#include "utils.h"
 
 using namespace std;
 
-void test_func1(int n);
-void test_func2(int n, int m);
+//TODO: startuj z konsoli
 
-// Test with: g++ -o bio_alg main.cpp random.cpp Problem.cpp solution.cpp -std=c++17
+// For documentation: doxygen Doxyfile
+// Test with: g++ -o bio_alg main.cpp random.cpp Problem.cpp solution.cpp utils.cpp -std=c++17
 // ./bio_alg
-
-int** createMatrix(int size) {
-    int** matrix = new int*[size];
-    for (int i = 0; i < size; i++) {
-        matrix[i] = new int[size];
-    }
-    return matrix;
-}
-
-// Function to delete a dynamically allocated 2D array
-void deleteMatrix(int** matrix, int size) {
-    for (int i = 0; i < size; i++) {
-        delete[] matrix[i];
-    }
-    delete[] matrix;
-}
 
 int main() {
     //string filename = "data/qap/bur26a.dat";
@@ -72,8 +57,20 @@ int main() {
     greedyLocalSearchSolve(size, P1, A, B, score_1, numEvaluations1, numMoves1);
     steepestLocalSearchSolve(size, P2, A, B, score_2, numEvaluations2, numMoves2);
     cout << "Permutation (Greedy): " << P1[0] << " " << P1[1] << " " << P1[2] << "\n";
+    cout << "Permutation (Steepest): " << P2[0] << " " << P2[1] << " " << P2[2] << "\n";
     cout << "Final Score 1: " << score_1 << " number of evaluations: " << numEvaluations1 << " number of moves: " << numMoves1 << "\n";
     cout << "Final Score 2: " << score_2 << " number of evaluations: " << numEvaluations2 << " number of moves: " << numMoves2 << "\n";
+
+    string filename = "results.txt";
+    string algorithmName1 = "Greedy_Algorithm";
+    string algorithmName2 = "Steepest_Algorithm";
+    string instance = "Test_Instance_1";
+
+    double runtime1 = measureFunctionRuntime(greedyLocalSearchSolve, size, P1, A, B, score_1, numEvaluations1, numMoves1);
+    double runtime2 = measureFunctionRuntime(steepestLocalSearchSolve, size, P2, A, B, score_2, numEvaluations2, numMoves2);
+
+    saveResultsToFile(filename, algorithmName1, instance, runtime1, score_1, size, P1, numEvaluations1, numMoves1);
+    saveResultsToFile(filename, algorithmName2, instance, runtime2, score_1, size, P1, numEvaluations1, numMoves1);
  
     // srand(time(0));
     // int n = 10;
@@ -99,33 +96,4 @@ int main() {
     // cout << "Speed test 1" << speed_test_1 << " nanoseconds" << "\n";
     // cout << "Speed test 2" << speed_test_2 << " nanoseconds" << "\n";
     return 0;
-}
-
-/**
- * @brief Test function, iterates over a double loop and assigns a value to a variable squared n times.
- * 
- * @param n Number of iterations of the double nested loop.
- */
-void test_func1(int n){
-    int val = 0;
-    for (int i=0; i<n; i++){
-        for (int j=0; j<n; j++){
-            val = i+j;
-        }
-    }
-}
-
-/**
- * @brief Test function, iterates over a double loop and assigns a value to a variable n x m times.
- * 
- * @param n Number of iterations of the outside loop.
- * @param m Number of iterations of the inner loop.
- */
-void test_func2(int n, int m){
-    int val = 0;
-    for (int i=0; i<n; i++){
-        for (int j=0; j<m; j++){
-            val = i+j;
-        }
-    }
 }

@@ -1,27 +1,27 @@
-\doxysection{random.\+cpp File Reference}
-\hypertarget{random_8cpp}{}\label{random_8cpp}\index{random.cpp@{random.cpp}}
-{\ttfamily \#include "{}random.\+h"{}}\newline
+\hypertarget{random_8cpp}{}\doxysection{random.\+cpp File Reference}
+\label{random_8cpp}\index{random.cpp@{random.cpp}}
+{\ttfamily \#include \char`\"{}random.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$cstdlib$>$}\newline
 {\ttfamily \#include $<$algorithm$>$}\newline
 {\ttfamily \#include $<$ctime$>$}\newline
 {\ttfamily \#include $<$iostream$>$}\newline
 Include dependency graph for random.\+cpp\+:
 % FIG 0
-\doxysubsubsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{random_8cpp_a9b3e95f7d2c0ea6f81a47377c050cd49}{generate\+Random\+Perturbation}} (int n)
+int $\ast$ \mbox{\hyperlink{random_8cpp_af2a4f9c78d5f0b8a584b4f004de8679d}{generate\+Random\+Perturbation}} (int n)
 \begin{DoxyCompactList}\small\item\em Generates a random permutation of numbers of size n. \end{DoxyCompactList}\item 
-pair$<$ int, int $>$ \mbox{\hyperlink{random_8cpp_a26a2df8b0c7101c947e8fa828b54eabc}{get\+Random\+Pair}} (int n)
+pair$<$ int, int $>$ \mbox{\hyperlink{random_8cpp_a5be2f77a6dfa89cac2a01465fad62081}{get\+Random\+Pair}} (int n)
 \begin{DoxyCompactList}\small\item\em Generates a random pair of integers from 0 to n. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{random_8cpp_a9b3e95f7d2c0ea6f81a47377c050cd49}\index{random.cpp@{random.cpp}!generateRandomPerturbation@{generateRandomPerturbation}}
+\mbox{\Hypertarget{random_8cpp_af2a4f9c78d5f0b8a584b4f004de8679d}\label{random_8cpp_af2a4f9c78d5f0b8a584b4f004de8679d}} 
+\index{random.cpp@{random.cpp}!generateRandomPerturbation@{generateRandomPerturbation}}
 \index{generateRandomPerturbation@{generateRandomPerturbation}!random.cpp@{random.cpp}}
 \doxysubsubsection{\texorpdfstring{generateRandomPerturbation()}{generateRandomPerturbation()}}
-{\footnotesize\ttfamily \label{random_8cpp_a9b3e95f7d2c0ea6f81a47377c050cd49} 
-int \texorpdfstring{$\ast$}{*} generate\+Random\+Perturbation (\begin{DoxyParamCaption}\item[{int}]{n}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int$\ast$ generate\+Random\+Perturbation (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
 
 
 
@@ -38,11 +38,11 @@ A pointer to the resulting, dynamically allocated perturbation array.
 \begin{DoxyNote}{Note}
 The caller is responsible for deleting the allocated array after it is no longer needed. 
 \end{DoxyNote}
-\Hypertarget{random_8cpp_a26a2df8b0c7101c947e8fa828b54eabc}\index{random.cpp@{random.cpp}!getRandomPair@{getRandomPair}}
+\mbox{\Hypertarget{random_8cpp_a5be2f77a6dfa89cac2a01465fad62081}\label{random_8cpp_a5be2f77a6dfa89cac2a01465fad62081}} 
+\index{random.cpp@{random.cpp}!getRandomPair@{getRandomPair}}
 \index{getRandomPair@{getRandomPair}!random.cpp@{random.cpp}}
 \doxysubsubsection{\texorpdfstring{getRandomPair()}{getRandomPair()}}
-{\footnotesize\ttfamily \label{random_8cpp_a26a2df8b0c7101c947e8fa828b54eabc} 
-pair$<$ int, int $>$ get\+Random\+Pair (\begin{DoxyParamCaption}\item[{int}]{n}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pair$<$int, int$>$ get\+Random\+Pair (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
 
 
 
@@ -54,7 +54,7 @@ Generates a random pair of integers from 0 to n.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-An {\ttfamily std\+::pair\texorpdfstring{$<$}{<}int, int\texorpdfstring{$>$}{>}} containing two random integers. 
+An {\ttfamily std\+::pair$<$int, int$>$} containing two random integers. 
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
 The resulting numbers will never be equal to one another, so the result is a pair of distinct integers. 

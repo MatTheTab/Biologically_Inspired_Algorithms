@@ -1,0 +1,2 @@
+Algorithm: Greedy_Algorithm	Instance: Test_Instance_1	Runtime: 6690 nanoseconds	Score: 34	Number of Evaluations: 6	Number of Performed Moves: 1	Solution: 	2 1 0 
+Algorithm: Steepest_Algorithm	Instance: Test_Instance_1	Runtime: 3936 nanoseconds	Score: 34	Number of Evaluations: 6	Number of Performed Moves: 1	Solution: 	2 1 0 

@@ -1,0 +1,189 @@
+\hypertarget{solution_8h}{}\doxysection{solution.\+h File Reference}
+\label{solution_8h}\index{solution.h@{solution.h}}
+{\ttfamily \#include $<$utility$>$}\newline
+Include dependency graph for solution.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{solution_8h_accfc1c59c8a91df2e59cd8f603654934}{calculate\+Score}} (int size, int $\ast$permutation, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB)
+\begin{DoxyCompactList}\small\item\em Calculates score for the QAP problem. \end{DoxyCompactList}\item 
+int $\ast$ \mbox{\hyperlink{solution_8h_a34db5a06f450f62969885887003f041b}{heuristic\+Solve}} (int size, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB)
+\begin{DoxyCompactList}\small\item\em Solves the QAP problem with a simple heuristics. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{solution_8h_a806d8be3db5ca95f2d5cd7a5fc98d45f}{get2\+Neighborhood\+Moves}} (std\+::pair$<$ int, int $>$ $\ast$pairs, int n, int \&num\+Moves)
+\begin{DoxyCompactList}\small\item\em Produces a simple 2-\/Opt Neighborhood for the QAP. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{solution_8h_a308b4e0b974d56b5a480cdc116df8aa1}{perform\+Move}} (int $\ast$permutation, std\+::pair$<$ int, int $>$ move)
+\begin{DoxyCompactList}\small\item\em Performs a move exchanging two elements by index. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{solution_8h_a3b074e44762d4d4947d406151eedbc04}{calculate\+Delta}} (int size, int score, int $\ast$permutation, std\+::pair$<$ int, int $>$ move, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB)
+\begin{DoxyCompactList}\small\item\em Calculates the change in the QAP score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{solution_8h_aec525a5dc7db783d7f87cd67e0683e31}{greedy\+Local\+Search\+Solve}} (int size, int $\ast$permutation, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int \&current\+Score, int \&num\+Evaluations, int \&num\+Moves)
+\begin{DoxyCompactList}\small\item\em Solves a QAP instance with greedy local search. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{solution_8h_a8a4111e492c61b6c69777bef60f2a975}{steepest\+Local\+Search\+Solve}} (int size, int $\ast$permutation, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int \&current\+Score, int \&num\+Evaluations, int \&num\+Moves)
+\begin{DoxyCompactList}\small\item\em Solves a QAP instance with steepest local search. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{solution_8h_a3b074e44762d4d4947d406151eedbc04}\label{solution_8h_a3b074e44762d4d4947d406151eedbc04}} 
+\index{solution.h@{solution.h}!calculateDelta@{calculateDelta}}
+\index{calculateDelta@{calculateDelta}!solution.h@{solution.h}}
+\doxysubsubsection{\texorpdfstring{calculateDelta()}{calculateDelta()}}
+{\footnotesize\ttfamily int calculate\+Delta (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int}]{score,  }\item[{int $\ast$}]{permutation,  }\item[{std\+::pair$<$ int, int $>$}]{move,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB }\end{DoxyParamCaption})}
+
+
+
+Calculates the change in the QAP score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & size of the problem. \\
+\hline
+{\em permutation} & array of the current solution. \\
+\hline
+{\em move} & a pair representing the current move. \\
+\hline
+{\em matrixA} & a 2d-\/array representing the matrix of flows. \\
+\hline
+{\em matrixB} & a 2d-\/array representing the matrix of distances. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+delta value as an integer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{solution_8h_accfc1c59c8a91df2e59cd8f603654934}\label{solution_8h_accfc1c59c8a91df2e59cd8f603654934}} 
+\index{solution.h@{solution.h}!calculateScore@{calculateScore}}
+\index{calculateScore@{calculateScore}!solution.h@{solution.h}}
+\doxysubsubsection{\texorpdfstring{calculateScore()}{calculateScore()}}
+{\footnotesize\ttfamily int calculate\+Score (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$}]{permutation,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB }\end{DoxyParamCaption})}
+
+
+
+Calculates score for the QAP problem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size of the permutation. \\
+\hline
+{\em permutation} & Permutation, representing the solution for QAP. \\
+\hline
+{\em matrixA} & matrix A of QAP, matrix of flows. \\
+\hline
+{\em matrixB} & matrix B of QAP, matrix of distances. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A score representing the final solution. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{solution_8h_a806d8be3db5ca95f2d5cd7a5fc98d45f}\label{solution_8h_a806d8be3db5ca95f2d5cd7a5fc98d45f}} 
+\index{solution.h@{solution.h}!get2NeighborhoodMoves@{get2NeighborhoodMoves}}
+\index{get2NeighborhoodMoves@{get2NeighborhoodMoves}!solution.h@{solution.h}}
+\doxysubsubsection{\texorpdfstring{get2NeighborhoodMoves()}{get2NeighborhoodMoves()}}
+{\footnotesize\ttfamily void get2\+Neighborhood\+Moves (\begin{DoxyParamCaption}\item[{std\+::pair$<$ int, int $>$ $\ast$}]{pairs,  }\item[{int}]{n,  }\item[{int \&}]{num\+Moves }\end{DoxyParamCaption})}
+
+
+
+Produces a simple 2-\/Opt Neighborhood for the QAP. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pairs} & an array of pairs showing moves, will be created in-\/place. \\
+\hline
+{\em n} & number of elements, size of the problem. \\
+\hline
+{\em num\+Moves} & number of moves in total \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{solution_8h_aec525a5dc7db783d7f87cd67e0683e31}\label{solution_8h_aec525a5dc7db783d7f87cd67e0683e31}} 
+\index{solution.h@{solution.h}!greedyLocalSearchSolve@{greedyLocalSearchSolve}}
+\index{greedyLocalSearchSolve@{greedyLocalSearchSolve}!solution.h@{solution.h}}
+\doxysubsubsection{\texorpdfstring{greedyLocalSearchSolve()}{greedyLocalSearchSolve()}}
+{\footnotesize\ttfamily void greedy\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$}]{permutation,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int \&}]{current\+Score,  }\item[{int \&}]{num\+Evaluations,  }\item[{int \&}]{num\+Moves }\end{DoxyParamCaption})}
+
+
+
+Solves a QAP instance with greedy local search. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & integer representing the size of the instance. \\
+\hline
+{\em permutation} & an array representing the current solution. \\
+\hline
+{\em matrixA} & a 2d-\/array representing the matrix of flows. \\
+\hline
+{\em matrixB} & a 2d-\/array representing the matrix of distances. \\
+\hline
+{\em current\+Score} & the current score of the solution. \\
+\hline
+{\em num\+Evaluations} & the number of perfomed delta evaluations, at the start should be 0. \\
+\hline
+{\em num\+Moves} & the number of performed moves, at the start should be 0. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{solution_8h_a34db5a06f450f62969885887003f041b}\label{solution_8h_a34db5a06f450f62969885887003f041b}} 
+\index{solution.h@{solution.h}!heuristicSolve@{heuristicSolve}}
+\index{heuristicSolve@{heuristicSolve}!solution.h@{solution.h}}
+\doxysubsubsection{\texorpdfstring{heuristicSolve()}{heuristicSolve()}}
+{\footnotesize\ttfamily int$\ast$ heuristic\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB }\end{DoxyParamCaption})}
+
+
+
+Solves the QAP problem with a simple heuristics. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size of the permutation. \\
+\hline
+{\em matrixA} & matrix A of QAP, matrix of flows. \\
+\hline
+{\em matrixB} & matrix B of QAP, matrix of distances. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array representing the permutation (solution). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{solution_8h_a308b4e0b974d56b5a480cdc116df8aa1}\label{solution_8h_a308b4e0b974d56b5a480cdc116df8aa1}} 
+\index{solution.h@{solution.h}!performMove@{performMove}}
+\index{performMove@{performMove}!solution.h@{solution.h}}
+\doxysubsubsection{\texorpdfstring{performMove()}{performMove()}}
+{\footnotesize\ttfamily void perform\+Move (\begin{DoxyParamCaption}\item[{int $\ast$}]{permutation,  }\item[{std\+::pair$<$ int, int $>$}]{move }\end{DoxyParamCaption})}
+
+
+
+Performs a move exchanging two elements by index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em permutation} & an array representing the current solution. \\
+\hline
+{\em move} & pair representing the move by indexes. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{solution_8h_a8a4111e492c61b6c69777bef60f2a975}\label{solution_8h_a8a4111e492c61b6c69777bef60f2a975}} 
+\index{solution.h@{solution.h}!steepestLocalSearchSolve@{steepestLocalSearchSolve}}
+\index{steepestLocalSearchSolve@{steepestLocalSearchSolve}!solution.h@{solution.h}}
+\doxysubsubsection{\texorpdfstring{steepestLocalSearchSolve()}{steepestLocalSearchSolve()}}
+{\footnotesize\ttfamily void steepest\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$}]{permutation,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int \&}]{current\+Score,  }\item[{int \&}]{num\+Evaluations,  }\item[{int \&}]{num\+Moves }\end{DoxyParamCaption})}
+
+
+
+Solves a QAP instance with steepest local search. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & integer representing the size of the instance. \\
+\hline
+{\em permutation} & an array representing the current solution. \\
+\hline
+{\em matrixA} & a 2d-\/array representing the matrix of flows. \\
+\hline
+{\em matrixB} & a 2d-\/array representing the matrix of distances. \\
+\hline
+{\em current\+Score} & the current score of the solution. \\
+\hline
+{\em num\+Evaluations} & the number of perfomed delta evaluations, at the start should be 0. \\
+\hline
+{\em num\+Moves} & the number of performed moves, at the start should be 0. \\
+\hline
+\end{DoxyParams}

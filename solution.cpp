@@ -49,27 +49,24 @@ int* heuristicSolve(int size, int** matrixA, int** matrixB){
     return solution;
 }
 
-std::pair<int, int>* get2NeighborhoodMoves(std::pair<int, int>* pairs, int n) {
-    if (n <= 1) {
-        return nullptr;
-    }
-
-    std::srand(std::time(0));
-    int random1 = std::rand() % n;
-    int random2 = std::rand() % n;
-    int index = 0;
-    int iRand;
-    int jRand;
-    for (int i = 1; i < n; i++) {
-        iRand = (i + random1) % (n-1);
-        if (iRand == 0) iRand = n-1;
-        for (int j = 0; j < iRand; j++) {
-            jRand = (j + random2) % iRand;
-            pairs[index] = {jRand, iRand};
-            index ++;
+void get2NeighborhoodMoves(std::pair<int, int>* pairs, int n) {
+    if (n > 1) {
+        std::srand(std::time(0));
+        int random1 = std::rand() % n;
+        int random2 = std::rand() % n;
+        int index = 0;
+        int iRand;
+        int jRand;
+        for (int i = 1; i < n; i++) {
+            iRand = (i + random1) % (n-1);
+            if (iRand == 0) iRand = n-1;
+            for (int j = 0; j < iRand; j++) {
+                jRand = (j + random2) % iRand;
+                pairs[index] = {jRand, iRand};
+                index ++;
+            }
         }
     }
-    return pairs;
 }
 
 void performMove(int * permutation, std::pair<int, int> move){
@@ -110,7 +107,7 @@ void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** mat
 
     while (improvement) {
         improvement = false;
-        moves = get2NeighborhoodMoves(moves, size);
+        get2NeighborhoodMoves(moves, size);
         for (int i = 0; i < numAvailableMoves; i++){
             move = moves[i];
             deltaScore = calculateDelta(size, currentScore, permutation, move, matrixA, matrixB);
@@ -143,7 +140,7 @@ void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** m
     while (improvement) {
         best_delta = 0;
         improvement = false;
-        moves = get2NeighborhoodMoves(moves, size);
+        get2NeighborhoodMoves(moves, size);
         for (int i = 0; i < numAvailableMoves; i++){
             move = moves[i];
             deltaScore = calculateDelta(size, currentScore, permutation, move, matrixA, matrixB);
