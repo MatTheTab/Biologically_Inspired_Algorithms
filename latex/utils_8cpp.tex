@@ -1,5 +1,10 @@
 \hypertarget{utils_8cpp}{}\doxysection{utils.\+cpp File Reference}
 \label{utils_8cpp}\index{utils.cpp@{utils.cpp}}
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+Include dependency graph for utils.\+cpp\+:
+% FIG 0
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -10,7 +15,9 @@ void \mbox{\hyperlink{utils_8cpp_abdd3ac25084fd6a0acfc7d33ed430f9f}{delete\+Matr
 int $\ast$$\ast$ \mbox{\hyperlink{utils_8cpp_a306eadddaeffc4ea2575f87a709c8153}{copy\+Matrix}} (int $\ast$$\ast$original, int rows, int cols)
 \begin{DoxyCompactList}\small\item\em Creates the exact copy of a specified matrix. \end{DoxyCompactList}\item 
 int $\ast$ \mbox{\hyperlink{utils_8cpp_addbe4f96dc60e2e1a7582b6b686a1a76}{copy\+Array}} (int $\ast$original, int size)
-\begin{DoxyCompactList}\small\item\em Creates the exact copy of a specified 1-\/D array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates the exact copy of a specified 1-\/D array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8cpp_a3522b15127a5c582b3850294eda4be63}{save\+Results\+To\+File}} (string filename, string algorithm\+Name, string instance, double runtime, int score, int size, int $\ast$solution, int num\+Evaluations, int num\+Performed\+Moves)
+\begin{DoxyCompactList}\small\item\em Saves the results of an algorithm execution to a text file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -89,5 +96,36 @@ Safely deletes a specified matrix.
 {\em matrix} & The matrix to be deleted. \\
 \hline
 {\em size} & The size of the matrix. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utils_8cpp_a3522b15127a5c582b3850294eda4be63}\label{utils_8cpp_a3522b15127a5c582b3850294eda4be63}} 
+\index{utils.cpp@{utils.cpp}!saveResultsToFile@{saveResultsToFile}}
+\index{saveResultsToFile@{saveResultsToFile}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{saveResultsToFile()}{saveResultsToFile()}}
+{\footnotesize\ttfamily void save\+Results\+To\+File (\begin{DoxyParamCaption}\item[{string}]{filename,  }\item[{string}]{algorithm\+Name,  }\item[{string}]{instance,  }\item[{double}]{runtime,  }\item[{int}]{score,  }\item[{int}]{size,  }\item[{int $\ast$}]{solution,  }\item[{int}]{num\+Evaluations,  }\item[{int}]{num\+Performed\+Moves }\end{DoxyParamCaption})}
+
+
+
+Saves the results of an algorithm execution to a text file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file where results should be saved. \\
+\hline
+{\em algorithm\+Name} & The name of the algorithm used. \\
+\hline
+{\em instance} & The instance identifier or name. \\
+\hline
+{\em runtime} & The execution time of the algorithm in seconds. \\
+\hline
+{\em score} & The computed score/result of the algorithm. \\
+\hline
+{\em size} & The size of the solution. \\
+\hline
+{\em solution} & Pointer to an array containing the solution. \\
+\hline
+{\em num\+Evaluations} & The number of evaluations performed during execution. \\
+\hline
+{\em num\+Performed\+Moves} & The number of moves performed by the algorithm. \\
 \hline
 \end{DoxyParams}
