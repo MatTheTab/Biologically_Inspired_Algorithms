@@ -31,6 +31,9 @@ void performMove(int * permutation, std::pair<int, int> move);
 
 int calculateDelta(int size, int score, int* permutation, std::pair<int, int> move, int** matrixA, int** matrixB);
 
-void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB);
+void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int &currentScore, int &numEvaluations, int &numMoves);
+
+void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int &currentScore, int &numEvaluations, int &numMoves);
+
 
 #endif

@@ -56,18 +56,24 @@ int main() {
             B[i][j] = distData[i][j];
 
     int* P1 = new int[size] {0, 1, 2};
-    int* P2 = heuristicSolve(size, A, B);
+    int* P2 = new int[size] {0, 1, 2};
 
     int score_1 = calculateScore(size, P1, A, B);
     int score_2 = calculateScore(size, P2, A, B);
     cout << "score 1: " << score_1 << "\n";
     cout << "score 2: " << score_2 << "\n";
 
+    int numEvaluations1 = 0;
+    int numMoves1 = 0;
+    int numEvaluations2 = 0;
+    int numMoves2 = 0;
+
     
-    greedyLocalSearchSolve(size, P1, A, B);
-    cout << "Permutation: " << P1[0] << " " << P1[1] << " " << P1[2] << "\n";
-    int score_3 = calculateScore(size, P1, A, B);
-    cout << "Final Score: " << score_3 << "\n";
+    greedyLocalSearchSolve(size, P1, A, B, score_1, numEvaluations1, numMoves1);
+    steepestLocalSearchSolve(size, P2, A, B, score_2, numEvaluations2, numMoves2);
+    cout << "Permutation (Greedy): " << P1[0] << " " << P1[1] << " " << P1[2] << "\n";
+    cout << "Final Score 1: " << score_1 << " number of evaluations: " << numEvaluations1 << " number of moves: " << numMoves1 << "\n";
+    cout << "Final Score 2: " << score_2 << " number of evaluations: " << numEvaluations2 << " number of moves: " << numMoves2 << "\n";
  
     // srand(time(0));
     // int n = 10;

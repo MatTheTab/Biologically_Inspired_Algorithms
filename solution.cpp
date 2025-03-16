@@ -3,8 +3,6 @@
 #include <cstdlib>
 #include <ctime>
 
-//TODO: Add <= to greedy local search, add steepest, update weights more intelligently
-
 int calculateScore(int size, int* permutation, int** matrixA, int** matrixB){
     int score = 0;
     for (int i = 0; i < size; i++){
@@ -47,7 +45,7 @@ int* heuristicSolve(int size, int** matrixA, int** matrixB){
     delete[] rowSumB;
     delete[] indexesA;
     delete[] indexesB;
-
+    
     return solution;
 }
 
@@ -81,41 +79,88 @@ void performMove(int * permutation, std::pair<int, int> move){
 }
 
 
-int calculateDelta(int size, int score, int* permutation, std::pair<int, int> move, int** matrixA, int** matrixB){
-    int* arrCopy = new int[size];
-    for (int i = 0; i < size; ++i) {
-        arrCopy[i] = permutation[i];
+int calculateDelta(int size, int score, int* permutation, std::pair<int, int> move, int** matrixA, int** matrixB) {
+    int i = move.first;
+    int j = move.second;    
+    int delta = 0;
+    int pi_i = permutation[i];
+    int pi_j = permutation[j];
+    
+    for (int k = 0; k < size; ++k) {
+        if (k != i && k != j) {
+            delta += (matrixA[i][k] * (matrixB[pi_j][permutation[k]] - matrixB[pi_i][permutation[k]])) +
+                     (matrixA[j][k] * (matrixB[pi_i][permutation[k]] - matrixB[pi_j][permutation[k]])) +
+                     (matrixA[k][i] * (matrixB[permutation[k]][pi_j] - matrixB[permutation[k]][pi_i])) +
+                     (matrixA[k][j] * (matrixB[permutation[k]][pi_i] - matrixB[permutation[k]][pi_j]));
+        }
     }
-    performMove(arrCopy, move);
-    int newScore = calculateScore(size, arrCopy, matrixA, matrixB) - score;
-    delete [] arrCopy;
-    return newScore;
+    delta += (matrixA[i][j] * (matrixB[pi_j][pi_i] - matrixB[pi_i][pi_j])) +
+             (matrixA[j][i] * (matrixB[pi_i][pi_j] - matrixB[pi_j][pi_i]));    
+    return delta;
 }
 
 
-void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB){
-    int currentScore = calculateScore(size, permutation, matrixA, matrixB);
+
+void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int &currentScore, int &numEvaluations, int &numPerformedMoves){
     bool improvement = true;
-    int numMoves = (size * (size - 1)) / 2;
-    std::pair<int, int>* moves = new std::pair<int, int>[numMoves];
+    int numAvailableMoves = (size * (size - 1)) / 2;
+    std::pair<int, int>* moves = new std::pair<int, int>[numAvailableMoves];
     std::pair<int, int> move;
     int deltaScore;
 
     while (improvement) {
         improvement = false;
         moves = get2NeighborhoodMoves(moves, size);
-        for (int i = 0; i < numMoves; i++){
+        for (int i = 0; i < numAvailableMoves; i++){
             move = moves[i];
             deltaScore = calculateDelta(size, currentScore, permutation, move, matrixA, matrixB);
+            numEvaluations += 1;
             if (deltaScore < 0){
                 currentScore += deltaScore;
                 performMove(permutation, move);
+                numPerformedMoves += 1;
                 improvement = true;
                 break;
             }
         }
         if (!improvement){
             break;
+        }
+    }
+    delete[] moves;
+}
+
+void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int &currentScore, int &numEvaluations, int &numPerformedMoves){
+    bool improvement = true;
+    int numAvailableMoves = (size * (size - 1)) / 2;
+    std::pair<int, int>* moves = new std::pair<int, int>[numAvailableMoves];
+    std::pair<int, int> move;
+    std::pair<int, int> best_move;
+    int deltaScore;
+    int best_delta;
+
+
+    while (improvement) {
+        best_delta = 0;
+        improvement = false;
+        moves = get2NeighborhoodMoves(moves, size);
+        for (int i = 0; i < numAvailableMoves; i++){
+            move = moves[i];
+            deltaScore = calculateDelta(size, currentScore, permutation, move, matrixA, matrixB);
+            numEvaluations += 1;
+            if (deltaScore < best_delta){
+                best_delta = deltaScore;
+                best_move = move;
+                improvement = true;
+            }
+        }
+        if (!improvement){
+            break;
+        }
+        else{
+            currentScore += best_delta;
+            performMove(permutation, best_move);
+            numPerformedMoves += 1;
         }
     }
     delete[] moves;
