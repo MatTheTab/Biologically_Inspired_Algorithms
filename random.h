@@ -7,10 +7,11 @@
  * @brief Generates a random permutation of numbers of size n.
  * 
  * @param n The size of the final perturbation array.
+ * @param arr Initialized array.
  * @return A pointer to the resulting, dynamically allocated perturbation array.
  * @note The caller is responsible for deleting the allocated array after it is no longer needed.
  */
-int* generateRandomPerturbation(int n);
+int* generateRandomPerturbation(int n, int* arr);
 
 /**
  * @brief Generates a random pair of integers from 0 to n.

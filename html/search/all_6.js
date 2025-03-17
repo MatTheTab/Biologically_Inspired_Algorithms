@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['main_14',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['main_2ecpp_15',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['matrixa_16',['matrixA',['../classProblem.html#a5402633b1b02665afb922a4a1666ef4c',1,'Problem']]],
-  ['matrixb_17',['matrixB',['../classProblem.html#a814dfb2def9c4afb803ee30e63166c2b',1,'Problem']]],
-  ['measurefunctionruntime_18',['measureFunctionRuntime',['../time__measure_8h.html#a8ed8a366eb0c120bda0392f655f41b6b',1,'time_measure.h']]]
+  ['loadinstance_14',['loadInstance',['../classProblem.html#af4aa21a140288c6ff402f0fd979c026f',1,'Problem']]]
 ];

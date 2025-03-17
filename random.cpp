@@ -6,12 +6,12 @@
 
 using namespace std;
 
-int* generateRandomPerturbation(int n) {
+int* generateRandomPerturbation(int n, int* arr) {
     if (n <= 1) {
         cerr << "Error: n must be greater than 1 for generateRandomPerturbation.\n";
         return nullptr;
     }
-    int* arr = new int[n];
+    
     int swap_idx = 0;
     for (int i = 0; i < n; i++) {
         arr[i] = i;

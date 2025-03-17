@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loadinstance_13',['loadInstance',['../classProblem.html#af4aa21a140288c6ff402f0fd979c026f',1,'Problem']]]
+  ['heuristicsolve_13',['heuristicSolve',['../solution_8cpp.html#a795c639287ac417a381e7d3a92baaea1',1,'heuristicSolve(int size, int **matrixA, int **matrixB, int *solution):&#160;solution.cpp'],['../solution_8h.html#a795c639287ac417a381e7d3a92baaea1',1,'heuristicSolve(int size, int **matrixA, int **matrixB, int *solution):&#160;solution.cpp']]]
 ];

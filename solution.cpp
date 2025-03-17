@@ -48,6 +48,41 @@ int* heuristicSolve(int size, int** matrixA, int** matrixB, int* solution){
     return solution;
 }
 
+int* antiHeuristicSolve(int size, int** matrixA, int** matrixB, int* solution){
+    int* rowSumA = new int[size]();
+    int* rowSumB = new int[size]();
+    int* indexesA = new int[size];
+    int* indexesB = new int[size];
+
+    for (int i = 0; i < size; i++){
+        indexesA[i] = i;
+        indexesB[i] = i;
+        for (int j = 0; j < size; j++){
+            rowSumA[i] += matrixA[i][j];
+            rowSumB[i] += matrixB[i][j];
+        }
+    }
+
+    std::sort(indexesA, indexesA + size, [&](int a, int b) {
+        return rowSumA[a] > rowSumA[b];
+    });
+
+    std::sort(indexesB, indexesB + size, [&](int a, int b) {
+        return rowSumB[a] > rowSumB[b];
+    });
+
+    for (int i = 0; i < size; i++){
+        solution[indexesB[i]] = indexesA[i];
+    }
+
+    delete[] rowSumA;
+    delete[] rowSumB;
+    delete[] indexesA;
+    delete[] indexesB;
+    
+    return solution;
+}
+
 void get2NeighborhoodMoves(std::pair<int, int>* pairs, int n) {
     if (n > 1) {
         std::srand(std::time(0));

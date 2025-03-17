@@ -83,16 +83,16 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af2a4f9c78d5f0b8a584b4f004de8679d"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random_8h.html#af2a4f9c78d5f0b8a584b4f004de8679d">generateRandomPerturbation</a> (int n)</td></tr>
-<tr class="memdesc:af2a4f9c78d5f0b8a584b4f004de8679d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a random permutation of numbers of size n.  <a href="random_8h.html#af2a4f9c78d5f0b8a584b4f004de8679d">More...</a><br /></td></tr>
-<tr class="separator:af2a4f9c78d5f0b8a584b4f004de8679d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae23e87689a32aea49351bf93fee4df0"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random_8h.html#aae23e87689a32aea49351bf93fee4df0">generateRandomPerturbation</a> (int n, int *arr)</td></tr>
+<tr class="memdesc:aae23e87689a32aea49351bf93fee4df0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a random permutation of numbers of size n.  <a href="random_8h.html#aae23e87689a32aea49351bf93fee4df0">More...</a><br /></td></tr>
+<tr class="separator:aae23e87689a32aea49351bf93fee4df0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68eadfd5af0f701d3f9f318260f6f670"><td class="memItemLeft" align="right" valign="top">std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random_8h.html#a68eadfd5af0f701d3f9f318260f6f670">getRandomPair</a> (int n)</td></tr>
 <tr class="memdesc:a68eadfd5af0f701d3f9f318260f6f670"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a random pair of integers from 0 to n.  <a href="random_8h.html#a68eadfd5af0f701d3f9f318260f6f670">More...</a><br /></td></tr>
 <tr class="separator:a68eadfd5af0f701d3f9f318260f6f670"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="af2a4f9c78d5f0b8a584b4f004de8679d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2a4f9c78d5f0b8a584b4f004de8679d">&#9670;&nbsp;</a></span>generateRandomPerturbation()</h2>
+<a id="aae23e87689a32aea49351bf93fee4df0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae23e87689a32aea49351bf93fee4df0">&#9670;&nbsp;</a></span>generateRandomPerturbation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -101,8 +101,18 @@ Functions</h2></td></tr>
           <td class="memname">int* generateRandomPerturbation </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>n</em></td><td>)</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>arr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -111,6 +121,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n</td><td>The size of the final perturbation array. </td></tr>
+    <tr><td class="paramname">arr</td><td>Initialized array. </td></tr>
   </table>
   </dd>
 </dl>

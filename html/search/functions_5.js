@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main_60',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['measurefunctionruntime_61',['measureFunctionRuntime',['../time__measure_8h.html#a8ed8a366eb0c120bda0392f655f41b6b',1,'time_measure.h']]]
+  ['loadinstance_61',['loadInstance',['../classProblem.html#af4aa21a140288c6ff402f0fd979c026f',1,'Problem']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7eproblem_66',['~Problem',['../classProblem.html#a839a525ed01c34d57fff42583003d3e7',1,'Problem']]]
+  ['saveresultstofile_66',['saveResultsToFile',['../utils_8cpp.html#a3522b15127a5c582b3850294eda4be63',1,'saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, int size, int *solution, int numEvaluations, int numPerformedMoves):&#160;utils.cpp'],['../utils_8h.html#a3522b15127a5c582b3850294eda4be63',1,'saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, int size, int *solution, int numEvaluations, int numPerformedMoves):&#160;utils.cpp']]],
+  ['steepestlocalsearchsolve_67',['steepestLocalSearchSolve',['../solution_8cpp.html#af280e161ed4d1f70cd903bd297d76818',1,'steepestLocalSearchSolve(int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves):&#160;solution.cpp'],['../solution_8h.html#af280e161ed4d1f70cd903bd297d76818',1,'steepestLocalSearchSolve(int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves):&#160;solution.cpp']]]
 ];

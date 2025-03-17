@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['generaterandomperturbation_54',['generateRandomPerturbation',['../random_8cpp.html#af2a4f9c78d5f0b8a584b4f004de8679d',1,'generateRandomPerturbation(int n):&#160;random.cpp'],['../random_8h.html#af2a4f9c78d5f0b8a584b4f004de8679d',1,'generateRandomPerturbation(int n):&#160;random.cpp']]],
-  ['get2neighborhoodmoves_55',['get2NeighborhoodMoves',['../solution_8cpp.html#a9a98833e9773a9874e489dd76c8f7443',1,'get2NeighborhoodMoves(std::pair&lt; int, int &gt; *pairs, int n):&#160;solution.cpp'],['../solution_8h.html#a806d8be3db5ca95f2d5cd7a5fc98d45f',1,'get2NeighborhoodMoves(std::pair&lt; int, int &gt; *pairs, int n, int &amp;numMoves):&#160;solution.h']]],
-  ['getrandompair_56',['getRandomPair',['../random_8cpp.html#a5be2f77a6dfa89cac2a01465fad62081',1,'getRandomPair(int n):&#160;random.cpp'],['../random_8h.html#a68eadfd5af0f701d3f9f318260f6f670',1,'getRandomPair(int n):&#160;random.cpp']]],
-  ['greedylocalsearchsolve_57',['greedyLocalSearchSolve',['../solution_8cpp.html#a79b7e4b3839070f0bdfcc5e544fa9c84',1,'greedyLocalSearchSolve(int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves):&#160;solution.cpp'],['../solution_8h.html#a8f6c4e66220ec83e93a95ec24e23f330',1,'greedyLocalSearchSolve(int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numMoves):&#160;solution.cpp']]]
+  ['deletematrix_54',['deleteMatrix',['../utils_8cpp.html#abdd3ac25084fd6a0acfc7d33ed430f9f',1,'deleteMatrix(int **matrix, int size):&#160;utils.cpp'],['../utils_8h.html#abdd3ac25084fd6a0acfc7d33ed430f9f',1,'deleteMatrix(int **matrix, int size):&#160;utils.cpp']]],
+  ['displayinstance_55',['displayInstance',['../classProblem.html#a7e3e66227f7a78ffe5ee5527194797d2',1,'Problem']]]
 ];

@@ -26,6 +26,16 @@ int calculateScore(int size, int* permutation, int** matrixA, int** matrixB);
 int* heuristicSolve(int size, int** matrixA, int** matrixB, int* solution);
 
 /**
+ * @brief Solves the QAP problem with a simple anti-heuristics (tries to find a very poor solution quickly).
+ * 
+ * @param size The size of the permutation.
+ * @param matrixA matrix A of QAP, matrix of flows.
+ * @param matrixB matrix B of QAP, matrix of distances.
+ * @return An array representing the permutation (solution).
+ */
+int* antiHeuristicSolve(int size, int** matrixA, int** matrixB, int* solution);
+
+/**
  * @brief Produces a simple 2-Opt Neighborhood for the QAP.
  * 
  * @param pairs an array of pairs showing moves, will be created in-place.

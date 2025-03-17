@@ -85,6 +85,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a795c639287ac417a381e7d3a92baaea1"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#a795c639287ac417a381e7d3a92baaea1">heuristicSolve</a> (int size, int **matrixA, int **matrixB, int *solution)</td></tr>
 <tr class="memdesc:a795c639287ac417a381e7d3a92baaea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the QAP problem with a simple heuristics.  <a href="solution_8cpp.html#a795c639287ac417a381e7d3a92baaea1">More...</a><br /></td></tr>
 <tr class="separator:a795c639287ac417a381e7d3a92baaea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f398a80150071396e74b3bd1dc54ee1"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#a9f398a80150071396e74b3bd1dc54ee1">antiHeuristicSolve</a> (int size, int **matrixA, int **matrixB, int *solution)</td></tr>
+<tr class="memdesc:a9f398a80150071396e74b3bd1dc54ee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the QAP problem with a simple anti-heuristics (tries to find a very poor solution quickly).  <a href="solution_8cpp.html#a9f398a80150071396e74b3bd1dc54ee1">More...</a><br /></td></tr>
+<tr class="separator:a9f398a80150071396e74b3bd1dc54ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a98833e9773a9874e489dd76c8f7443"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#a9a98833e9773a9874e489dd76c8f7443">get2NeighborhoodMoves</a> (std::pair&lt; int, int &gt; *pairs, int n)</td></tr>
 <tr class="separator:a9a98833e9773a9874e489dd76c8f7443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a308b4e0b974d56b5a480cdc116df8aa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solution_8cpp.html#a308b4e0b974d56b5a480cdc116df8aa1">performMove</a> (int *permutation, std::pair&lt; int, int &gt; move)</td></tr>
@@ -101,6 +104,57 @@ Functions</h2></td></tr>
 <tr class="separator:af280e161ed4d1f70cd903bd297d76818"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a9f398a80150071396e74b3bd1dc54ee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f398a80150071396e74b3bd1dc54ee1">&#9670;&nbsp;</a></span>antiHeuristicSolve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int* antiHeuristicSolve </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **&#160;</td>
+          <td class="paramname"><em>matrixA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **&#160;</td>
+          <td class="paramname"><em>matrixB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>solution</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Solves the QAP problem with a simple anti-heuristics (tries to find a very poor solution quickly). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>The size of the permutation. </td></tr>
+    <tr><td class="paramname">matrixA</td><td>matrix A of QAP, matrix of flows. </td></tr>
+    <tr><td class="paramname">matrixB</td><td>matrix B of QAP, matrix of distances. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An array representing the permutation (solution). </dd></dl>
+
+</div>
+</div>
 <a id="a3b074e44762d4d4947d406151eedbc04"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b074e44762d4d4947d406151eedbc04">&#9670;&nbsp;</a></span>calculateDelta()</h2>
 

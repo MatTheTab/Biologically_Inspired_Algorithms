@@ -12,6 +12,8 @@ int \mbox{\hyperlink{solution_8h_accfc1c59c8a91df2e59cd8f603654934}{calculate\+S
 \begin{DoxyCompactList}\small\item\em Calculates score for the QAP problem. \end{DoxyCompactList}\item 
 int $\ast$ \mbox{\hyperlink{solution_8h_a795c639287ac417a381e7d3a92baaea1}{heuristic\+Solve}} (int size, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int $\ast$solution)
 \begin{DoxyCompactList}\small\item\em Solves the QAP problem with a simple heuristics. \end{DoxyCompactList}\item 
+int $\ast$ \mbox{\hyperlink{solution_8h_a9f398a80150071396e74b3bd1dc54ee1}{anti\+Heuristic\+Solve}} (int size, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int $\ast$solution)
+\begin{DoxyCompactList}\small\item\em Solves the QAP problem with a simple anti-\/heuristics (tries to find a very poor solution quickly). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{solution_8h_a806d8be3db5ca95f2d5cd7a5fc98d45f}{get2\+Neighborhood\+Moves}} (std\+::pair$<$ int, int $>$ $\ast$pairs, int n, int \&num\+Moves)
 \begin{DoxyCompactList}\small\item\em Produces a simple 2-\/Opt Neighborhood for the QAP. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{solution_8h_a308b4e0b974d56b5a480cdc116df8aa1}{perform\+Move}} (int $\ast$permutation, std\+::pair$<$ int, int $>$ move)
@@ -25,6 +27,28 @@ void \mbox{\hyperlink{solution_8h_af280e161ed4d1f70cd903bd297d76818}{steepest\+L
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{solution_8h_a9f398a80150071396e74b3bd1dc54ee1}\label{solution_8h_a9f398a80150071396e74b3bd1dc54ee1}} 
+\index{solution.h@{solution.h}!antiHeuristicSolve@{antiHeuristicSolve}}
+\index{antiHeuristicSolve@{antiHeuristicSolve}!solution.h@{solution.h}}
+\doxysubsubsection{\texorpdfstring{antiHeuristicSolve()}{antiHeuristicSolve()}}
+{\footnotesize\ttfamily int$\ast$ anti\+Heuristic\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int $\ast$}]{solution }\end{DoxyParamCaption})}
+
+
+
+Solves the QAP problem with a simple anti-\/heuristics (tries to find a very poor solution quickly). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size of the permutation. \\
+\hline
+{\em matrixA} & matrix A of QAP, matrix of flows. \\
+\hline
+{\em matrixB} & matrix B of QAP, matrix of distances. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array representing the permutation (solution). 
+\end{DoxyReturn}
 \mbox{\Hypertarget{solution_8h_a3b074e44762d4d4947d406151eedbc04}\label{solution_8h_a3b074e44762d4d4947d406151eedbc04}} 
 \index{solution.h@{solution.h}!calculateDelta@{calculateDelta}}
 \index{calculateDelta@{calculateDelta}!solution.h@{solution.h}}

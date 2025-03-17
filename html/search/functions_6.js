@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['performmove_62',['performMove',['../solution_8cpp.html#a308b4e0b974d56b5a480cdc116df8aa1',1,'performMove(int *permutation, std::pair&lt; int, int &gt; move):&#160;solution.cpp'],['../solution_8h.html#a308b4e0b974d56b5a480cdc116df8aa1',1,'performMove(int *permutation, std::pair&lt; int, int &gt; move):&#160;solution.cpp']]],
-  ['problem_63',['Problem',['../classProblem.html#af0ccc7ef6893d9f3f92af85af7d6dddd',1,'Problem']]]
+  ['main_62',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
+  ['measurefunctionruntime_63',['measureFunctionRuntime',['../time__measure_8h.html#a8ed8a366eb0c120bda0392f655f41b6b',1,'time_measure.h']]]
 ];

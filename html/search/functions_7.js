@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['saveresultstofile_64',['saveResultsToFile',['../utils_8cpp.html#a3522b15127a5c582b3850294eda4be63',1,'saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, int size, int *solution, int numEvaluations, int numPerformedMoves):&#160;utils.cpp'],['../utils_8h.html#a3522b15127a5c582b3850294eda4be63',1,'saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, int size, int *solution, int numEvaluations, int numPerformedMoves):&#160;utils.cpp']]],
-  ['steepestlocalsearchsolve_65',['steepestLocalSearchSolve',['../solution_8cpp.html#af280e161ed4d1f70cd903bd297d76818',1,'steepestLocalSearchSolve(int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves):&#160;solution.cpp'],['../solution_8h.html#af280e161ed4d1f70cd903bd297d76818',1,'steepestLocalSearchSolve(int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves):&#160;solution.cpp']]]
+  ['performmove_64',['performMove',['../solution_8cpp.html#a308b4e0b974d56b5a480cdc116df8aa1',1,'performMove(int *permutation, std::pair&lt; int, int &gt; move):&#160;solution.cpp'],['../solution_8h.html#a308b4e0b974d56b5a480cdc116df8aa1',1,'performMove(int *permutation, std::pair&lt; int, int &gt; move):&#160;solution.cpp']]],
+  ['problem_65',['Problem',['../classProblem.html#af0ccc7ef6893d9f3f92af85af7d6dddd',1,'Problem']]]
 ];

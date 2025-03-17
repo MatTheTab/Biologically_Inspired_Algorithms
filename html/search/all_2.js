@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['deletematrix_6',['deleteMatrix',['../utils_8cpp.html#abdd3ac25084fd6a0acfc7d33ed430f9f',1,'deleteMatrix(int **matrix, int size):&#160;utils.cpp'],['../utils_8h.html#abdd3ac25084fd6a0acfc7d33ed430f9f',1,'deleteMatrix(int **matrix, int size):&#160;utils.cpp']]],
-  ['displayinstance_7',['displayInstance',['../classProblem.html#a7e3e66227f7a78ffe5ee5527194797d2',1,'Problem']]]
+  ['calculatedelta_2',['calculateDelta',['../solution_8cpp.html#a3b074e44762d4d4947d406151eedbc04',1,'calculateDelta(int size, int score, int *permutation, std::pair&lt; int, int &gt; move, int **matrixA, int **matrixB):&#160;solution.cpp'],['../solution_8h.html#a3b074e44762d4d4947d406151eedbc04',1,'calculateDelta(int size, int score, int *permutation, std::pair&lt; int, int &gt; move, int **matrixA, int **matrixB):&#160;solution.cpp']]],
+  ['calculatescore_3',['calculateScore',['../solution_8cpp.html#accfc1c59c8a91df2e59cd8f603654934',1,'calculateScore(int size, int *permutation, int **matrixA, int **matrixB):&#160;solution.cpp'],['../solution_8h.html#accfc1c59c8a91df2e59cd8f603654934',1,'calculateScore(int size, int *permutation, int **matrixA, int **matrixB):&#160;solution.cpp']]],
+  ['copyarray_4',['copyArray',['../utils_8cpp.html#addbe4f96dc60e2e1a7582b6b686a1a76',1,'copyArray(int *original, int size):&#160;utils.cpp'],['../utils_8h.html#addbe4f96dc60e2e1a7582b6b686a1a76',1,'copyArray(int *original, int size):&#160;utils.cpp']]],
+  ['copymatrix_5',['copyMatrix',['../utils_8cpp.html#a306eadddaeffc4ea2575f87a709c8153',1,'copyMatrix(int **original, int rows, int cols):&#160;utils.cpp'],['../utils_8h.html#a306eadddaeffc4ea2575f87a709c8153',1,'copyMatrix(int **original, int rows, int cols):&#160;utils.cpp']]],
+  ['creatematrix_6',['createMatrix',['../utils_8cpp.html#a2b1ea87877e93433c9b3b6ce4ceae7ac',1,'createMatrix(int size):&#160;utils.cpp'],['../utils_8h.html#a2b1ea87877e93433c9b3b6ce4ceae7ac',1,'createMatrix(int size):&#160;utils.cpp']]]
 ];
