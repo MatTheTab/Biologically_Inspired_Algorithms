@@ -54,7 +54,9 @@ int* copyArray(int* original, int size);
  * @param solution Pointer to an array containing the solution.
  * @param numEvaluations The number of evaluations performed during execution.
  * @param numPerformedMoves The number of moves performed by the algorithm.
+ * @param opt_score The optimal score of the instance.
+ * @param opt_solution Pointer to an array containing the optimal solution.
  */
-void saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, int size, int* solution, int numEvaluations, int numPerformedMoves);
+void saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, int size, int* solution, int numEvaluations, int numPerformedMoves, int opt_score, int* opt_solution);
 
 #endif

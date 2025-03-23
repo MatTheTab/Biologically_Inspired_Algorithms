@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
     }
     
     scoreInitial = calculateScore(size, P, matrixA, matrixB);
-    saveResultsToFile(results_filename, initial_algorithm, instance_name, runtime_initial, scoreInitial, size, P, 1, 1);
+    saveResultsToFile(results_filename, initial_algorithm, instance_name, runtime_initial, scoreInitial, size, P, 1, 1, opt_score, opt_solution);
     
     if (!local_search_algorithm.empty()) {
         int tempMoves = 0;
@@ -84,7 +84,8 @@ int main(int argc, char* argv[]) {
             return 1;
         }
         
-        saveResultsToFile(results_filename, local_search_algorithm, instance_name, runtime_LS, *scoreLS, size, P, *numEvaluations, *numMoves);
+        saveResultsToFile(results_filename, local_search_algorithm, instance_name, runtime_LS, *scoreLS, size, P, 
+            *numEvaluations, *numMoves, opt_score, opt_solution);
     }
     
     delete[] P;

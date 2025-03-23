@@ -39,7 +39,8 @@ int* copyArray(int* original, int size) {
     return copy;
 }
 
-void saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, int size, int* solution, int numEvaluations, int numPerformedMoves) {
+void saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, 
+    int size, int* solution, int numEvaluations, int numPerformedMoves, int opt_score, int* opt_solution) {
     ofstream outFile(filename, ios::app);
     
     if (!outFile) {
@@ -58,6 +59,15 @@ void saveResultsToFile(string filename, string algorithmName, string instance, d
     for (int i = 0; i < size; i++) {
         outFile << solution[i] << " ";
     }
+    outFile << "\t";
+    
+    outFile << "Optimal Score: " << opt_score << "\t";
+    outFile << "Optimal Solution: \t";
+    
+    for (int i = 0; i < size; i++) {
+        outFile << opt_solution[i] << " ";
+    }
+
     outFile << "\n";
     outFile.close();
     cout << "Results successfully saved to " << filename << endl;
