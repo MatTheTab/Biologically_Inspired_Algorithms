@@ -1,37 +1,37 @@
-\hypertarget{solution_8h}{}\doxysection{solution.\+h File Reference}
-\label{solution_8h}\index{solution.h@{solution.h}}
+\doxysection{solution.\+h File Reference}
+\hypertarget{solution_8h}{}\label{solution_8h}\index{solution.h@{solution.h}}
 {\ttfamily \#include $<$utility$>$}\newline
 Include dependency graph for solution.\+h\+:
 % FIG 0
 This graph shows which files directly or indirectly include this file\+:
 % FIG 1
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{solution_8h_accfc1c59c8a91df2e59cd8f603654934}{calculate\+Score}} (int size, int $\ast$permutation, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB)
+int \mbox{\hyperlink{solution_8h_accfc1c59c8a91df2e59cd8f603654934}{calculate\+Score}} (int size, int \texorpdfstring{$\ast$}{*}permutation, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB)
 \begin{DoxyCompactList}\small\item\em Calculates score for the QAP problem. \end{DoxyCompactList}\item 
-int $\ast$ \mbox{\hyperlink{solution_8h_a795c639287ac417a381e7d3a92baaea1}{heuristic\+Solve}} (int size, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int $\ast$solution)
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{solution_8h_a758e19b769b197cd3fb0383f88d22fde}{heuristic\+Solve}} (int size, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}solution)
 \begin{DoxyCompactList}\small\item\em Solves the QAP problem with a simple heuristics. \end{DoxyCompactList}\item 
-int $\ast$ \mbox{\hyperlink{solution_8h_a9f398a80150071396e74b3bd1dc54ee1}{anti\+Heuristic\+Solve}} (int size, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int $\ast$solution)
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{solution_8h_a1af47c15cba39442584acf31a95720be}{anti\+Heuristic\+Solve}} (int size, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}solution)
 \begin{DoxyCompactList}\small\item\em Solves the QAP problem with a simple anti-\/heuristics (tries to find a very poor solution quickly). \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{solution_8h_a806d8be3db5ca95f2d5cd7a5fc98d45f}{get2\+Neighborhood\+Moves}} (std\+::pair$<$ int, int $>$ $\ast$pairs, int n, int \&num\+Moves)
+void \mbox{\hyperlink{solution_8h_a806d8be3db5ca95f2d5cd7a5fc98d45f}{get2\+Neighborhood\+Moves}} (std\+::pair$<$ int, int $>$ \texorpdfstring{$\ast$}{*}pairs, int n, int \&num\+Moves)
 \begin{DoxyCompactList}\small\item\em Produces a simple 2-\/Opt Neighborhood for the QAP. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{solution_8h_a308b4e0b974d56b5a480cdc116df8aa1}{perform\+Move}} (int $\ast$permutation, std\+::pair$<$ int, int $>$ move)
+void \mbox{\hyperlink{solution_8h_a308b4e0b974d56b5a480cdc116df8aa1}{perform\+Move}} (int \texorpdfstring{$\ast$}{*}permutation, std\+::pair$<$ int, int $>$ move)
 \begin{DoxyCompactList}\small\item\em Performs a move exchanging two elements by index. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{solution_8h_a3b074e44762d4d4947d406151eedbc04}{calculate\+Delta}} (int size, int score, int $\ast$permutation, std\+::pair$<$ int, int $>$ move, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB)
+int \mbox{\hyperlink{solution_8h_a3b074e44762d4d4947d406151eedbc04}{calculate\+Delta}} (int size, int score, int \texorpdfstring{$\ast$}{*}permutation, std\+::pair$<$ int, int $>$ move, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB)
 \begin{DoxyCompactList}\small\item\em Calculates the change in the QAP score. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{solution_8h_a8f6c4e66220ec83e93a95ec24e23f330}{greedy\+Local\+Search\+Solve}} (int size, int $\ast$permutation, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int $\ast$current\+Score, int $\ast$num\+Evaluations, int $\ast$num\+Moves)
+void \mbox{\hyperlink{solution_8h_a8f6c4e66220ec83e93a95ec24e23f330}{greedy\+Local\+Search\+Solve}} (int size, int \texorpdfstring{$\ast$}{*}permutation, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}current\+Score, int \texorpdfstring{$\ast$}{*}num\+Evaluations, int \texorpdfstring{$\ast$}{*}num\+Moves)
 \begin{DoxyCompactList}\small\item\em Solves a QAP instance with greedy local search. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{solution_8h_af280e161ed4d1f70cd903bd297d76818}{steepest\+Local\+Search\+Solve}} (int size, int $\ast$permutation, int $\ast$$\ast$matrixA, int $\ast$$\ast$matrixB, int $\ast$current\+Score, int $\ast$num\+Evaluations, int $\ast$num\+Performed\+Moves)
+void \mbox{\hyperlink{solution_8h_af280e161ed4d1f70cd903bd297d76818}{steepest\+Local\+Search\+Solve}} (int size, int \texorpdfstring{$\ast$}{*}permutation, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}current\+Score, int \texorpdfstring{$\ast$}{*}num\+Evaluations, int \texorpdfstring{$\ast$}{*}num\+Performed\+Moves)
 \begin{DoxyCompactList}\small\item\em Solves a QAP instance with steepest local search. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{solution_8h_a9f398a80150071396e74b3bd1dc54ee1}\label{solution_8h_a9f398a80150071396e74b3bd1dc54ee1}} 
-\index{solution.h@{solution.h}!antiHeuristicSolve@{antiHeuristicSolve}}
+\Hypertarget{solution_8h_a1af47c15cba39442584acf31a95720be}\index{solution.h@{solution.h}!antiHeuristicSolve@{antiHeuristicSolve}}
 \index{antiHeuristicSolve@{antiHeuristicSolve}!solution.h@{solution.h}}
 \doxysubsubsection{\texorpdfstring{antiHeuristicSolve()}{antiHeuristicSolve()}}
-{\footnotesize\ttfamily int$\ast$ anti\+Heuristic\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int $\ast$}]{solution }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{solution_8h_a1af47c15cba39442584acf31a95720be} 
+int \texorpdfstring{$\ast$}{*} anti\+Heuristic\+Solve (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{solution}{}\end{DoxyParamCaption})}
 
 
 
@@ -49,11 +49,11 @@ Solves the QAP problem with a simple anti-\/heuristics (tries to find a very poo
 \begin{DoxyReturn}{Returns}
 An array representing the permutation (solution). 
 \end{DoxyReturn}
-\mbox{\Hypertarget{solution_8h_a3b074e44762d4d4947d406151eedbc04}\label{solution_8h_a3b074e44762d4d4947d406151eedbc04}} 
-\index{solution.h@{solution.h}!calculateDelta@{calculateDelta}}
+\Hypertarget{solution_8h_a3b074e44762d4d4947d406151eedbc04}\index{solution.h@{solution.h}!calculateDelta@{calculateDelta}}
 \index{calculateDelta@{calculateDelta}!solution.h@{solution.h}}
 \doxysubsubsection{\texorpdfstring{calculateDelta()}{calculateDelta()}}
-{\footnotesize\ttfamily int calculate\+Delta (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int}]{score,  }\item[{int $\ast$}]{permutation,  }\item[{std\+::pair$<$ int, int $>$}]{move,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{solution_8h_a3b074e44762d4d4947d406151eedbc04} 
+int calculate\+Delta (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int}]{score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{permutation}{, }\item[{std\+::pair$<$ int, int $>$}]{move}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{}\end{DoxyParamCaption})}
 
 
 
@@ -75,11 +75,11 @@ Calculates the change in the QAP score.
 \begin{DoxyReturn}{Returns}
 delta value as an integer. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{solution_8h_accfc1c59c8a91df2e59cd8f603654934}\label{solution_8h_accfc1c59c8a91df2e59cd8f603654934}} 
-\index{solution.h@{solution.h}!calculateScore@{calculateScore}}
+\Hypertarget{solution_8h_accfc1c59c8a91df2e59cd8f603654934}\index{solution.h@{solution.h}!calculateScore@{calculateScore}}
 \index{calculateScore@{calculateScore}!solution.h@{solution.h}}
 \doxysubsubsection{\texorpdfstring{calculateScore()}{calculateScore()}}
-{\footnotesize\ttfamily int calculate\+Score (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$}]{permutation,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{solution_8h_accfc1c59c8a91df2e59cd8f603654934} 
+int calculate\+Score (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{permutation}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{}\end{DoxyParamCaption})}
 
 
 
@@ -99,11 +99,11 @@ Calculates score for the QAP problem.
 \begin{DoxyReturn}{Returns}
 A score representing the final solution. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{solution_8h_a806d8be3db5ca95f2d5cd7a5fc98d45f}\label{solution_8h_a806d8be3db5ca95f2d5cd7a5fc98d45f}} 
-\index{solution.h@{solution.h}!get2NeighborhoodMoves@{get2NeighborhoodMoves}}
+\Hypertarget{solution_8h_a806d8be3db5ca95f2d5cd7a5fc98d45f}\index{solution.h@{solution.h}!get2NeighborhoodMoves@{get2NeighborhoodMoves}}
 \index{get2NeighborhoodMoves@{get2NeighborhoodMoves}!solution.h@{solution.h}}
 \doxysubsubsection{\texorpdfstring{get2NeighborhoodMoves()}{get2NeighborhoodMoves()}}
-{\footnotesize\ttfamily void get2\+Neighborhood\+Moves (\begin{DoxyParamCaption}\item[{std\+::pair$<$ int, int $>$ $\ast$}]{pairs,  }\item[{int}]{n,  }\item[{int \&}]{num\+Moves }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{solution_8h_a806d8be3db5ca95f2d5cd7a5fc98d45f} 
+void get2\+Neighborhood\+Moves (\begin{DoxyParamCaption}\item[{std\+::pair$<$ int, int $>$ \texorpdfstring{$\ast$}{*}}]{pairs}{, }\item[{int}]{n}{, }\item[{int \&}]{num\+Moves}{}\end{DoxyParamCaption})}
 
 
 
@@ -118,11 +118,11 @@ Produces a simple 2-\/Opt Neighborhood for the QAP.
 {\em num\+Moves} & number of moves in total \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{solution_8h_a8f6c4e66220ec83e93a95ec24e23f330}\label{solution_8h_a8f6c4e66220ec83e93a95ec24e23f330}} 
-\index{solution.h@{solution.h}!greedyLocalSearchSolve@{greedyLocalSearchSolve}}
+\Hypertarget{solution_8h_a8f6c4e66220ec83e93a95ec24e23f330}\index{solution.h@{solution.h}!greedyLocalSearchSolve@{greedyLocalSearchSolve}}
 \index{greedyLocalSearchSolve@{greedyLocalSearchSolve}!solution.h@{solution.h}}
 \doxysubsubsection{\texorpdfstring{greedyLocalSearchSolve()}{greedyLocalSearchSolve()}}
-{\footnotesize\ttfamily void greedy\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$}]{permutation,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int $\ast$}]{current\+Score,  }\item[{int $\ast$}]{num\+Evaluations,  }\item[{int $\ast$}]{num\+Moves }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{solution_8h_a8f6c4e66220ec83e93a95ec24e23f330} 
+void greedy\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{permutation}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Evaluations}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Moves}{}\end{DoxyParamCaption})}
 
 
 
@@ -145,11 +145,11 @@ Solves a QAP instance with greedy local search.
 {\em num\+Moves} & the number of performed moves, at the start should be 0. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{solution_8h_a795c639287ac417a381e7d3a92baaea1}\label{solution_8h_a795c639287ac417a381e7d3a92baaea1}} 
-\index{solution.h@{solution.h}!heuristicSolve@{heuristicSolve}}
+\Hypertarget{solution_8h_a758e19b769b197cd3fb0383f88d22fde}\index{solution.h@{solution.h}!heuristicSolve@{heuristicSolve}}
 \index{heuristicSolve@{heuristicSolve}!solution.h@{solution.h}}
 \doxysubsubsection{\texorpdfstring{heuristicSolve()}{heuristicSolve()}}
-{\footnotesize\ttfamily int$\ast$ heuristic\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int $\ast$}]{solution }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{solution_8h_a758e19b769b197cd3fb0383f88d22fde} 
+int \texorpdfstring{$\ast$}{*} heuristic\+Solve (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{solution}{}\end{DoxyParamCaption})}
 
 
 
@@ -167,11 +167,11 @@ Solves the QAP problem with a simple heuristics.
 \begin{DoxyReturn}{Returns}
 An array representing the permutation (solution). 
 \end{DoxyReturn}
-\mbox{\Hypertarget{solution_8h_a308b4e0b974d56b5a480cdc116df8aa1}\label{solution_8h_a308b4e0b974d56b5a480cdc116df8aa1}} 
-\index{solution.h@{solution.h}!performMove@{performMove}}
+\Hypertarget{solution_8h_a308b4e0b974d56b5a480cdc116df8aa1}\index{solution.h@{solution.h}!performMove@{performMove}}
 \index{performMove@{performMove}!solution.h@{solution.h}}
 \doxysubsubsection{\texorpdfstring{performMove()}{performMove()}}
-{\footnotesize\ttfamily void perform\+Move (\begin{DoxyParamCaption}\item[{int $\ast$}]{permutation,  }\item[{std\+::pair$<$ int, int $>$}]{move }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{solution_8h_a308b4e0b974d56b5a480cdc116df8aa1} 
+void perform\+Move (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{permutation}{, }\item[{std\+::pair$<$ int, int $>$}]{move}{}\end{DoxyParamCaption})}
 
 
 
@@ -184,11 +184,11 @@ Performs a move exchanging two elements by index.
 {\em move} & pair representing the move by indexes. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{solution_8h_af280e161ed4d1f70cd903bd297d76818}\label{solution_8h_af280e161ed4d1f70cd903bd297d76818}} 
-\index{solution.h@{solution.h}!steepestLocalSearchSolve@{steepestLocalSearchSolve}}
+\Hypertarget{solution_8h_af280e161ed4d1f70cd903bd297d76818}\index{solution.h@{solution.h}!steepestLocalSearchSolve@{steepestLocalSearchSolve}}
 \index{steepestLocalSearchSolve@{steepestLocalSearchSolve}!solution.h@{solution.h}}
 \doxysubsubsection{\texorpdfstring{steepestLocalSearchSolve()}{steepestLocalSearchSolve()}}
-{\footnotesize\ttfamily void steepest\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{int $\ast$}]{permutation,  }\item[{int $\ast$$\ast$}]{matrixA,  }\item[{int $\ast$$\ast$}]{matrixB,  }\item[{int $\ast$}]{current\+Score,  }\item[{int $\ast$}]{num\+Evaluations,  }\item[{int $\ast$}]{num\+Performed\+Moves }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{solution_8h_af280e161ed4d1f70cd903bd297d76818} 
+void steepest\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{permutation}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Evaluations}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Performed\+Moves}{}\end{DoxyParamCaption})}
 
 
 

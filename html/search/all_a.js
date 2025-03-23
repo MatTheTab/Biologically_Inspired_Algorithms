@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['saveresultstofile_27',['saveResultsToFile',['../utils_8cpp.html#a3522b15127a5c582b3850294eda4be63',1,'saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, int size, int *solution, int numEvaluations, int numPerformedMoves):&#160;utils.cpp'],['../utils_8h.html#a3522b15127a5c582b3850294eda4be63',1,'saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, int size, int *solution, int numEvaluations, int numPerformedMoves):&#160;utils.cpp']]],
-  ['size_28',['size',['../classProblem.html#a35685319c66e423658fc32ee9eefcaa2',1,'Problem']]],
-  ['solution_2ecpp_29',['solution.cpp',['../solution_8cpp.html',1,'']]],
-  ['solution_2eh_30',['solution.h',['../solution_8h.html',1,'']]],
-  ['steepestlocalsearchsolve_31',['steepestLocalSearchSolve',['../solution_8cpp.html#af280e161ed4d1f70cd903bd297d76818',1,'steepestLocalSearchSolve(int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves):&#160;solution.cpp'],['../solution_8h.html#af280e161ed4d1f70cd903bd297d76818',1,'steepestLocalSearchSolve(int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves):&#160;solution.cpp']]]
+  ['main_0',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp'],['../test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;test.cpp']]],
+  ['main_2ecpp_1',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['matrixa_2',['matrixA',['../classProblem.html#a5402633b1b02665afb922a4a1666ef4c',1,'Problem']]],
+  ['matrixb_3',['matrixB',['../classProblem.html#a814dfb2def9c4afb803ee30e63166c2b',1,'Problem']]],
+  ['measurefunctionruntime_4',['measureFunctionRuntime',['../time__measure_8h.html#a8ed8a366eb0c120bda0392f655f41b6b',1,'time_measure.h']]]
 ];

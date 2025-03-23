@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['matrixa_69',['matrixA',['../classProblem.html#a5402633b1b02665afb922a4a1666ef4c',1,'Problem']]],
-  ['matrixb_70',['matrixB',['../classProblem.html#a814dfb2def9c4afb803ee30e63166c2b',1,'Problem']]]
+  ['commands_0',['commands',['../namespacecreate__batch.html#ad30e15124b7ea1fee4c6e30ffec6323e',1,'create_batch']]]
 ];

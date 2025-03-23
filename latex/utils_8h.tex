@@ -1,32 +1,32 @@
-\hypertarget{utils_8h}{}\doxysection{utils.\+h File Reference}
-\label{utils_8h}\index{utils.h@{utils.h}}
+\doxysection{utils.\+h File Reference}
+\hypertarget{utils_8h}{}\label{utils_8h}\index{utils.h@{utils.h}}
 {\ttfamily \#include $<$utility$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
 Include dependency graph for utils.\+h\+:
 % FIG 0
 This graph shows which files directly or indirectly include this file\+:
 % FIG 1
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int $\ast$$\ast$ \mbox{\hyperlink{utils_8h_a2b1ea87877e93433c9b3b6ce4ceae7ac}{create\+Matrix}} (int size)
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{utils_8h_a3417402f1b5e6a1d1f3b52d7dc28396c}{create\+Matrix}} (int size)
 \begin{DoxyCompactList}\small\item\em Dynamically allocates a matrix of a specified size. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{utils_8h_abdd3ac25084fd6a0acfc7d33ed430f9f}{delete\+Matrix}} (int $\ast$$\ast$matrix, int size)
+void \mbox{\hyperlink{utils_8h_abdd3ac25084fd6a0acfc7d33ed430f9f}{delete\+Matrix}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrix, int size)
 \begin{DoxyCompactList}\small\item\em Safely deletes a specified matrix. \end{DoxyCompactList}\item 
-int $\ast$$\ast$ \mbox{\hyperlink{utils_8h_a306eadddaeffc4ea2575f87a709c8153}{copy\+Matrix}} (int $\ast$$\ast$original, int rows, int cols)
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{utils_8h_abb8ac4988583d9d5af91346a70be5168}{copy\+Matrix}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}original, int rows, int cols)
 \begin{DoxyCompactList}\small\item\em Creates the exact copy of a specified matrix. \end{DoxyCompactList}\item 
-int $\ast$ \mbox{\hyperlink{utils_8h_addbe4f96dc60e2e1a7582b6b686a1a76}{copy\+Array}} (int $\ast$original, int size)
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{utils_8h_a37997c576871c68d528884c9e36648a5}{copy\+Array}} (int \texorpdfstring{$\ast$}{*}original, int size)
 \begin{DoxyCompactList}\small\item\em Creates the exact copy of a specified 1-\/D array. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{utils_8h_a3522b15127a5c582b3850294eda4be63}{save\+Results\+To\+File}} (string filename, string algorithm\+Name, string instance, double runtime, int score, int size, int $\ast$solution, int num\+Evaluations, int num\+Performed\+Moves)
+void \mbox{\hyperlink{utils_8h_a2393ed90c07a022965f196c15070d4fd}{save\+Results\+To\+File}} (string filename, string algorithm\+Name, string instance, double runtime, int score, int size, int \texorpdfstring{$\ast$}{*}solution, int num\+Evaluations, int num\+Performed\+Moves, int opt\+\_\+score, int \texorpdfstring{$\ast$}{*}opt\+\_\+solution)
 \begin{DoxyCompactList}\small\item\em Saves the results of an algorithm execution to a text file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{utils_8h_addbe4f96dc60e2e1a7582b6b686a1a76}\label{utils_8h_addbe4f96dc60e2e1a7582b6b686a1a76}} 
-\index{utils.h@{utils.h}!copyArray@{copyArray}}
+\Hypertarget{utils_8h_a37997c576871c68d528884c9e36648a5}\index{utils.h@{utils.h}!copyArray@{copyArray}}
 \index{copyArray@{copyArray}!utils.h@{utils.h}}
 \doxysubsubsection{\texorpdfstring{copyArray()}{copyArray()}}
-{\footnotesize\ttfamily int$\ast$ copy\+Array (\begin{DoxyParamCaption}\item[{int $\ast$}]{original,  }\item[{int}]{size }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{utils_8h_a37997c576871c68d528884c9e36648a5} 
+int \texorpdfstring{$\ast$}{*} copy\+Array (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{original}{, }\item[{int}]{size}{}\end{DoxyParamCaption})}
 
 
 
@@ -42,11 +42,11 @@ Creates the exact copy of a specified 1-\/D array.
 \begin{DoxyReturn}{Returns}
 copy of the array. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{utils_8h_a306eadddaeffc4ea2575f87a709c8153}\label{utils_8h_a306eadddaeffc4ea2575f87a709c8153}} 
-\index{utils.h@{utils.h}!copyMatrix@{copyMatrix}}
+\Hypertarget{utils_8h_abb8ac4988583d9d5af91346a70be5168}\index{utils.h@{utils.h}!copyMatrix@{copyMatrix}}
 \index{copyMatrix@{copyMatrix}!utils.h@{utils.h}}
 \doxysubsubsection{\texorpdfstring{copyMatrix()}{copyMatrix()}}
-{\footnotesize\ttfamily int$\ast$$\ast$ copy\+Matrix (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$}]{original,  }\item[{int}]{rows,  }\item[{int}]{cols }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{utils_8h_abb8ac4988583d9d5af91346a70be5168} 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} copy\+Matrix (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{original}{, }\item[{int}]{rows}{, }\item[{int}]{cols}{}\end{DoxyParamCaption})}
 
 
 
@@ -64,11 +64,11 @@ Creates the exact copy of a specified matrix.
 \begin{DoxyReturn}{Returns}
 copy of the matrix. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{utils_8h_a2b1ea87877e93433c9b3b6ce4ceae7ac}\label{utils_8h_a2b1ea87877e93433c9b3b6ce4ceae7ac}} 
-\index{utils.h@{utils.h}!createMatrix@{createMatrix}}
+\Hypertarget{utils_8h_a3417402f1b5e6a1d1f3b52d7dc28396c}\index{utils.h@{utils.h}!createMatrix@{createMatrix}}
 \index{createMatrix@{createMatrix}!utils.h@{utils.h}}
 \doxysubsubsection{\texorpdfstring{createMatrix()}{createMatrix()}}
-{\footnotesize\ttfamily int$\ast$$\ast$ create\+Matrix (\begin{DoxyParamCaption}\item[{int}]{size }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{utils_8h_a3417402f1b5e6a1d1f3b52d7dc28396c} 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} create\+Matrix (\begin{DoxyParamCaption}\item[{int}]{size}{}\end{DoxyParamCaption})}
 
 
 
@@ -82,11 +82,11 @@ Dynamically allocates a matrix of a specified size.
 \begin{DoxyReturn}{Returns}
 initialized matrix. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{utils_8h_abdd3ac25084fd6a0acfc7d33ed430f9f}\label{utils_8h_abdd3ac25084fd6a0acfc7d33ed430f9f}} 
-\index{utils.h@{utils.h}!deleteMatrix@{deleteMatrix}}
+\Hypertarget{utils_8h_abdd3ac25084fd6a0acfc7d33ed430f9f}\index{utils.h@{utils.h}!deleteMatrix@{deleteMatrix}}
 \index{deleteMatrix@{deleteMatrix}!utils.h@{utils.h}}
 \doxysubsubsection{\texorpdfstring{deleteMatrix()}{deleteMatrix()}}
-{\footnotesize\ttfamily void delete\+Matrix (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$}]{matrix,  }\item[{int}]{size }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{utils_8h_abdd3ac25084fd6a0acfc7d33ed430f9f} 
+void delete\+Matrix (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrix}{, }\item[{int}]{size}{}\end{DoxyParamCaption})}
 
 
 
@@ -99,11 +99,11 @@ Safely deletes a specified matrix.
 {\em size} & The size of the matrix. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{utils_8h_a3522b15127a5c582b3850294eda4be63}\label{utils_8h_a3522b15127a5c582b3850294eda4be63}} 
-\index{utils.h@{utils.h}!saveResultsToFile@{saveResultsToFile}}
+\Hypertarget{utils_8h_a2393ed90c07a022965f196c15070d4fd}\index{utils.h@{utils.h}!saveResultsToFile@{saveResultsToFile}}
 \index{saveResultsToFile@{saveResultsToFile}!utils.h@{utils.h}}
 \doxysubsubsection{\texorpdfstring{saveResultsToFile()}{saveResultsToFile()}}
-{\footnotesize\ttfamily void save\+Results\+To\+File (\begin{DoxyParamCaption}\item[{string}]{filename,  }\item[{string}]{algorithm\+Name,  }\item[{string}]{instance,  }\item[{double}]{runtime,  }\item[{int}]{score,  }\item[{int}]{size,  }\item[{int $\ast$}]{solution,  }\item[{int}]{num\+Evaluations,  }\item[{int}]{num\+Performed\+Moves }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{utils_8h_a2393ed90c07a022965f196c15070d4fd} 
+void save\+Results\+To\+File (\begin{DoxyParamCaption}\item[{string}]{filename}{, }\item[{string}]{algorithm\+Name}{, }\item[{string}]{instance}{, }\item[{double}]{runtime}{, }\item[{int}]{score}{, }\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{solution}{, }\item[{int}]{num\+Evaluations}{, }\item[{int}]{num\+Performed\+Moves}{, }\item[{int}]{opt\+\_\+score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{opt\+\_\+solution}{}\end{DoxyParamCaption})}
 
 
 
@@ -128,5 +128,9 @@ Saves the results of an algorithm execution to a text file.
 {\em num\+Evaluations} & The number of evaluations performed during execution. \\
 \hline
 {\em num\+Performed\+Moves} & The number of moves performed by the algorithm. \\
+\hline
+{\em opt\+\_\+score} & The optimal score of the instance. \\
+\hline
+{\em opt\+\_\+solution} & Pointer to an array containing the optimal solution. \\
 \hline
 \end{DoxyParams}

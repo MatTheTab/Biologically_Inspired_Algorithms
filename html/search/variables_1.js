@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['size_71',['size',['../classProblem.html#a35685319c66e423658fc32ee9eefcaa2',1,'Problem']]]
+  ['instance_5fdir_0',['instance_dir',['../namespacecreate__batch.html#ab6133dcb08a3a24703fd09a759e237b5',1,'create_batch']]],
+  ['instance_5fnames_1',['instance_names',['../namespacecreate__batch.html#aaa42727dc76c7f4165c629d4e0518233',1,'create_batch']]]
 ];
