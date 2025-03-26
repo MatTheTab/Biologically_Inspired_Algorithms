@@ -49,14 +49,27 @@ int* copyArray(int* original, int size);
  * @param algorithmName The name of the algorithm used.
  * @param instance The instance identifier or name.
  * @param runtime The execution time of the algorithm in seconds.
+ */
+void saveRuntimeResultsToFile(string filename, string algorithmName, string instance, double runtime);
+
+/**
+ * @brief Saves the results of an algorithm execution to a text file.
+ *
+ *
+ * @param filename The name of the file where results should be saved.
+ * @param algorithmName The name of the algorithm used.
+ * @param instance The instance identifier or name.
+ * @param initialScore The initial score used before LS algorithms.
  * @param score The computed score/result of the algorithm.
  * @param size The size of the solution.
  * @param solution Pointer to an array containing the solution.
  * @param numEvaluations The number of evaluations performed during execution.
  * @param numPerformedMoves The number of moves performed by the algorithm.
- * @param opt_score The optimal score of the instance.
- * @param opt_solution Pointer to an array containing the optimal solution.
+ * @param numBestSolutionUpdates The number of best solution updates performed by the algorithm.
+ * @param optScore The optimal score of the instance.
+ * @param optSolution Pointer to an array containing the optimal solution.
  */
-void saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, int size, int* solution, int numEvaluations, int numPerformedMoves, int opt_score, int* opt_solution);
+void savePerformanceResultsToFile(string filename, string algorithmName, string instance, int initialScore, int score, 
+    int size, int* solution, int numEvaluations, int numPerformedMoves, int numBestSolutionUpdates, int optScore, int* optSolution);
 
 #endif

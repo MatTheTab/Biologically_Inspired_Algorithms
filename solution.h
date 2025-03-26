@@ -73,9 +73,10 @@ int calculateDelta(int size, int score, int* permutation, std::pair<int, int> mo
  * @param matrixB a 2d-array representing the matrix of distances.
  * @param currentScore the current score of the solution.
  * @param numEvaluations the number of perfomed delta evaluations, at the start should be 0.
- * @param numMoves the number of performed moves, at the start should be 0.
+ * @param numPerformedMoves the number of performed moves, at the start should be 0.
+ * @return An array representing the permutation (solution).
  */
-void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numMoves);
+int* greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
 
 /**
  * @brief Solves a QAP instance with steepest local search.
@@ -86,8 +87,39 @@ void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** mat
  * @param matrixB a 2d-array representing the matrix of distances.
  * @param currentScore the current score of the solution.
  * @param numEvaluations the number of perfomed delta evaluations, at the start should be 0.
- * @param numMoves the number of performed moves, at the start should be 0.
+ * @param numPerformedMoves the number of performed moves, at the start should be 0.
+ * @return An array representing the permutation (solution).
  */
-void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
+int* steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
+
+/**
+ * @brief Solves a QAP instance with random walk.
+ * 
+ * @param size integer representing  the size of the instance.
+ * @param solution an array representing the current solution.
+ * @param matrixA a 2d-array representing the matrix of flows.
+ * @param matrixB a 2d-array representing the matrix of distances.
+ * @param bestScore the score of the best solution found.
+ * @param durationNano running time limit in nanoseconds.
+ * @param numEvaluations the number of perfomed delta evaluations, at the start should be 0.
+ * @param numBestSolutionUpdates the number of best solution updates, at the start should be 0.
+ * @return best solution found.
+ */
+int* randomWalk(int size, int* solution, int** matrixA, int** matrixB, int* bestScore, int durationNano, int* numEvaluations, int* numBestSolutionUpdates);
+
+/**
+ * @brief Solves a QAP instance with random search.
+ * 
+ * @param size integer representing  the size of the instance.
+ * @param solution an array representing the current solution.
+ * @param matrixA a 2d-array representing the matrix of flows.
+ * @param matrixB a 2d-array representing the matrix of distances.
+ * @param bestScore the score of the best solution found.
+ * @param durationNano running time limit in nanoseconds.
+ * @param numEvaluations the number of perfomed delta evaluations, at the start should be 0.
+ * @param numBestSolutionUpdates the number of best solution updates, at the start should be 0.
+ * @return best solution found.
+ */
+int* randomSearch(int size, int* solution, int** matrixA, int** matrixB, int* bestScore, int durationNano, int* numEvaluations, int* numBestSolutionUpdates);
 
 #endif

@@ -39,8 +39,7 @@ int* copyArray(int* original, int size) {
     return copy;
 }
 
-void saveResultsToFile(string filename, string algorithmName, string instance, double runtime, int score, 
-    int size, int* solution, int numEvaluations, int numPerformedMoves, int opt_score, int* opt_solution) {
+void saveRuntimeResultsToFile(string filename, string algorithmName, string instance, double runtime) {
     ofstream outFile(filename, ios::app);
     
     if (!outFile) {
@@ -51,9 +50,28 @@ void saveResultsToFile(string filename, string algorithmName, string instance, d
     outFile << "Algorithm: " << algorithmName << "\t";
     outFile << "Instance: " << instance << "\t";
     outFile << "Runtime: " << runtime << " nanoseconds\t";
+ 
+    outFile << "\n";
+    outFile.close();
+    cout << "Runtime results successfully saved to " << filename << endl;
+}
+
+void savePerformanceResultsToFile(string filename, string algorithmName, string instance, int initialScore, int score, 
+    int size, int* solution, int numEvaluations, int numPerformedMoves, int numBestSolutionUpdates, int optScore, int* optSolution) {
+    ofstream outFile(filename, ios::app);
+    
+    if (!outFile) {
+        cerr << "Error opening file: " << filename << endl;
+        return;
+    }
+
+    outFile << "Algorithm: " << algorithmName << "\t";
+    outFile << "Instance: " << instance << "\t";
+    outFile << "Initial Score: " << initialScore << "\t";
     outFile << "Score: " << score << "\t";
     outFile << "Number of Evaluations: " << numEvaluations << "\t";
     outFile << "Number of Performed Moves: " << numPerformedMoves << "\t";
+    outFile << "Number of Best Solution Updates: " << numBestSolutionUpdates << "\t";
     outFile << "Solution: \t";
 
     for (int i = 0; i < size; i++) {
@@ -61,14 +79,17 @@ void saveResultsToFile(string filename, string algorithmName, string instance, d
     }
     outFile << "\t";
     
-    outFile << "Optimal Score: " << opt_score << "\t";
+    outFile << "Optimal Score: " << optScore << "\t";
     outFile << "Optimal Solution: \t";
     
     for (int i = 0; i < size; i++) {
-        outFile << opt_solution[i] << " ";
+        outFile << optSolution[i] << " ";
     }
 
     outFile << "\n";
     outFile.close();
-    cout << "Results successfully saved to " << filename << endl;
+    cout << "Performance results successfully saved to " << filename << endl;
 }
+
+
+

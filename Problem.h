@@ -14,10 +14,10 @@ class Problem {
     public:
         /**
          * @brief Constructor for Problem, loads data from a .dat file.
-         * @param instance_dir Path to instance directory.
-         * @param instance_name Instance name.
+         * @param instanceDir Path to instance directory.
+         * @param instanceName Instance name.
          */
-        Problem(const std::string& instance_dir, const std::string& instance_name);
+        Problem(const std::string& instanceDir, const std::string& instanceName);
 
         /**
          * @brief Destructor to clean up dynamically allocated memory.
@@ -26,10 +26,10 @@ class Problem {
         
         /**
          * @brief Loads instance from a .dat and .sln file.
-         * @param instance_dir Path to instance directory.
-         * @param instance_name Instance name.
+         * @param instanceDir Path to instance directory.
+         * @param instanceName Instance name.
          */
-        void loadInstance(const std::string& instance_dir, const std::string& instance_name);
+        void loadInstance(const std::string& instanceDir, const std::string& instanceName);
         
         /**
          * @brief Displays the matrices.
@@ -42,10 +42,11 @@ class Problem {
         void displayOptimalSolution() const;
 
     //private:
+        std::string instance; ///< Instance name.
         int size;  ///< Instance size.
         int** matrixA; ///< Matrix A.
         int** matrixB; ///< Matrix B.
-        int opt_score; ///< Optimal solution score.
-        int* opt_solution; ///< Optimal solution vector.
+        int optScore; ///< Optimal solution score.
+        int* optSolution; ///< Optimal solution vector.
 };
 #endif

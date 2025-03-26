@@ -10,84 +10,239 @@ using namespace std;
 
 // For documentation: doxygen Doxyfile
 // Test with: g++ -o bio_alg main.cpp random.cpp Problem.cpp solution.cpp utils.cpp -std=c++17
-// ./bio_alg heuristic data/qap/ bur26a results.txt
-// ./bio_alg random data/qap/ bur26a results.txt
-// ./bio_alg antiheuristic data/qap/ bur26a results.txt
-// ./bio_alg heuristic data/qap/ bur26a results.txt greedy_LS
-// ./bio_alg heuristic data/qap/ bur26a results.txt steepest_LS
-// ./bio_alg random data/qap/ bur26a results.txt greedy_LS
-// ./bio_alg antiheuristic data/qap/ bur26a results.txt greedy_LS
+// ./bio_alg performance heuristic 100 0 data/qap/ bur26a performance_results.txt
+// ./bio_alg time heuristic 0 0 data/qap/ bur26a runtime_results.txt
+// ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt
+// ./bio_alg time random 0 0 data/qap/ bur26a runtime_results.txt
+// ./bio_alg performance antiheuristic 100 0 data/qap/ bur26a performance_results.txt
+// ./bio_alg time antiheuristic 0 0 data/qap/ bur26a runtime_results.txt
+
+// ./bio_alg performance randomwalk 100 156340 data/qap/ bur26a performance_results.txt
+// ./bio_alg performance randomsearch 100 156340 data/qap/ bur26a performance_results.txt
+
+// ./bio_alg time random 0 0 data/qap/ bur26a runtime_results.txt greedyLS
+// ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt greedyLS
+// ./bio_alg time random 0 0 data/qap/ bur26a runtime_results.txt steepestLS
+// ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt steepestLS
+
+
+void runTimePerformanceTest(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm);
+void runQualityPerformanceTests(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm, int num_runs, int randomDuration); 
 
 int main(int argc, char* argv[]) {
-    if (argc < 4) {
-        cerr << "Usage: " << argv[0] << " <initial_algorithm> <problem_folder> <problem_name> <results_file> [<local_search_algorithm>]" << endl;
+    if (argc < 6) {
+        cerr << "Usage: " << argv[0] << " <test_type> <algorithm> <num_runs> <random_duration> <problem_folder> <problem_name> <results_file> [<local_search_algorithm>]" << endl;
         return 1;
     }
     
-    string initial_algorithm = argv[1];
-    string instance_dir = argv[2];
-    string instance_name = argv[3];
-    string results_filename = argv[4];
-    string local_search_algorithm = (argc > 5) ? argv[5] : "";
-    
+    string test_type = argv[1];
+    string algorithm = argv[2];
+    int num_runs = stoi(argv[3]);
+    int randomDuration = stoi(argv[4]);
+    string instance_dir = argv[5];
+    string instance_name = argv[6];
+    string results_filename = argv[7];
+    string local_search_algorithm = (argc > 8) ? argv[8] : "";
+
     Problem problem(instance_dir, instance_name);
+
+    if (test_type == "time") {
+        runTimePerformanceTest(algorithm, problem, results_filename, local_search_algorithm);
+    } else if (test_type == "performance") {
+        runQualityPerformanceTests(algorithm, problem, results_filename, local_search_algorithm, num_runs, randomDuration);
+    } else {
+        cerr << "Unknown test type: " << test_type << endl;
+        return 1;
+    }
+    
+    return 0;
+}
+
+void runQualityPerformanceTests(const string& algorithm, Problem& problem, const string& results_filename, 
+    const string& local_search_algorithm, int num_runs, int randomDuration) {
     int size = problem.size;
     int** matrixA = problem.matrixA;
     int** matrixB = problem.matrixB;
-    int* opt_solution = problem.opt_solution;
-    int opt_score = problem.opt_score;
-    
-    cout << "Instance: " << instance_name << endl;
-    cout << "Size: " << size << endl;
-    cout << "Optimal score: " << opt_score << endl;
-    cout << "Optimal solution: ";
-    for (int i = 0; i < size; i++) {
-        cout << opt_solution[i] << " ";
-    }
-    cout << endl;
+    int* P = new int[size];
+    int initialScore = 0;
 
+    int numMoves = 0;
+    int numEvaluations = 0;
+    int bestScore = 0;
+    int numBestSolutionUpdates = 0;
 
-    int *P = new int[size];
-    double runtime_initial;
-    int scoreInitial;
+    int* pointNumMoves = &numMoves;
+    int* pointNumEvaluations = &numEvaluations;
+    int* pointBestFoundScore = &bestScore;
+    int* pointNumBestSolutionUpdates = &numBestSolutionUpdates;
+
+    while (num_runs>0){
+        num_runs--;
+
+        P = new int[size];
+        *pointBestFoundScore = 0;
+        *pointNumMoves = 0;
+        *pointNumEvaluations = 0;
+        
+        if (!local_search_algorithm.empty()) {
+            if (algorithm == "heuristic") {
+                heuristicSolve(size, matrixA, matrixB, P);
+            } else if (algorithm == "random") {
+                generateRandomPerturbation(size, P);
+            } else if (algorithm == "antiheuristic") {
+                antiHeuristicSolve(size, matrixA, matrixB, P);
+            } else {
+                cerr << "Unknown initial algorithm: " << algorithm << endl;
+                delete[] P;
+                return;
+            }
+            initialScore = calculateScore(size, P, matrixA, matrixB);
+            *pointBestFoundScore = initialScore;
     
-    if (initial_algorithm == "heuristic") {
-        runtime_initial = measureFunctionRuntime(heuristicSolve, size, matrixA, matrixB, P);
-    } else if (initial_algorithm == "random") {
-        runtime_initial = measureFunctionRuntime(generateRandomPerturbation, size, P);
-    } else if (initial_algorithm == "antiheuristic") {
-        runtime_initial = measureFunctionRuntime(antiHeuristicSolve, size, matrixA, matrixB, P);
-    } else {
-        cerr << "Unknown initial algorithm: " << initial_algorithm << endl;
-        delete[] P;
-        return 1;
+            if (local_search_algorithm == "greedyLS") {
+                greedyLocalSearchSolve(size, P, matrixA, matrixB, pointBestFoundScore, pointNumEvaluations, pointNumMoves);
+            } else if (local_search_algorithm == "steepestLS") {
+                steepestLocalSearchSolve(size, P, matrixA, matrixB, pointBestFoundScore, pointNumEvaluations, pointNumMoves);
+            } else {
+                cerr << "Unknown local search algorithm: " << local_search_algorithm << endl;
+                delete[] P;
+                return;
+            }
+            
+            string combinedAlgorithm = algorithm.substr(0, 1) + local_search_algorithm;
+
+            savePerformanceResultsToFile(results_filename, combinedAlgorithm, problem.instance, initialScore, bestScore, size, P, 
+                numEvaluations, numMoves, numMoves, problem.optScore, problem.optSolution);
+    
+        } else {
+            P = new int[size];
+            *pointBestFoundScore = 0;
+            *pointNumEvaluations = 0;
+            *pointNumBestSolutionUpdates = 0;
+
+            if (algorithm == "heuristic") {
+                heuristicSolve(size, matrixA, matrixB, P);
+                bestScore = calculateScore(size, P, matrixA, matrixB);
+            
+                savePerformanceResultsToFile(results_filename, algorithm, problem.instance, 0, bestScore, size, P,
+                    1, 1, 1, problem.optScore, problem.optSolution);
+
+            } else if (algorithm == "randomwalk") {
+                randomWalk(size, P, matrixA, matrixB, pointBestFoundScore, randomDuration, pointNumEvaluations, pointNumBestSolutionUpdates);
+                
+                savePerformanceResultsToFile(results_filename, algorithm, problem.instance, 0, bestScore, size, P,
+                    numEvaluations, numEvaluations, numBestSolutionUpdates, problem.optScore, problem.optSolution);
+
+            } else if (algorithm == "randomsearch") {
+                randomSearch(size, P, matrixA, matrixB, pointBestFoundScore, randomDuration, pointNumEvaluations, pointNumBestSolutionUpdates);
+
+                savePerformanceResultsToFile(results_filename, algorithm, problem.instance, 0, bestScore, size, P,
+                    numEvaluations, numEvaluations, numBestSolutionUpdates, problem.optScore, problem.optSolution);
+
+            } else if (algorithm == "antiheuristic") {
+                antiHeuristicSolve(size, matrixA, matrixB, P);
+                bestScore = calculateScore(size, P, matrixA, matrixB);
+            
+                savePerformanceResultsToFile(results_filename, algorithm, problem.instance, 0, bestScore, size, P,
+                    1, 1, 1, problem.optScore, problem.optSolution);
+            } else {
+                cerr << "Unknown initial algorithm: " << algorithm << endl;
+                delete[] P;
+                return;
+            }
+        }
     }
-    
-    scoreInitial = calculateScore(size, P, matrixA, matrixB);
-    saveResultsToFile(results_filename, initial_algorithm, instance_name, runtime_initial, scoreInitial, size, P, 1, 1, opt_score, opt_solution);
-    
+
+    delete[] P;
+}
+
+void runTimePerformanceTest(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm) {
+    int size = problem.size;
+    int** matrixA = problem.matrixA;
+    int** matrixB = problem.matrixB;
+    int* P = new int[size];
+    int score_initial;
+
     if (!local_search_algorithm.empty()) {
+        if (algorithm != "random") {
+            cerr << "Only 'random' can be used as start algorithm in time tests: " << algorithm << endl;
+            delete[] P;
+            return;
+        }
+
         int tempMoves = 0;
         int tempNumEvaluations = 0;
-        int* scoreLS = &scoreInitial;
+        int* scoreLS = &score_initial;
         int* numMoves = &tempMoves;
         int* numEvaluations = &tempNumEvaluations;
-        
+
         double runtime_LS;
-        if (local_search_algorithm == "greedy_LS") {
-            runtime_LS = measureFunctionRuntime(greedyLocalSearchSolve, size, P, matrixA, matrixB, scoreLS, numEvaluations, numMoves);
-        } else if (local_search_algorithm == "steepest_LS") {
-            runtime_LS = measureFunctionRuntime(steepestLocalSearchSolve, size, P, matrixA, matrixB, scoreLS, numEvaluations, numMoves);
+        if (local_search_algorithm == "greedyLS") {
+            auto start = high_resolution_clock::now();
+            auto end = start;
+            int num_runs = 0;
+                do {
+                    *numEvaluations = 0;
+                    *numMoves = 0;
+                    
+                    generateRandomPerturbation(size, P);
+                    *scoreLS = calculateScore(size, P, matrixA, matrixB);
+                    
+                    greedyLocalSearchSolve(size, P, matrixA, matrixB, scoreLS, numEvaluations, numMoves);
+
+                    end = high_resolution_clock::now();
+                    num_runs ++;
+                } while (duration_cast<seconds>(end - start).count() < 100 && num_runs < 100);
+
+            runtime_LS = duration_cast<nanoseconds>(end - start).count()/num_runs;
+        
+        } else if (local_search_algorithm == "steepestLS") {
+            auto start = high_resolution_clock::now();
+            auto end = start;
+            int num_runs = 0;
+                do {
+                    *numEvaluations = 0;
+                    *numMoves = 0;
+                    
+                    generateRandomPerturbation(size, P);
+                    *scoreLS = calculateScore(size, P, matrixA, matrixB);
+                    
+                    steepestLocalSearchSolve(size, P, matrixA, matrixB, scoreLS, numEvaluations, numMoves);
+
+                    end = high_resolution_clock::now();
+                    num_runs ++;
+                } while (duration_cast<seconds>(end - start).count() < 100 && num_runs < 100);
+
+            runtime_LS = duration_cast<nanoseconds>(end - start).count()/num_runs;
+        
         } else {
             cerr << "Unknown local search algorithm: " << local_search_algorithm << endl;
             delete[] P;
-            return 1;
+            return;
         }
         
-        saveResultsToFile(results_filename, local_search_algorithm, instance_name, runtime_LS, *scoreLS, size, P, 
-            *numEvaluations, *numMoves, opt_score, opt_solution);
+        saveRuntimeResultsToFile(results_filename, local_search_algorithm, problem.instance, runtime_LS);
+
+    } else { // These functions can be measured with measure function runtime without the need for resetting values
+        double runtime;
+        if (algorithm == "heuristic") {
+            runtime = measureFunctionRuntime(heuristicSolve, size, matrixA, matrixB, P);
+            saveRuntimeResultsToFile(results_filename, algorithm, problem.instance, runtime);
+            
+        } else if (algorithm == "antiheuristic") {
+            runtime = measureFunctionRuntime(antiHeuristicSolve, size, matrixA, matrixB, P);
+            saveRuntimeResultsToFile(results_filename, algorithm, problem.instance, runtime);
+            
+        } else if (algorithm == "random") {
+            runtime = measureFunctionRuntime(generateRandomPerturbation, size, P);
+            saveRuntimeResultsToFile(results_filename, algorithm, problem.instance, runtime);
+
+        } else {
+            cerr << "Unknown initial algorithm: " << algorithm << endl;
+            delete[] P;
+            return;
+        }   
     }
-    
+
     delete[] P;
-    return 0;
 }

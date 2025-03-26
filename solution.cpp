@@ -1,7 +1,10 @@
 #include "solution.h"
-#include <algorithm>
+#include "random.h"
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
+#include <chrono>
+#include <iostream>
 
 int calculateScore(int size, int* permutation, int** matrixA, int** matrixB){
     int score = 0;
@@ -130,7 +133,7 @@ int calculateDelta(int size, int score, int* permutation, std::pair<int, int> mo
     return delta;
 }
 
-void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves){
+int* greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves){
     bool improvement = true;
     int numAvailableMoves = (size * (size - 1)) / 2;
     std::pair<int, int>* moves = new std::pair<int, int>[numAvailableMoves];
@@ -157,9 +160,11 @@ void greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** mat
         }
     }
     delete[] moves;
+
+    return permutation;
 }
 
-void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves){
+int* steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves){
     bool improvement = true;
     int numAvailableMoves = (size * (size - 1)) / 2;
     std::pair<int, int>* moves = new std::pair<int, int>[numAvailableMoves];
@@ -193,4 +198,66 @@ void steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** m
         }
     }
     delete[] moves;
+
+    return permutation;
+}
+
+int* randomWalk(int size, int* solution, int** matrixA, int** matrixB, int* bestScore, int durationNano, int* numEvaluations, int* numBestSolutionUpdates) {
+    generateRandomPerturbation(size, solution);
+    *bestScore = calculateScore(size, solution, matrixA, matrixB);
+    int currentScore = *bestScore;
+    int* currentSolution = new int[size];
+    std::copy(solution, solution + size, currentSolution);
+
+    std::pair<int, int> move = getRandomPair(size);
+    int delta = 0;
+
+    auto start = std::chrono::high_resolution_clock::now();
+    while (std::chrono::high_resolution_clock::now() - start < std::chrono::nanoseconds(durationNano)) {
+        move = getRandomPair(size);
+        delta = calculateDelta(size, currentScore, currentSolution, move, matrixA, matrixB);
+        
+        (*numEvaluations)++;
+
+        currentScore += delta;
+        if (currentScore < *bestScore) {
+            *bestScore = currentScore;
+            (*numBestSolutionUpdates)++;
+            std::copy(currentSolution, currentSolution + size, solution);
+        }
+        
+        performMove(currentSolution, move);
+    }
+    delete[] currentSolution;
+
+    return solution;
+}
+
+int* randomSearch(int size, int* solution, int** matrixA, int** matrixB, int* bestScore, int durationNano, int* numEvaluations, int* numBestSolutionUpdates) {
+    int* newSolution = new int[size];
+    int newScore = 0;
+    
+    auto start = std::chrono::high_resolution_clock::now();
+    generateRandomPerturbation(size, newSolution);
+    *bestScore = calculateScore(size, newSolution, matrixA, matrixB);
+    
+    while (true) {
+        auto now = std::chrono::high_resolution_clock::now();
+        if (std::chrono::duration_cast<std::chrono::nanoseconds>(now - start).count() >= durationNano)
+            break;
+    
+        // perturbRandomly(size, newSolution); // TODO verify if this is better? not creating refilling the array
+        generateRandomPerturbation(size, newSolution);
+
+        newScore = calculateScore(size, newSolution, matrixA, matrixB);
+        (*numEvaluations)++;
+        
+        if (newScore < *bestScore) {
+            *bestScore = newScore;
+            (*numBestSolutionUpdates)++;
+            std::copy(newSolution, newSolution + size, solution);
+        }
+    }
+    delete[] newSolution;
+    return solution;
 }

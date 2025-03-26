@@ -1,0 +1,12 @@
+Algorithm: heuristic	Instance: bur26a	Runtime: 7117 nanoseconds	
+Algorithm: antiheuristic	Instance: bur26a	Runtime: 7455 nanoseconds	
+Algorithm: random	Instance: bur26a	Runtime: 1032 nanoseconds	
+Algorithm: greedyLS	Instance: bur26a	Runtime: 4.40319e+06 nanoseconds	
+Algorithm: steepestLS	Instance: bur26a	Runtime: 2.72628e+06 nanoseconds	
+Algorithm: steepestLS	Instance: bur26a	Runtime: 2.84283e+06 nanoseconds	
+Algorithm: steepestLS	Instance: bur26a	Runtime: 2.51895e+06 nanoseconds	
+Algorithm: greedyLS	Instance: bur26a	Runtime: 2.65467e+06 nanoseconds	
+Algorithm: greedyLS	Instance: bur26a	Runtime: 4.08754e+06 nanoseconds	
+Algorithm: greedyLS	Instance: bur26a	Runtime: 2.5293e+06 nanoseconds	
+Algorithm: greedyLS	Instance: bur26a	Runtime: 2.5402e+06 nanoseconds	
+Algorithm: greedyLS	Instance: bur26a	Runtime: 3.63638e+06 nanoseconds	

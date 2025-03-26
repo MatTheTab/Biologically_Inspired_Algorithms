@@ -1,8 +1,9 @@
 #include "Problem.h"
 #include "Problem.h"
 
-Problem::Problem(const std::string& instance_dir, const std::string& instance_name) {
-    loadInstance(instance_dir, instance_name);
+Problem::Problem(const std::string& instanceDir, const std::string& instanceName)
+    : instance(instanceName), size(0), matrixA(nullptr), matrixB(nullptr), optSolution(nullptr) {
+    loadInstance(instanceDir, instanceName);
 }
 
 Problem::~Problem() {
@@ -12,16 +13,16 @@ Problem::~Problem() {
     }
     delete[] matrixA;
     delete[] matrixB;
-    delete[] opt_solution;
+    delete[] optSolution;
 }
 
-void Problem::loadInstance(const std::string& instance_dir, const std::string& instance_name) {
-    std::string instance_file = instance_dir + instance_name + ".dat";
-    std::string solution_file = instance_dir + instance_name + ".sln";
+void Problem::loadInstance(const std::string& instanceDir, const std::string& instanceName) {
+    std::string instanceFile = instanceDir + instanceName + ".dat";
+    std::string solutionFile = instanceDir + instanceName + ".sln";
     
-    std::ifstream file(instance_file);
+    std::ifstream file(instanceFile);
     if (!file) {
-        std::cerr << "File error: " << instance_file << std::endl;
+        std::cerr << "File error: " << instanceFile << std::endl;
         return;
     }
     
@@ -45,26 +46,26 @@ void Problem::loadInstance(const std::string& instance_dir, const std::string& i
     file.close();
     
     // Load solution file
-    std::ifstream sol_file(solution_file);
-    if (!sol_file) {
-        std::cerr << "Solution file error: " << solution_file << std::endl;
+    std::ifstream solFile(solutionFile);
+    if (!solFile) {
+        std::cerr << "Solution file error: " << solutionFile << std::endl;
         return;
     }
     
-    int sol_size;
-    sol_file >> sol_size >> opt_score;
+    int solSize;
+    solFile >> solSize >> optScore;
     
-    if (sol_size != size) {
-        std::cerr << "Solution size mismatch: expected " << size << " but got " << sol_size << std::endl;
+    if (solSize != size) {
+        std::cerr << "Solution size mismatch: expected " << size << " but got " << solSize << std::endl;
         return;
     }
     
-    opt_solution = new int[size];
+    optSolution = new int[size];
     for (int i = 0; i < size; i++) {
-        sol_file >> opt_solution[i];
+        solFile >> optSolution[i];
     }
     
-    sol_file.close();
+    solFile.close();
 }
 
 void Problem::displayInstance() const {
@@ -86,9 +87,9 @@ void Problem::displayInstance() const {
 }
 
 void Problem::displayOptimalSolution() const {
-    std::cout << "Optimal score: " << opt_score << std::endl;
+    std::cout << "Optimal score: " << optScore << std::endl;
     std::cout << std::endl << "Solution: ";
     for (int i = 0; i < size; i++) {
-        std::cout << opt_solution[i] << " ";
+        std::cout << optSolution[i] << " ";
     }
 }
