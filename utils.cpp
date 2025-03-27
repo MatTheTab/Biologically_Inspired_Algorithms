@@ -53,7 +53,7 @@ void saveRuntimeResultsToFile(string filename, string algorithmName, string inst
  
     outFile << "\n";
     outFile.close();
-    cout << "Runtime results successfully saved to " << filename << endl;
+    // cout << "Runtime results successfully saved to " << filename << endl;
 }
 
 void savePerformanceResultsToFile(string filename, string algorithmName, string instance, int initialScore, int score, 
@@ -88,7 +88,7 @@ void savePerformanceResultsToFile(string filename, string algorithmName, string 
 
     outFile << "\n";
     outFile.close();
-    cout << "Performance results successfully saved to " << filename << endl;
+    // cout << "Performance results successfully saved to " << filename << endl;
 }
 
 

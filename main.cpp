@@ -5,6 +5,7 @@
 #include "Problem.h"
 #include "solution.h"
 #include "utils.h"
+#include <random>  // Include this for better randomness
 
 using namespace std;
 
@@ -28,6 +29,7 @@ using namespace std;
 
 void runTimePerformanceTest(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm);
 void runQualityPerformanceTests(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm, int num_runs, int randomDuration); 
+void setRandomSeed();
 
 int main(int argc, char* argv[]) {
     if (argc < 6) {
@@ -79,11 +81,12 @@ void runQualityPerformanceTests(const string& algorithm, Problem& problem, const
     while (num_runs>0){
         num_runs--;
 
-        P = new int[size];
         *pointBestFoundScore = 0;
         *pointNumMoves = 0;
         *pointNumEvaluations = 0;
         
+        setRandomSeed(); // Prevents the same random perturbations
+
         if (!local_search_algorithm.empty()) {
             if (algorithm == "heuristic") {
                 heuristicSolve(size, matrixA, matrixB, P);
@@ -184,6 +187,7 @@ void runTimePerformanceTest(const string& algorithm, Problem& problem, const str
                 do {
                     *numEvaluations = 0;
                     *numMoves = 0;
+                    setRandomSeed(); // Prevents the same random perturbations TODO verify if adding this is fair
                     
                     generateRandomPerturbation(size, P);
                     *scoreLS = calculateScore(size, P, matrixA, matrixB);
@@ -203,6 +207,7 @@ void runTimePerformanceTest(const string& algorithm, Problem& problem, const str
                 do {
                     *numEvaluations = 0;
                     *numMoves = 0;
+                    setRandomSeed(); // Prevents the same random perturbations TODO verify if adding this is fair
                     
                     generateRandomPerturbation(size, P);
                     *scoreLS = calculateScore(size, P, matrixA, matrixB);
@@ -245,4 +250,10 @@ void runTimePerformanceTest(const string& algorithm, Problem& problem, const str
     }
 
     delete[] P;
+}
+
+void setRandomSeed() {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    srand(gen());
 }

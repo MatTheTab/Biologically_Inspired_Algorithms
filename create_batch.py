@@ -1,53 +1,47 @@
 import os
-import sys
+import argparse
 
-"""
-@file create_batch.py
-@brief Script to generate a batch file for running bio_alg commands with different parameters.
+def generate_batch_script(instance_dir, runtime_results_file, performance_results_file, output_batch, mode):
+    runtime_commands = [
+        "bio_alg time heuristic 0 0 {dir} {instance} {result}",
+        "bio_alg time random 0 0 {dir} {instance} {result}",
+        "bio_alg time antiheuristic 0 0 {dir} {instance} {result}",
+        "bio_alg time random 0 0 {dir} {instance} {result} greedyLS",
+        "bio_alg time random 0 0 {dir} {instance} {result} steepestLS"
+    ]
 
-This script takes in an instance directory, a result file, and an output batch file as command-line arguments.
-It then generates a batch file with various bio_alg commands for each instance found in the instance directory.
+    performance_commands = [
+        "bio_alg performance heuristic 100 0 {dir} {instance} {result}",
+        "bio_alg performance antiheuristic 100 0 {dir} {instance} {result}",
+        "bio_alg performance randomwalk 100 2871222 {dir} {instance} {result}", # HARDCODED AVG GREEDYLS RUNTIME
+        "bio_alg performance randomsearch 100 2871222 {dir} {instance} {result}", # HARDCODED AVG GREEDYLS RUNTIME
+        "bio_alg performance random 100 0 {dir} {instance} {result} greedyLS",
+        "bio_alg performance random 100 0 {dir} {instance} {result} steepestLS"
+    ]
 
-@usage
-    python create_batch.py <instance_directory> <result_file> <output_batch_file>
-    Example:
-    python create_batch.py data/qap/ bur26a batch.bat
-"""
+    instance_names = [f[:-4] for f in os.listdir(instance_dir) if f.endswith(".dat") and f.startswith("bur26")
+                       and os.path.exists(os.path.join(instance_dir, f[:-4] + ".sln"))]
 
-# Check if the correct number of arguments is passed.
-if len(sys.argv) != 4:
-    print("Usage: python create_batch.py <instance_directory> <result_file> <output_batch_file>")
-    print("E.g.: python create_batch.py data/qap/ bur26a batch.bat")
-    sys.exit(1)
+    with open(output_batch, "w") as batch_file:
+        batch_file.write("@echo off\n")
+        for instance in instance_names:
+            if mode in ("runtime", "both"):
+                for cmd in runtime_commands:
+                    batch_file.write(cmd.format(dir=instance_dir, instance=instance, result=runtime_results_file) + "\n")
+            if mode in ("performance", "both"):
+                for cmd in performance_commands:
+                    batch_file.write(cmd.format(dir=instance_dir, instance=instance, result=performance_results_file) + "\n")
 
-# Assigning command line arguments to variables
-instance_dir = sys.argv[1]
-result_file = sys.argv[2]
-output_batch = sys.argv[3]
+    print(f"Batch script '{output_batch}' created successfully.")
 
-# List of commands to be written into the batch file
-commands = [
-    "bio_alg heuristic {dir} {instance} {result}",
-    "bio_alg random {dir} {instance} {result}",
-    "bio_alg antiheuristic {dir} {instance} {result}",
-    "bio_alg heuristic {dir} {instance} {result} greedy_LS",
-    "bio_alg heuristic {dir} {instance} {result} steepest_LS",
-    "bio_alg random {dir} {instance} {result} greedy_LS",
-    "bio_alg antiheuristic {dir} {instance} {result} greedy_LS"
-]
-
-# Retrieve instance names (without extension) for instances that have a corresponding solution file
-instance_names = [f[:-4] for f in os.listdir(instance_dir) if f.endswith(".dat") and os.path.exists(os.path.join(instance_dir, f[:-4] + ".sln"))]
-
-# Open and write the batch file
-with open(output_batch, "w") as batch_file:
-    # Write the batch script header
-    batch_file.write("@echo off\n")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Generate a batch file for running bio_alg commands.")
+    parser.add_argument("instance_dir", help="Directory containing instance files")
+    parser.add_argument("runtime_results_file", help="File to store runtime results")
+    parser.add_argument("performance_results_file", help="File to store performance results")
+    parser.add_argument("output_batch", help="Output batch file name")
+    parser.add_argument("--mode", choices=["runtime", "performance", "both"], default="both",
+                        help="Choose whether to generate runtime, performance, or both")
     
-    # Write each command for each instance
-    for instance in instance_names:
-        for cmd in commands:
-            batch_file.write(cmd.format(dir=instance_dir, instance=instance, result=result_file) + "\n")
-
-# Print success message
-print(f"Batch script '{output_batch}' created successfully.")
+    args = parser.parse_args()
+    generate_batch_script(args.instance_dir, args.runtime_results_file, args.performance_results_file, args.output_batch, args.mode)
