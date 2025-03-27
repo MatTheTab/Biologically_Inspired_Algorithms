@@ -27,12 +27,16 @@ def generate_batch_script(instance_dir, runtime_results_file, performance_result
         for instance in instance_names:
             if mode in ("runtime", "both"):
                 for cmd in runtime_commands:
-                    batch_file.write(cmd.format(dir=instance_dir, instance=instance, result=runtime_results_file) + "\n")
+                    # Make 10 tests for standard deviation
+                    for _ in range(10):
+                        batch_file.write(cmd.format(dir=instance_dir, instance=instance, result=runtime_results_file) + "\n")
             if mode in ("performance", "both"):
                 for cmd in performance_commands:
                     batch_file.write(cmd.format(dir=instance_dir, instance=instance, result=performance_results_file) + "\n")
 
     print(f"Batch script '{output_batch}' created successfully.")
+
+# python .\create_batch.py data/qap/ results/runtime_results.txt results/performance_results.txt runbatch.bat --mode both   
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a batch file for running bio_alg commands.")
