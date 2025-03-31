@@ -25,6 +25,8 @@ int calculateScore(int size, int* permutation, int** matrixA, int** matrixB);
  */
 int* heuristicSolve(int size, int** matrixA, int** matrixB, int* solution);
 
+int* heuristicSolveNonDeterministic(int size, int** matrixA, int** matrixB, int* solution);
+
 /**
  * @brief Solves the QAP problem with a simple anti-heuristics (tries to find a very poor solution quickly).
  * 

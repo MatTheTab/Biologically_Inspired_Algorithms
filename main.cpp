@@ -89,7 +89,8 @@ void runQualityPerformanceTests(const string& algorithm, Problem& problem, const
 
         if (!local_search_algorithm.empty()) {
             if (algorithm == "heuristic") {
-                heuristicSolve(size, matrixA, matrixB, P);
+                setRandomSeed();
+                heuristicSolveNonDeterministic(size, matrixA, matrixB, P);
             } else if (algorithm == "random") {
                 generateRandomPerturbation(size, P);
             } else if (algorithm == "antiheuristic") {
@@ -124,9 +125,9 @@ void runQualityPerformanceTests(const string& algorithm, Problem& problem, const
             *pointNumBestSolutionUpdates = 0;
 
             if (algorithm == "heuristic") {
-                heuristicSolve(size, matrixA, matrixB, P);
+                setRandomSeed();
+                heuristicSolveNonDeterministic(size, matrixA, matrixB, P);
                 bestScore = calculateScore(size, P, matrixA, matrixB);
-            
                 savePerformanceResultsToFile(results_filename, algorithm, problem.instance, 0, bestScore, size, P,
                     1, 1, 1, problem.optScore, problem.optSolution);
 
@@ -231,7 +232,8 @@ void runTimePerformanceTest(const string& algorithm, Problem& problem, const str
     } else { // These functions can be measured with measure function runtime without the need for resetting values
         double runtime;
         if (algorithm == "heuristic") {
-            runtime = measureFunctionRuntime(heuristicSolve, size, matrixA, matrixB, P);
+            setRandomSeed();
+            runtime = measureFunctionRuntime(heuristicSolveNonDeterministic, size, matrixA, matrixB, P);
             saveRuntimeResultsToFile(results_filename, algorithm, problem.instance, runtime);
             
         } else if (algorithm == "antiheuristic") {
