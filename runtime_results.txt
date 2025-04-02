@@ -1,0 +1,3 @@
+Algorithm: steepestLS	Instance: bur26a	Runtime: 2.9373e+06 nanoseconds	
+Algorithm: steepestLS	Instance: bur26a	Runtime: 3.35338e+06 nanoseconds	
+Algorithm: steepestLS	Instance: bur26a	Runtime: 3.2906e+06 nanoseconds	

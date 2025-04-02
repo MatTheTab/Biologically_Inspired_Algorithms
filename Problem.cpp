@@ -93,3 +93,27 @@ void Problem::displayOptimalSolution() const {
         std::cout << optSolution[i] << " ";
     }
 }
+
+int** Problem::getMatrixA() {
+    return matrixA;
+}
+
+int** Problem::getMatrixB() {
+    return matrixB;
+}
+
+int Problem::getSize() {
+    return size;
+}
+
+int Problem::getOptScore() {
+    return optScore;
+}
+
+int* Problem::getOptSolution() {
+    return optSolution;
+}
+
+std::string Problem::getInstance(){
+    return instance;
+}

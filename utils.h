@@ -55,7 +55,6 @@ void saveRuntimeResultsToFile(string filename, string algorithmName, string inst
 /**
  * @brief Saves the results of an algorithm execution to a text file.
  *
- *
  * @param filename The name of the file where results should be saved.
  * @param algorithmName The name of the algorithm used.
  * @param instance The instance identifier or name.
@@ -68,6 +67,24 @@ void saveRuntimeResultsToFile(string filename, string algorithmName, string inst
  * @param numBestSolutionUpdates The number of best solution updates performed by the algorithm.
  * @param optScore The optimal score of the instance.
  * @param optSolution Pointer to an array containing the optimal solution.
+ * 
+ * @details
+ * The results are written in a tab-separated format for easy parsing. Each record 
+ * is stored in a single line with the following structure:
+ * 
+ * ```
+ * Algorithm: <algorithmName>    Instance: <instance>    Initial Score: <initialScore>    
+ * Score: <score>    Number of Evaluations: <numEvaluations>    
+ * Number of Performed Moves: <numPerformedMoves>    
+ * Number of Best Solution Updates: <numBestSolutionUpdates>    
+ * Solution: <solution_0> <solution_1> ... <solution_n>    
+ * Optimal Score: <optScore>    
+ * Optimal Solution: <optSolution_0> <optSolution_1> ... <optSolution_n>
+ * ```
+ * 
+ * The file is opened in append mode (`ios::app`), ensuring that results from 
+ * multiple runs do not overwrite previous entries. If the file cannot be opened, 
+ * an error message is displayed.
  */
 void savePerformanceResultsToFile(string filename, string algorithmName, string instance, int initialScore, int score, 
     int size, int* solution, int numEvaluations, int numPerformedMoves, int numBestSolutionUpdates, int optScore, int* optSolution);

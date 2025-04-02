@@ -41,7 +41,50 @@ class Problem {
          */
         void displayOptimalSolution() const;
 
-    //private:
+        /**
+         * @brief Retrieves matrixA of the problem.
+         * 
+         * @return matrixA
+         */
+        int** getMatrixA();
+
+        /**
+         * @brief Retrieves matrixB of the problem.
+         * 
+         * @return matrixB
+         */
+        int** getMatrixB();
+
+        /**
+         * @brief Retrieves size of the problem.
+         * 
+         * @return size
+         */
+        int getSize();
+
+        /**
+         * @brief Retrieves optimal score of the problem.
+         * 
+         * @return optScore
+         */
+        int getOptScore();
+
+        /**
+         * @brief Retrieves the optimal solution of the problem.
+         * 
+         * @return optSolution
+         */
+        int* getOptSolution();
+
+        /**
+         * @brief Retrieves the problem instance.
+         * 
+         * @return instance
+         */
+        std::string getInstance();
+
+
+    private:
         std::string instance; ///< Instance name.
         int size;  ///< Instance size.
         int** matrixA; ///< Matrix A.
