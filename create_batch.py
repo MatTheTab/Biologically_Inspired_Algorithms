@@ -67,7 +67,7 @@ def generate_batch_script(instance_dir, runtime_results_file, performance_result
 
     print(f"Batch script '{output_batch}' created successfully.")
 
-# python .\create_batch.py data/qap/ results/runtime_results.txt results/performance_results.txt runbatch.bat --mode both   
+# python .\create_batch.py data/qap/ results/runtime_results.txt results/performance_results.txt runbatch.bat --mode both --os windows  
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a batch file for running bio_alg commands.")
