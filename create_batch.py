@@ -3,9 +3,16 @@ import argparse
 
 instance_names = ["wil100", "lipa80a", "lipa80b", "tai60a", "kra30a", "bur26a", "bur26b", "chr22a", "had14"]
 performance_restarts_instances = ["tai60a", "chr22a"]
-instance_runtimes_greedy = [0, 0, 0, 0, 0, 0, 0, 0, 0] #TODO
 
-avg_greedyLS = {instance: runtime for instance, runtime in zip(instance_names, instance_runtimes_greedy)}
+avg_greedyLS = {'bur26a': 2942861.0,
+                'bur26b': 2861191.0,
+                'chr22a': 743465.8,
+                'had14': 235370.6,
+                'kra30a': 3669969.0,
+                'lipa80a': 84410740.0,
+                'lipa80b': 90161560.0,
+                'tai60a': 30532450.0,
+                'wil100': 1138741000.0}
 
 number_msls_restarts = [20, 50, 100, 150, 200, 300, 500]
 
@@ -61,7 +68,8 @@ def generate_batch_script(instance_dir, runtime_results_file, performance_result
             for instance in performance_restarts_instances:
                 for num_tests in number_msls_restarts:
                     for cmd in performance_restarts_commands:
-                        batch_file.write(cmd.format(run_command=run_command, dir=instance_dir, instance=instance, result=performance_results_file, perf_tests=num_tests) + "\n")
+                        batch_file.write(cmd.format(run_command=run_command, dir=instance_dir, instance=instance, 
+                                                    result=f"results\\MSLS_tests\\{num_tests}_msls_performance_results.txt", perf_tests=num_tests) + "\n")
 
         else:
             for instance in instance_names:
