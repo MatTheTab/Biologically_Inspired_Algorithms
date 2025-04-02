@@ -12,7 +12,8 @@ def generate_batch_script(instance_dir, runtime_results_file, performance_result
         "{run_command} time random 0 0 {dir} {instance} {result}",
         "{run_command} time antiheuristic 0 0 {dir} {instance} {result}",
         "{run_command} time random 0 0 {dir} {instance} {result} greedyLS",
-        "{run_command} time random 0 0 {dir} {instance} {result} steepestLS"
+        "{run_command} time random 0 0 {dir} {instance} {result} steepestLS",
+        "{run_command} time random 0 0 {dir} {instance} {result} iterativeImprovement"
     ]
 
     performance_commands = [
@@ -21,12 +22,14 @@ def generate_batch_script(instance_dir, runtime_results_file, performance_result
         "{run_command} performance randomwalk {perf_tests} 2871222 {dir} {instance} {result}", # HARDCODED AVG GREEDYLS RUNTIME
         "{run_command} performance randomsearch {perf_tests} 2871222 {dir} {instance} {result}", # HARDCODED AVG GREEDYLS RUNTIME
         "{run_command} performance random {perf_tests} 0 {dir} {instance} {result} greedyLS",
-        "{run_command} performance random {perf_tests} 0 {dir} {instance} {result} steepestLS"
+        "{run_command} performance random {perf_tests} 0 {dir} {instance} {result} steepestLS",
+        "{run_command} performance random {perf_tests} 0 {dir} {instance} {result} iterativeImprovement"
     ]
 
     performance_restarts_commands = [
         "{run_command} performance random {perf_tests} 0 {dir} {instance} {result} greedyLS",
-        "{run_command} performance random {perf_tests} 0 {dir} {instance} {result} steepestLS"
+        "{run_command} performance random {perf_tests} 0 {dir} {instance} {result} steepestLS",
+        "{run_command} performance random {perf_tests} 0 {dir} {instance} {result} iterativeImprovement"
     ]
 
     # instance_names = [f[:-4] for f in os.listdir(instance_dir) if f.endswith(".dat") and f.startswith("bur26")

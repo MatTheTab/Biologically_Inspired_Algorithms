@@ -206,6 +206,37 @@ int* greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** mat
     return permutation;
 }
 
+int* iterativeImprovementFast(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves){
+    bool improvement = true;
+    int numAvailableMoves = (size * (size - 1)) / 2;
+    std::pair<int, int> move;
+    int deltaScore;
+    int* dlb = new int[size];
+    for (int i=0; i<size; i++){
+        dlb[i] = 0;
+    }
+
+    for (int i=0; i<size; i++){
+        if (dlb[i] == 1){continue;}
+        improvement = false;
+        for (int j=0; j<size; j++){
+            deltaScore = calculateDelta(size, *currentScore, permutation, move, matrixA, matrixB);
+            *numEvaluations += 1;
+            if (deltaScore < 0){
+                *currentScore += deltaScore;
+                performMove(permutation, move);
+                *numPerformedMoves += 1;
+                improvement = true;
+                dlb[i] = 0;
+                dlb[j] = 0;
+                break;
+            }
+        }
+        if (!improvement){ dlb[i] = 1; }
+    }
+    return permutation;
+}
+
 int* steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves){
     bool improvement = true;
     int numAvailableMoves = (size * (size - 1)) / 2;

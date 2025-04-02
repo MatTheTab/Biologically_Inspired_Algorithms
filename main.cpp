@@ -22,10 +22,11 @@ using namespace std;
 // ./bio_alg performance randomsearch 100 156340 data/qap/ bur26a performance_results.txt
 
 // ./bio_alg time random 0 0 data/qap/ bur26a runtime_results.txt greedyLS
+// ./bio_alg time random 0 0 data/qap/ bur26a runtime_results.txt 
 // ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt greedyLS
 // ./bio_alg time random 0 0 data/qap/ bur26a runtime_results.txt steepestLS
 // ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt steepestLS
-
+// ./bio_alg time random 0 0 data/qap/ bur26a runtime_results.txt iterativeImprovement
 
 void runTimePerformanceTest(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm);
 void runQualityPerformanceTests(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm, int num_runs, int randomDuration); 
@@ -146,7 +147,9 @@ void runTimePerformanceTest(const string& algorithm, Problem& problem, const str
             totalTime = measureTime(greedyLocalSearchSolve);
         } else if (local_search_algorithm == "steepestLS") {
             totalTime = measureTime(steepestLocalSearchSolve);
-        } else {
+        } else if (local_search_algorithm == "iterativeImprovement"){
+            totalTime = measureTime(iterativeImprovementFast);
+        }else {
             cerr << "Unknown local search algorithm: " << local_search_algorithm << endl;
             return;
         }
@@ -182,6 +185,8 @@ if (local_search_algorithm == "greedyLS") {
     greedyLocalSearchSolve(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);
 } else if (local_search_algorithm == "steepestLS") {
     steepestLocalSearchSolve(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);
+} else if (local_search_algorithm == "iterativeImprovement"){
+    iterativeImprovementFast(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);;
 } else {
     cerr << "Unknown local search algorithm: " << local_search_algorithm << endl;
     exit(1);

@@ -131,6 +131,28 @@ int calculateDelta(int size, int score, int* permutation, std::pair<int, int> mo
 int* greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
 
 /**
+ * @brief Solves a QAP instance with the quick iterative improvement method.
+ * 
+ * The function follows these steps:
+ * 1. Generate 'dont look bits'.
+ * 2. Check for improving moves.
+ * 3. Update the 'dont look bits array'
+ * 4. Repeat until no further improving move is found.
+ *
+ * This heuristic provides a quick improvement over an initial solution and guarantees speed-up at a slight performance cost.
+ * 
+ * @param size integer representing  the size of the instance.
+ * @param permutation an array representing the current solution.
+ * @param matrixA a 2d-array representing the matrix of flows.
+ * @param matrixB a 2d-array representing the matrix of distances.
+ * @param currentScore the current score of the solution.
+ * @param numEvaluations the number of perfomed delta evaluations, at the start should be 0.
+ * @param numPerformedMoves the number of performed moves, at the start should be 0.
+ * @return An array representing the permutation (solution).
+ */
+int* iterativeImprovementFast(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
+
+/**
  * @brief Solves a QAP instance with steepest local search.
  * 
   * The function follows these steps:
