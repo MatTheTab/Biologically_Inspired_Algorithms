@@ -235,6 +235,7 @@ int* iterativeImprovementFast(int size, int* permutation, int** matrixA, int** m
         }
         if (!improvement){ dlb[i] = 1; }
     }
+    delete[] dlb; 
     return permutation;
 }
 
