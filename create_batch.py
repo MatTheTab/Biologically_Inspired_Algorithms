@@ -1,18 +1,18 @@
 import os
 import argparse
 
-instance_names = ["wil100", "lipa80a", "lipa80b", "tai60a", "kra30a", "bur26a", "bur26b", "chr22a", "had14"]
-performance_restarts_instances = ["tai60a", "chr22a"]
+instance_names = ["wil100", "lipa80a", "tai60a", "kra30a", "bur26a", "bur26b", "chr22a", "chr20c", "had14"]
+performance_restarts_instances = ["tai60a", "kra30a", "bur26a", "bur26b", "chr22a", "chr20c", "had14"]
 
-avg_greedyLS = {'bur26a': 2942861.0,
-                'bur26b': 2861191.0,
-                'chr22a': 743465.8,
-                'had14': 235370.6,
-                'kra30a': 3669969.0,
-                'lipa80a': 84410740.0,
-                'lipa80b': 90161560.0,
-                'tai60a': 30532450.0,
-                'wil100': 1138741000.0}
+avg_greedyLS = {'bur26a': 3123592.0,
+                'bur26b': 2541337.0,
+                'chr20c': 647929.9,
+                'chr22a': 667595.9,
+                'had14': 206135.0,
+                'kra30a': 2795186.0,
+                'lipa80a': 86358480.0,
+                'tai60a': 29373680.0,
+                'wil100': 1075083000.0}
 
 number_msls_restarts = [20, 50, 100, 150, 200, 300, 500]
 

@@ -195,7 +195,7 @@ void executeLocalSearch(const string& local_search_algorithm, int size, int* P, 
     } else if (local_search_algorithm == "steepestLS") {
         steepestLocalSearchSolve(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);
     } else if (local_search_algorithm == "iterativeImprovement"){
-        iterativeImprovementFast(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);;
+        iterativeImprovementFast(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);
     } else {
         cerr << "Unknown local search algorithm: " << local_search_algorithm << endl;
         exit(1);
