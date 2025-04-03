@@ -220,6 +220,7 @@ int* iterativeImprovementFast(int size, int* permutation, int** matrixA, int** m
         if (dlb[i] == 1){continue;}
         improvement = false;
         for (int j=0; j<size; j++){
+            move = {i, j};
             deltaScore = calculateDelta(size, *currentScore, permutation, move, matrixA, matrixB);
             *numEvaluations += 1;
             if (deltaScore < 0){
