@@ -88,10 +88,11 @@ void runQualityPerformanceTests(const string& algorithm, Problem& problem, const
             generateRandomPerturbation(size, P);
         } else if (algorithm == "antiheuristic") {
             antiHeuristicSolve(size, matrixA, matrixB, P);
-        } else {
-            cerr << "Unknown initial algorithm: " << algorithm << endl;
-            return;
-        }
+        } 
+        // else {
+        //     cerr << "Unknown initial algorithm: " << algorithm << endl;
+        //     return;
+        // }
 
         initialScore = calculateScore(size, P, matrixA, matrixB);
         bestScore = initialScore;
@@ -101,6 +102,14 @@ void runQualityPerformanceTests(const string& algorithm, Problem& problem, const
             string combinedAlgorithm = algorithm.substr(0, 1) + local_search_algorithm;
             savePerformanceResultsToFile(results_filename, combinedAlgorithm, instance, initialScore, bestScore, size, P,
                 numEvaluations, numMoves, numBestSolutionUpdates, optScore, optSolution);
+        } else if (algorithm == "randomwalk"){
+            randomWalk(size, P, matrixA, matrixB, &bestScore, randomDuration, &numEvaluations, &numBestSolutionUpdates);
+            savePerformanceResultsToFile(results_filename, algorithm, instance, 0, bestScore, size, P,
+                numEvaluations, numEvaluations, numBestSolutionUpdates, optScore, optSolution);
+        } else if (algorithm == "randomsearch"){
+            randomSearch(size, P, matrixA, matrixB, &bestScore, randomDuration, &numEvaluations, &numBestSolutionUpdates);
+            savePerformanceResultsToFile(results_filename, algorithm, instance, 0, bestScore, size, P,
+                numEvaluations, numEvaluations, numBestSolutionUpdates, optScore, optSolution);
         } else {
             savePerformanceResultsToFile(results_filename, algorithm, instance, 0, bestScore, size, P,
                 1, 1, 1, optScore, optSolution);
@@ -110,7 +119,7 @@ void runQualityPerformanceTests(const string& algorithm, Problem& problem, const
 }
 
 void runTimePerformanceTest(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm) {
-    cout<<results_filename;
+    // cout<<results_filename;
     int size = problem.getSize();
     int** matrixA = problem.getMatrixA();
     int** matrixB = problem.getMatrixB();
@@ -181,14 +190,14 @@ void setRandomSeed() {
 
 void executeLocalSearch(const string& local_search_algorithm, int size, int* P, int** matrixA, int** matrixB,
     int* bestScore, int* numEvaluations, int* numMoves) {
-if (local_search_algorithm == "greedyLS") {
-    greedyLocalSearchSolve(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);
-} else if (local_search_algorithm == "steepestLS") {
-    steepestLocalSearchSolve(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);
-} else if (local_search_algorithm == "iterativeImprovement"){
-    iterativeImprovementFast(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);;
-} else {
-    cerr << "Unknown local search algorithm: " << local_search_algorithm << endl;
-    exit(1);
-}
+    if (local_search_algorithm == "greedyLS") {
+        greedyLocalSearchSolve(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);
+    } else if (local_search_algorithm == "steepestLS") {
+        steepestLocalSearchSolve(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);
+    } else if (local_search_algorithm == "iterativeImprovement"){
+        iterativeImprovementFast(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);;
+    } else {
+        cerr << "Unknown local search algorithm: " << local_search_algorithm << endl;
+        exit(1);
+    }
 }
