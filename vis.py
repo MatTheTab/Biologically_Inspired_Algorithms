@@ -1,0 +1,413 @@
+import re
+import os
+
+import numpy as np
+import pandas as pd
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Names of instances ordered by instance size
+instance_names_ordered = ["wil100", "lipa80a", "tai60a", "kra30a", "bur26a", "bur26b", "chr22a", "chr20c", "had14"][::-1]
+
+RANDOMRUNTIMES = {'bur26a': 3123592.0,
+                'bur26b': 2541337.0,
+                'chr20c': 647929.9,
+                'chr22a': 667595.9,
+                'had14': 206135.0,
+                'kra30a': 2795186.0,
+                'lipa80a': 86358480.0,
+                'tai60a': 29373680.0,
+                'wil100': 1075083000.0}
+
+algorithm_colors = {
+    "greedyLS": "#e41a1c",
+    "steepestLS": "#377eb8",
+    "heuristic": "#4daf4a",
+    "antiheuristic": "#a65628",
+    "random": "#ff7f00",
+    "randomwalk": "#fdb462",
+    "randomsearch": "#984ea3",
+    "iterativeImprovement": "#999999"
+}
+
+def plot_algorithms(save_name, summary, title="Measure", log_scale=False):
+    # Set up the plot
+    plt.figure(figsize=(10, 6))
+    sns.set_theme(style="whitegrid")
+
+    # Plot each algorithm separately
+    algorithms = summary["Algorithm"].unique()
+    colors = sns.color_palette("tab10", len(algorithms))
+
+    for i, algorithm in enumerate(algorithms):
+        subset = summary[summary["Algorithm"] == algorithm]
+        plt.plot(subset["Instance"], subset["mean"], label=f"{algorithm} (Mean)", color=algorithm_colors[algorithm], marker="o", linestyle="-")
+        plt.fill_between(subset["Instance"], subset["mean"] - subset["std"], subset["mean"] + subset["std"], alpha=0.2, color=algorithm_colors[algorithm])
+
+    # Labels and legend
+    plt.xlabel("Instance")
+    plt.ylabel(title)
+    if log_scale:
+        plt.yscale("log")  # Set y-axis to logarithmic scale
+    
+    full_title = f"Algorithm {title} per Instance with Standard Deviation"
+    
+    if log_scale:
+        full_title += " (Log scale)"
+
+    plt.title(full_title)
+    plt.legend()
+    plt.xticks(rotation=45)  # Rotate instance labels for better readability
+    plt.savefig("./plots/" + save_name, format="pdf", bbox_inches="tight")
+    plt.show()
+
+
+def plot_std_line(save_name, summary, title="Standard Deviation", overlap=False, log_scale=False):
+    plt.figure(figsize=(12, 6))
+    sns.set_theme(style="whitegrid")
+    
+    algorithms = summary["Algorithm"].unique()
+    instances = summary["Instance"].unique()
+    colors = sns.color_palette("tab10", len(algorithms))
+    
+    bar_width = 0.8 / len(algorithms) if not overlap else 0.8  # Adjust bar width
+    
+    for i, algorithm in enumerate(algorithms):
+        subset = summary[summary["Algorithm"] == algorithm]
+        # x_positions = np.arange(len(instances))
+        
+        # if not overlap:
+        #     x_positions = x_positions + i * bar_width - (len(algorithms) - 1) * bar_width / 2
+        
+        # plt.bar(x_positions, subset["std"], width=bar_width, label=algorithm, color=algorithm_colors[algorithm], alpha=0.7 if overlap else 1)
+    
+        plt.plot(subset["Instance"], subset["std"], label=f"{algorithm} (std)", color=algorithm_colors[algorithm], marker="o", linestyle="-")
+
+    plt.xlabel("Instance")
+    plt.ylabel(title)
+    if log_scale:
+        plt.yscale("log")  # Set y-axis to logarithmic scale
+    
+    full_title = f"Algorithm {title} per Instance"
+    
+    if log_scale:
+        full_title += " (Log scale)"
+
+    plt.title(full_title)
+    if log_scale:
+        plt.yscale("log")  # Set y-axis to logarithmic scale
+    plt.xticks(np.arange(len(instances)), instances, rotation=45)
+    plt.legend()
+    plt.savefig("./plots/" + save_name, format="pdf", bbox_inches="tight")
+    plt.show()
+
+def plot_std_bar(save_name, summary, title="Standard Deviation", overlap=False, log_scale=False):
+    plt.figure(figsize=(12, 6))
+    sns.set_theme(style="whitegrid")
+    
+    algorithms = summary["Algorithm"].unique()
+    instances = summary["Instance"].unique()
+    colors = sns.color_palette("tab10", len(algorithms))
+    
+    bar_width = 0.8 / len(algorithms) if not overlap else 0.8  # Adjust bar width
+    
+    for i, algorithm in enumerate(algorithms):
+        subset = summary[summary["Algorithm"] == algorithm]
+        x_positions = np.arange(len(instances))
+        
+        if not overlap:
+            x_positions = x_positions + i * bar_width - (len(algorithms) - 1) * bar_width / 2
+        
+        plt.bar(x_positions, subset["std"], width=bar_width, label=algorithm, color=algorithm_colors[algorithm], alpha=0.7 if overlap else 1)
+    
+    plt.xlabel("Instance")
+    plt.ylabel(title)
+    if log_scale:
+        plt.yscale("log")  # Set y-axis to logarithmic scale
+    
+    full_title = f"Algorithm {title} per Instance"
+    
+    if log_scale:
+        full_title += " (Log scale)"
+
+    plt.title(full_title)
+    if log_scale:
+        plt.yscale("log")  # Set y-axis to logarithmic scale
+    plt.xticks(np.arange(len(instances)), instances, rotation=45)
+    plt.legend()
+    plt.savefig("./plots/" + save_name, format="pdf", bbox_inches="tight")
+    plt.show()
+
+
+def plot_efficiency(save_name, summary, legend=True, show_instances=True, 
+                    title="Algorithm Performance: Runtime vs. Solution Quality",
+                    log_scale_x=True, log_scale_y=True):
+    # Set up plot
+    plt.figure(figsize=(15, 6))
+    sns.set_theme(style="whitegrid")
+
+    # Get unique algorithms and instances
+    algorithms = summary["Algorithm"].unique()
+    instances = summary["Instance"].unique()
+    markers = ["o", "s", "D", "v", "^"]  # Different markers for instances
+    
+    # Dictionary to track if an algorithm has been added to the legend
+    algorithm_legend = {}
+
+    # Plot each algorithm-instance pair
+    for i, algorithm in enumerate(algorithms):
+        for j, instance in enumerate(instances):
+            subset = summary[(summary["Algorithm"] == algorithm) & (summary["Instance"] == instance)]
+            if not subset.empty:
+                if show_instances:
+                    label = label=f"{algorithm} - {instance}"
+                else:
+                    label = algorithm if algorithm not in algorithm_legend else "_nolegend_"
+                plt.errorbar(
+                    subset["mean_quality"], subset["mean_runtime"],
+                    xerr=subset["std_quality"], yerr=subset["std_runtime"],
+                    fmt=markers[j % len(markers)], color=algorithm_colors[algorithm], label=label,
+                    capsize=3, linestyle="none"
+                )
+                algorithm_legend[algorithm] = True
+
+    # Labels and legend
+    plt.ylabel("Runtime [ns] (Mean ± Std)")
+    plt.xlabel("Solution Quality (Mean ± Std)")
+    
+    if log_scale_x:
+        plt.xscale("log")
+    
+    if log_scale_y:
+        plt.yscale("log")
+    
+    full_title = f"{title}"
+    
+    if log_scale_x and log_scale_y:
+        full_title += " (Log scale x y)"
+    elif log_scale_x:
+        full_title += " (Log scale x)"
+    elif log_scale_y:
+        full_title += " (Log scale y)"
+
+    plt.title(full_title)
+    if legend:
+        plt.legend(loc="upper right", fontsize=9, ncol=5)
+    plt.savefig("./plots/" + save_name, format="pdf", bbox_inches="tight")
+    plt.show()
+
+def plot_ls_algorithms_comparison(save_name, df, algorithm=""):
+    # Set up plot
+    plt.figure(figsize=(10, 6))
+    sns.set_theme(style="whitegrid")
+
+    # Scatter plot with different colors per algorithm
+    sns.scatterplot(
+        data=df,
+        x="Initial_Score",
+        y="Score",
+        hue="Instance",
+        palette="tab10",
+        alpha=0.6  # Slight transparency for better visibility
+    )
+
+    # Labels and title
+    plt.yscale("log") 
+    plt.xscale("log") 
+
+    # plt.xlabel("Initial Solution Score")
+    # plt.ylabel("Final Solution Score")
+    plt.title(f"Comparison of LS Algorithms: Initial vs. Final Solution Score {algorithm}")
+    plt.legend(title="Instance", loc="upper left", bbox_to_anchor=(1, 1))  # Move legend outside
+    plt.savefig("./plots/" + save_name, format="pdf", bbox_inches="tight")
+    # Show plot
+    plt.show()
+
+def plot_ls_algorithms_comparison_all(save_name, df, algorithm=""):
+    # Set up plot
+    sns.set_theme(style="whitegrid")
+    
+    g = sns.FacetGrid(
+        df, col="Instance", hue="Instance", palette="tab10", col_wrap=3, sharex=False, sharey=False
+    )
+
+    g.map_dataframe(
+        sns.scatterplot, x="Initial_Score", y="Score",
+        s=10,
+        alpha=0.5,
+        edgecolor='none'
+    )
+
+    # Compute correlation and set subplot titles
+    def set_titles(**kwargs):
+        ax = plt.gca()
+        instance = kwargs.get('label', '')
+        subset = df[df['Instance'] == instance]
+        correlation = subset["Initial_Score"].corr(subset["Score"]) if not subset.empty else np.nan
+        ax.set_title(f"{instance} Cor = {correlation:.2f}")
+    
+    g.map_dataframe(set_titles)
+    
+    g.figure.suptitle(f"Comparison of LS Algorithms: Initial vs. Final Solution Score {algorithm}", fontsize=16)
+    g.figure.subplots_adjust(top=0.9)
+    plt.savefig("./plots/" + save_name, format="pdf", bbox_inches="tight")
+    plt.show()
+
+def plot_algorithm_performance(save_name, restart_data):
+    sns.set_theme(style="whitegrid")
+
+    # Create combined dataframes for all restarts
+    avg_results = []
+    best_results = []
+    for num_restarts, df in restart_data:
+        df = df.copy()
+        df["Restarts"] = num_restarts  # Assign restarts column
+        avg_scores = df.groupby(["Instance", "Algorithm", "Restarts"], as_index=False)["Solution_Quality"].mean()
+        best_scores = df.groupby(["Instance", "Algorithm", "Restarts"], as_index=False)["Solution_Quality"].min()
+        avg_results.append(avg_scores)
+        best_results.append(best_scores)
+
+    # Merge into final DataFrames
+    avg_df = pd.concat(avg_results, ignore_index=True)
+    best_df = pd.concat(best_results, ignore_index=True)
+
+    # Filter only instances in the given order
+    avg_df = avg_df[avg_df["Instance"].isin(instance_names_ordered)]
+    best_df = best_df[best_df["Instance"].isin(instance_names_ordered)]
+
+    # Sort instances in the given order
+    avg_df["Instance"] = pd.Categorical(avg_df["Instance"], categories=instance_names_ordered, ordered=True)
+    best_df["Instance"] = pd.Categorical(best_df["Instance"], categories=instance_names_ordered, ordered=True)
+    
+    avg_df = avg_df.sort_values("Instance")
+    best_df = best_df.sort_values("Instance")
+
+    # Define function for plotting
+    def plot_scores(name, df, title, score_type):
+        plt.figure(figsize=(12, 6))
+        sns.lineplot(
+            data=df,
+            x="Instance",
+            y="Solution_Quality",
+            hue="Restarts",  # Each restart count gets a separate line
+            palette="tab10",  # Use default Seaborn colors
+            marker="o"
+        )
+
+        plt.xticks(rotation=45, ha="right")
+        plt.title(title)
+        plt.xlabel("Instance")
+        plt.ylabel(f"{score_type} Solution Quality")
+        plt.yscale("log")
+        plt.legend(title="Restarts")
+        plt.grid(axis='y', linestyle="--", alpha=0.7)
+        plt.savefig(name, format="pdf", bbox_inches="tight")
+        plt.show()
+
+    plot_scores("./plots/" + save_name + "greedy_average.pdf", avg_df[avg_df["Algorithm"] == "greedyLS"], "GreedyLS - Average Solution Quality", "Average")
+    plot_scores("./plots/" + save_name + "greedy_best.pdf", best_df[best_df["Algorithm"] == "greedyLS"], "GreedyLS - Best Solution Quality", "Best")
+    plot_scores("./plots/" + save_name + "steepest_average.pdf", avg_df[avg_df["Algorithm"] == "steepestLS"], "SteepestLS - Average Solution Quality", "Average")
+    plot_scores("./plots/" + save_name + "steepest_best.pdf", best_df[best_df["Algorithm"] == "steepestLS"], "SteepestLS - Best Solution Quality", "Best")
+
+
+def plot_optimality_heatmaps(restart_data, instance_order=None, cmap_colors=None):
+    """
+    Plots heatmaps showing which instances and restart levels achieved optimal or near-optimal solutions.
+    
+    Parameters:
+        restart_data: list of (restarts, dataframe) tuples
+        instance_order: optional list of instance names in desired order
+        cmap_colors: optional colormap for [No, Close, Optimal]
+    """
+    # Collect best scores
+    best_scores = []
+    for num_restarts, df in restart_data:
+        df = df.copy()
+        df["Restarts"] = num_restarts
+        best_per_instance = df.groupby(["Algorithm", "Instance", "Restarts"], as_index=False)[["Score", "Solution_Quality"]].min()
+        best_scores.append(best_per_instance)
+
+    best_df = pd.concat(best_scores, ignore_index=True)
+
+    # Determine optimality status
+    def status(row):
+        diff = abs(row["Solution_Quality"])
+        if diff < 1e-6:
+            return "Optimal"
+        elif diff <= 0.01:
+            return "Close"
+        else:
+            return "No"
+
+    best_df["Status"] = best_df.apply(status, axis=1)
+
+    # Convert to numeric encoding for coloring
+    status_map = {"No": 0, "Close": 1, "Optimal": 2}
+    best_df["Status_Num"] = best_df["Status"].map(status_map)
+    status_label_map = {0: "", 1: "~", 2: "o"}
+
+    # Optionally enforce instance order
+    if instance_order:
+        best_df["Instance"] = pd.Categorical(best_df["Instance"], categories=instance_order, ordered=True)
+
+    # Optional colormap
+    if cmap_colors is None:
+        cmap_colors = ["#ffffff", "#ffe08a", "#b6f2b3"]  # white, light yellow, light green
+
+    # Plot one heatmap per algorithm
+    algorithms = best_df["Algorithm"].unique()
+
+    for algo in algorithms:
+        pivot_numeric = best_df[best_df["Algorithm"] == algo].pivot(index="Instance", columns="Restarts", values="Status_Num")
+        pivot_labels = pivot_numeric.copy().replace(status_label_map)
+
+        plt.figure(figsize=(7, max(5, len(pivot_numeric) *0.4)))
+        sns.heatmap(
+            pivot_numeric,
+            annot=pivot_labels,
+            fmt="s",
+            cmap=cmap_colors,
+            linewidths=0.5,
+            linecolor="gray",
+            cbar=False
+        )
+        plt.title(f"Optimality Heatmap – {algo}", fontsize=14)
+        plt.ylabel("Instance")
+        plt.xlabel("Number of Restarts")
+        plt.xticks(rotation=0)
+        plt.yticks(rotation=0)
+        plt.tight_layout()
+        plt.savefig(f"./plots/Num Restarts Quality {algo}.pdf", format="pdf", bbox_inches="tight")
+        plt.show()
+
+def compute_similarity(solution1, solution2):
+    return sum(1 for a, b in zip(solution1, solution2) if a == b)/len(solution1)*100
+
+def plot_solution_quality_vs_similarity(save_name, df, instances=["chr15a", "tai60c"]):
+    sns.set_theme(style="whitegrid")
+    
+    for instance in instances:
+        subset = df[df["Instance"] == instance]
+        
+        plot_data = []
+        
+        # print(subset)
+        for _, row in subset.iterrows():
+            similarity = compute_similarity(row["Optimal_Solution"], row["Solution"])
+            plot_data.append({
+                "Algorithm": row["Algorithm"],
+                "Quality": (row["Score"] - row["Optimal_Score"]) / row["Optimal_Score"] * 100,
+                "Similarity": similarity
+            })
+        
+        plot_df = pd.DataFrame(plot_data)
+        
+        plt.figure(figsize=(10, 6))
+        sns.scatterplot(data=plot_df, x="Quality", y="Similarity", hue="Algorithm", palette=algorithm_colors, alpha=0.7)
+        plt.title(f"Solution Quality vs. Similarity to Optimal Solution for {instance}")
+        plt.xlabel("Solution Quality")
+        plt.ylabel("Similarity to Optimal Solution (%)")
+        plt.legend(title="Algorithm")
+        plt.savefig("./plots/" + save_name + instance + ".pdf", format="pdf", bbox_inches="tight")
+        plt.show()
