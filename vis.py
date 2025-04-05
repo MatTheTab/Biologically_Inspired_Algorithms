@@ -280,14 +280,6 @@ def plot_algorithm_performance(save_name, restart_data):
 
 
 def plot_optimality_heatmaps(restart_data, instance_order=None, cmap_colors=None):
-    """
-    Plots heatmaps showing which instances and restart levels achieved optimal or near-optimal solutions.
-    
-    Parameters:
-        restart_data: list of (restarts, dataframe) tuples
-        instance_order: optional list of instance names in desired order
-        cmap_colors: optional colormap for [No, Close, Optimal]
-    """
     best_scores = []
     for num_restarts, df in restart_data:
         df = df.copy()
