@@ -264,7 +264,7 @@ def plot_algorithm_performance(save_name, restart_data):
         )
 
         plt.xticks(rotation=45, ha="right")
-        plt.title(title)
+        plt.title(title + " (log scale)")
         plt.xlabel("Instance")
         plt.ylabel(f"{score_type} Solution Quality")
         plt.yscale("log")
@@ -364,3 +364,62 @@ def plot_solution_quality_vs_similarity(save_name, df, instances=["chr15a", "tai
         plt.legend(title="Algorithm")
         plt.savefig("./plots/" + save_name + instance + ".pdf", format="pdf", bbox_inches="tight")
         plt.show()
+
+
+def plot_similarity_heatmaps(df, algorithm="steepestLS", num_labels=10):
+    algo_df = df[df["Algorithm"] == algorithm].copy()
+
+    # Compute solution quality
+    algo_df["Solution_Quality"] = (algo_df["Score"] - algo_df["Optimal_Score"]) / algo_df["Optimal_Score"] * 100
+
+    instances = algo_df["Instance"].unique()
+    num_instances = len(instances)
+
+    cols = 3
+    rows = int(np.ceil(num_instances / cols))
+    fig, axes = plt.subplots(rows, cols, figsize=(cols * 5, rows * 5))
+    axes = axes.flatten()
+
+    for i, instance in enumerate(instances):
+        ax = axes[i]
+        instance_df = algo_df[algo_df["Instance"] == instance].copy()
+        instance_df = instance_df.sort_values("Solution_Quality").reset_index(drop=True)
+
+        n = len(instance_df)
+        similarity_matrix = np.zeros((n, n))
+
+        for a in range(n):
+            for b in range(n):
+                similarity_matrix[a, b] = compute_similarity(instance_df["Solution"][a], instance_df["Solution"][b])
+
+        label_indices = np.linspace(0, n - 1, num=num_labels, dtype=int)
+        labels = [f"{instance_df['Solution_Quality'][j]:.1f}" if j in label_indices else "" for j in range(n)]
+
+        sns.heatmap(similarity_matrix, ax=ax, cmap="viridis",
+                    xticklabels=labels, yticklabels=labels, cbar=False,
+                    linewidths=0)
+
+        ax.set_title(f"{instance}", fontsize=15, y=-0.075)
+        ax.set_xlabel("Solution Quality", fontsize=10)
+        ax.set_ylabel("Solution Quality", fontsize=10)
+        ax.xaxis.tick_top()
+        ax.xaxis.set_label_position("top")
+        ax.tick_params(axis='x', rotation=0, labelsize=8, which='both', length=0)
+        ax.tick_params(axis='y',  rotation=0, labelsize=8, which='both', length=0)
+
+
+    cbar_ax = fig.add_axes([0.35, 0.025, 0.02, 0.27])
+    norm = plt.Normalize(vmin=similarity_matrix.min(), vmax=similarity_matrix.max())
+    sm = plt.cm.ScalarMappable(cmap="viridis", norm=norm)
+    sm.set_array([])
+    cbar = fig.colorbar(sm, cax=cbar_ax)
+    cbar.set_label('Solution similarity', fontsize=15, rotation=90)  # Add label to colorbar (legend)
+
+
+    for j in range(i + 1, len(axes)):
+        fig.delaxes(axes[j])
+
+    fig.suptitle(f"Solution Similarity Heatmaps ({algorithm})", fontsize=16)
+    plt.tight_layout(rect=[0, 0, 1, 0.97])
+    plt.savefig("./plots/" + "solution_similarity_" + algorithm + ".pdf", format="pdf", bbox_inches="tight")
+    plt.show()
