@@ -7,19 +7,52 @@
 {\ttfamily \#include "{}Problem.\+h"{}}\newline
 {\ttfamily \#include "{}solution.\+h"{}}\newline
 {\ttfamily \#include "{}utils.\+h"{}}\newline
+{\ttfamily \#include $<$random$>$}\newline
 Include dependency graph for main.\+cpp\+:
 % FIG 0
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_aa89c2f14bacb43ef66f8621c2121a994}{run\+Time\+Performance\+Test}} (const string \&algorithm, \mbox{\hyperlink{classProblem}{Problem}} \&problem, const string \&results\+\_\+filename, const string \&local\+\_\+search\+\_\+algorithm)
+\item 
+void \mbox{\hyperlink{main_8cpp_a8081b5d1cf24fb281fe11684fdf82e7b}{run\+Quality\+Performance\+Tests}} (const string \&algorithm, \mbox{\hyperlink{classProblem}{Problem}} \&problem, const string \&results\+\_\+filename, const string \&local\+\_\+search\+\_\+algorithm, int num\+\_\+runs, int random\+Duration)
+\item 
+void \mbox{\hyperlink{main_8cpp_ada924826198f40e6919c9fa87174c266}{set\+Random\+Seed}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_a6cb35f5e57c133412f32cdaabf6723a5}{execute\+Local\+Search}} (const string \&local\+\_\+search\+\_\+algorithm, int size, int \texorpdfstring{$\ast$}{*}P, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}best\+Score, int \texorpdfstring{$\ast$}{*}num\+Evaluations, int \texorpdfstring{$\ast$}{*}num\+Moves)
 \item 
 int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a6cb35f5e57c133412f32cdaabf6723a5}\index{main.cpp@{main.cpp}!executeLocalSearch@{executeLocalSearch}}
+\index{executeLocalSearch@{executeLocalSearch}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{executeLocalSearch()}{executeLocalSearch()}}
+{\footnotesize\ttfamily \label{main_8cpp_a6cb35f5e57c133412f32cdaabf6723a5} 
+void execute\+Local\+Search (\begin{DoxyParamCaption}\item[{const string \&}]{local\+\_\+search\+\_\+algorithm}{, }\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{P}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{best\+Score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Evaluations}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Moves}{}\end{DoxyParamCaption})}
+
 \Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{main.cpp@{main.cpp}!main@{main}}
 \index{main@{main}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
 {\footnotesize\ttfamily \label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
 int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_a8081b5d1cf24fb281fe11684fdf82e7b}\index{main.cpp@{main.cpp}!runQualityPerformanceTests@{runQualityPerformanceTests}}
+\index{runQualityPerformanceTests@{runQualityPerformanceTests}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{runQualityPerformanceTests()}{runQualityPerformanceTests()}}
+{\footnotesize\ttfamily \label{main_8cpp_a8081b5d1cf24fb281fe11684fdf82e7b} 
+void run\+Quality\+Performance\+Tests (\begin{DoxyParamCaption}\item[{const string \&}]{algorithm}{, }\item[{\mbox{\hyperlink{classProblem}{Problem}} \&}]{problem}{, }\item[{const string \&}]{results\+\_\+filename}{, }\item[{const string \&}]{local\+\_\+search\+\_\+algorithm}{, }\item[{int}]{num\+\_\+runs}{, }\item[{int}]{random\+Duration}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_aa89c2f14bacb43ef66f8621c2121a994}\index{main.cpp@{main.cpp}!runTimePerformanceTest@{runTimePerformanceTest}}
+\index{runTimePerformanceTest@{runTimePerformanceTest}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{runTimePerformanceTest()}{runTimePerformanceTest()}}
+{\footnotesize\ttfamily \label{main_8cpp_aa89c2f14bacb43ef66f8621c2121a994} 
+void run\+Time\+Performance\+Test (\begin{DoxyParamCaption}\item[{const string \&}]{algorithm}{, }\item[{\mbox{\hyperlink{classProblem}{Problem}} \&}]{problem}{, }\item[{const string \&}]{results\+\_\+filename}{, }\item[{const string \&}]{local\+\_\+search\+\_\+algorithm}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_ada924826198f40e6919c9fa87174c266}\index{main.cpp@{main.cpp}!setRandomSeed@{setRandomSeed}}
+\index{setRandomSeed@{setRandomSeed}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{setRandomSeed()}{setRandomSeed()}}
+{\footnotesize\ttfamily \label{main_8cpp_ada924826198f40e6919c9fa87174c266} 
+void set\+Random\+Seed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 

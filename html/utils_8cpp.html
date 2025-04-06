@@ -112,9 +112,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a37997c576871c68d528884c9e36648a5" id="r_a37997c576871c68d528884c9e36648a5"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37997c576871c68d528884c9e36648a5">copyArray</a> (int *original, int size)</td></tr>
 <tr class="memdesc:a37997c576871c68d528884c9e36648a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the exact copy of a specified 1-D array.  <br /></td></tr>
 <tr class="separator:a37997c576871c68d528884c9e36648a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2393ed90c07a022965f196c15070d4fd" id="r_a2393ed90c07a022965f196c15070d4fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2393ed90c07a022965f196c15070d4fd">saveResultsToFile</a> (string filename, string algorithmName, string instance, double runtime, int score, int size, int *solution, int numEvaluations, int numPerformedMoves, int opt_score, int *opt_solution)</td></tr>
-<tr class="memdesc:a2393ed90c07a022965f196c15070d4fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the results of an algorithm execution to a text file.  <br /></td></tr>
-<tr class="separator:a2393ed90c07a022965f196c15070d4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f1a8f717e0357c342a4ab02b1a52563" id="r_a7f1a8f717e0357c342a4ab02b1a52563"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f1a8f717e0357c342a4ab02b1a52563">saveRuntimeResultsToFile</a> (string filename, string algorithmName, string instance, double runtime)</td></tr>
+<tr class="memdesc:a7f1a8f717e0357c342a4ab02b1a52563"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the results of an algorithm execution to a text file.  <br /></td></tr>
+<tr class="separator:a7f1a8f717e0357c342a4ab02b1a52563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64be9645304005a13668f727590ce921" id="r_a64be9645304005a13668f727590ce921"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64be9645304005a13668f727590ce921">savePerformanceResultsToFile</a> (string filename, string algorithmName, string instance, int initialScore, int score, int size, int *solution, int numEvaluations, int numPerformedMoves, int numBestSolutionUpdates, int optScore, int *optSolution)</td></tr>
+<tr class="memdesc:a64be9645304005a13668f727590ce921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the results of an algorithm execution to a text file.  <br /></td></tr>
+<tr class="separator:a64be9645304005a13668f727590ce921"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a37997c576871c68d528884c9e36648a5" name="a37997c576871c68d528884c9e36648a5"></a>
@@ -241,14 +244,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2393ed90c07a022965f196c15070d4fd" name="a2393ed90c07a022965f196c15070d4fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2393ed90c07a022965f196c15070d4fd">&#9670;&#160;</a></span>saveResultsToFile()</h2>
+<a id="a64be9645304005a13668f727590ce921" name="a64be9645304005a13668f727590ce921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64be9645304005a13668f727590ce921">&#9670;&#160;</a></span>savePerformanceResultsToFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void saveResultsToFile </td>
+          <td class="memname">void savePerformanceResultsToFile </td>
           <td>(</td>
           <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>filename</em></span>, </td>
         </tr>
@@ -265,7 +268,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>runtime</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>initialScore</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -295,12 +298,76 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>opt_score</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>numBestSolutionUpdates</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>opt_solution</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>optScore</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>optSolution</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Saves the results of an algorithm execution to a text file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>The name of the file where results should be saved. </td></tr>
+    <tr><td class="paramname">algorithmName</td><td>The name of the algorithm used. </td></tr>
+    <tr><td class="paramname">instance</td><td>The instance identifier or name. </td></tr>
+    <tr><td class="paramname">initialScore</td><td>The initial score used before LS algorithms. </td></tr>
+    <tr><td class="paramname">score</td><td>The computed score/result of the algorithm. </td></tr>
+    <tr><td class="paramname">size</td><td>The size of the solution. </td></tr>
+    <tr><td class="paramname">solution</td><td>Pointer to an array containing the solution. </td></tr>
+    <tr><td class="paramname">numEvaluations</td><td>The number of evaluations performed during execution. </td></tr>
+    <tr><td class="paramname">numPerformedMoves</td><td>The number of moves performed by the algorithm. </td></tr>
+    <tr><td class="paramname">numBestSolutionUpdates</td><td>The number of best solution updates performed by the algorithm. </td></tr>
+    <tr><td class="paramname">optScore</td><td>The optimal score of the instance. </td></tr>
+    <tr><td class="paramname">optSolution</td><td>Pointer to an array containing the optimal solution.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The results are written in a tab-separated format for easy parsing. Each record is stored in a single line with the following structure:</p>
+<div class="fragment"><div class="line">Algorithm: &lt;algorithmName&gt;    Instance: &lt;instance&gt;    Initial Score: &lt;initialScore&gt;    </div>
+<div class="line">Score: &lt;score&gt;    Number of Evaluations: &lt;numEvaluations&gt;    </div>
+<div class="line">Number of Performed Moves: &lt;numPerformedMoves&gt;    </div>
+<div class="line">Number of Best Solution Updates: &lt;numBestSolutionUpdates&gt;    </div>
+<div class="line">Solution: &lt;solution_0&gt; &lt;solution_1&gt; ... &lt;solution_n&gt;    </div>
+<div class="line">Optimal Score: &lt;optScore&gt;    </div>
+<div class="line">Optimal Solution: &lt;optSolution_0&gt; &lt;optSolution_1&gt; ... &lt;optSolution_n&gt;</div>
+</div><!-- fragment --><p>The file is opened in append mode (<code>ios::app</code>), ensuring that results from multiple runs do not overwrite previous entries. If the file cannot be opened, an error message is displayed. </p>
+
+</div>
+</div>
+<a id="a7f1a8f717e0357c342a4ab02b1a52563" name="a7f1a8f717e0357c342a4ab02b1a52563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f1a8f717e0357c342a4ab02b1a52563">&#9670;&#160;</a></span>saveRuntimeResultsToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void saveRuntimeResultsToFile </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>filename</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>algorithmName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>instance</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>runtime</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -312,13 +379,6 @@ Functions</h2></td></tr>
     <tr><td class="paramname">algorithmName</td><td>The name of the algorithm used. </td></tr>
     <tr><td class="paramname">instance</td><td>The instance identifier or name. </td></tr>
     <tr><td class="paramname">runtime</td><td>The execution time of the algorithm in seconds. </td></tr>
-    <tr><td class="paramname">score</td><td>The computed score/result of the algorithm. </td></tr>
-    <tr><td class="paramname">size</td><td>The size of the solution. </td></tr>
-    <tr><td class="paramname">solution</td><td>Pointer to an array containing the solution. </td></tr>
-    <tr><td class="paramname">numEvaluations</td><td>The number of evaluations performed during execution. </td></tr>
-    <tr><td class="paramname">numPerformedMoves</td><td>The number of moves performed by the algorithm. </td></tr>
-    <tr><td class="paramname">opt_score</td><td>The optimal score of the instance. </td></tr>
-    <tr><td class="paramname">opt_solution</td><td>Pointer to an array containing the optimal solution. </td></tr>
   </table>
   </dd>
 </dl>

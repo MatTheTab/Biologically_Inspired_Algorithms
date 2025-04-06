@@ -108,6 +108,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1ef1560cc50b67772a6ab771c6c5f585" id="r_a1ef1560cc50b67772a6ab771c6c5f585"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ef1560cc50b67772a6ab771c6c5f585">generateRandomPerturbation</a> (int n, int *arr)</td></tr>
 <tr class="memdesc:a1ef1560cc50b67772a6ab771c6c5f585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a random permutation of numbers of size n.  <br /></td></tr>
 <tr class="separator:a1ef1560cc50b67772a6ab771c6c5f585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6edc7284e92eacca8848e2e85ac249ff" id="r_a6edc7284e92eacca8848e2e85ac249ff"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6edc7284e92eacca8848e2e85ac249ff">perturbRandomly</a> (int n, int *arr)</td></tr>
+<tr class="memdesc:a6edc7284e92eacca8848e2e85ac249ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perturbs an array of numbers of size n.  <br /></td></tr>
+<tr class="separator:a6edc7284e92eacca8848e2e85ac249ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b50e14e5821d22ed6c5f680d7166603" id="r_a7b50e14e5821d22ed6c5f680d7166603"><td class="memItemLeft" align="right" valign="top">std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b50e14e5821d22ed6c5f680d7166603">getRandomPair</a> (int n)</td></tr>
 <tr class="memdesc:a7b50e14e5821d22ed6c5f680d7166603"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a random pair of integers from 0 to n.  <br /></td></tr>
 <tr class="separator:a7b50e14e5821d22ed6c5f680d7166603"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,6 +172,38 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An <code>std::pair&lt;int, int&gt;</code> containing two random integers. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The resulting numbers will never be equal to one another, so the result is a pair of distinct integers. </dd></dl>
+
+</div>
+</div>
+<a id="a6edc7284e92eacca8848e2e85ac249ff" name="a6edc7284e92eacca8848e2e85ac249ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6edc7284e92eacca8848e2e85ac249ff">&#9670;&#160;</a></span>perturbRandomly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int * perturbRandomly </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>arr</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perturbs an array of numbers of size n. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>The size of the input array. </td></tr>
+    <tr><td class="paramname">arr</td><td>Input array. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the resulting, perturbed array. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The caller is responsible for deleting the allocated array after it is no longer needed. </dd></dl>
 
 </div>
 </div>

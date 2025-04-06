@@ -12,6 +12,8 @@ Include dependency graph for random.\+cpp\+:
 \item 
 int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{random_8cpp_a1ef1560cc50b67772a6ab771c6c5f585}{generate\+Random\+Perturbation}} (int n, int \texorpdfstring{$\ast$}{*}arr)
 \begin{DoxyCompactList}\small\item\em Generates a random permutation of numbers of size n. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{random_8cpp_a6edc7284e92eacca8848e2e85ac249ff}{perturb\+Randomly}} (int n, int \texorpdfstring{$\ast$}{*}arr)
+\begin{DoxyCompactList}\small\item\em Perturbs an array of numbers of size n. \end{DoxyCompactList}\item 
 pair$<$ int, int $>$ \mbox{\hyperlink{random_8cpp_a26a2df8b0c7101c947e8fa828b54eabc}{get\+Random\+Pair}} (int n)
 \begin{DoxyCompactList}\small\item\em Generates a random pair of integers from 0 to n. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -60,4 +62,27 @@ An {\ttfamily std\+::pair\texorpdfstring{$<$}{<}int, int\texorpdfstring{$>$}{>}}
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
 The resulting numbers will never be equal to one another, so the result is a pair of distinct integers. 
+\end{DoxyNote}
+\Hypertarget{random_8cpp_a6edc7284e92eacca8848e2e85ac249ff}\index{random.cpp@{random.cpp}!perturbRandomly@{perturbRandomly}}
+\index{perturbRandomly@{perturbRandomly}!random.cpp@{random.cpp}}
+\doxysubsubsection{\texorpdfstring{perturbRandomly()}{perturbRandomly()}}
+{\footnotesize\ttfamily \label{random_8cpp_a6edc7284e92eacca8848e2e85ac249ff} 
+int \texorpdfstring{$\ast$}{*} perturb\+Randomly (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{arr}{}\end{DoxyParamCaption})}
+
+
+
+Perturbs an array of numbers of size n. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The size of the input array. \\
+\hline
+{\em arr} & Input array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the resulting, perturbed array. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The caller is responsible for deleting the allocated array after it is no longer needed. 
 \end{DoxyNote}

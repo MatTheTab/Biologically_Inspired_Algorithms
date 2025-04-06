@@ -1,9 +1,12 @@
 \doxysection{solution.\+cpp File Reference}
 \hypertarget{solution_8cpp}{}\label{solution_8cpp}\index{solution.cpp@{solution.cpp}}
 {\ttfamily \#include "{}solution.\+h"{}}\newline
-{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include "{}random.\+h"{}}\newline
 {\ttfamily \#include $<$cstdlib$>$}\newline
 {\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
 Include dependency graph for solution.\+cpp\+:
 % FIG 0
 \doxysubsubsection*{Functions}
@@ -12,7 +15,9 @@ Include dependency graph for solution.\+cpp\+:
 int \mbox{\hyperlink{solution_8cpp_accfc1c59c8a91df2e59cd8f603654934}{calculate\+Score}} (int size, int \texorpdfstring{$\ast$}{*}permutation, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB)
 \begin{DoxyCompactList}\small\item\em Calculates score for the QAP problem. \end{DoxyCompactList}\item 
 int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{solution_8cpp_a758e19b769b197cd3fb0383f88d22fde}{heuristic\+Solve}} (int size, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}solution)
-\begin{DoxyCompactList}\small\item\em Solves the QAP problem with a simple heuristics. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Solves the QAP problem with a simple heuristic. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{solution_8cpp_adc88ea204c47834c6248d6d0c5adb1a8}{heuristic\+Solve\+Non\+Deterministic}} (int size, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}solution)
+\begin{DoxyCompactList}\small\item\em Solves the QAP problem with a simple non-\/deterministic heuristic. \end{DoxyCompactList}\item 
 int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{solution_8cpp_a1af47c15cba39442584acf31a95720be}{anti\+Heuristic\+Solve}} (int size, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}solution)
 \begin{DoxyCompactList}\small\item\em Solves the QAP problem with a simple anti-\/heuristics (tries to find a very poor solution quickly). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{solution_8cpp_a9a98833e9773a9874e489dd76c8f7443}{get2\+Neighborhood\+Moves}} (std\+::pair$<$ int, int $>$ \texorpdfstring{$\ast$}{*}pairs, int n)
@@ -21,10 +26,16 @@ void \mbox{\hyperlink{solution_8cpp_a308b4e0b974d56b5a480cdc116df8aa1}{perform\+
 \begin{DoxyCompactList}\small\item\em Performs a move exchanging two elements by index. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{solution_8cpp_a3b074e44762d4d4947d406151eedbc04}{calculate\+Delta}} (int size, int score, int \texorpdfstring{$\ast$}{*}permutation, std\+::pair$<$ int, int $>$ move, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB)
 \begin{DoxyCompactList}\small\item\em Calculates the change in the QAP score. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{solution_8cpp_a79b7e4b3839070f0bdfcc5e544fa9c84}{greedy\+Local\+Search\+Solve}} (int size, int \texorpdfstring{$\ast$}{*}permutation, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}current\+Score, int \texorpdfstring{$\ast$}{*}num\+Evaluations, int \texorpdfstring{$\ast$}{*}num\+Performed\+Moves)
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{solution_8cpp_a0911fa015409e7b7d64e6f8de118b14e}{greedy\+Local\+Search\+Solve}} (int size, int \texorpdfstring{$\ast$}{*}permutation, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}current\+Score, int \texorpdfstring{$\ast$}{*}num\+Evaluations, int \texorpdfstring{$\ast$}{*}num\+Performed\+Moves)
 \begin{DoxyCompactList}\small\item\em Solves a QAP instance with greedy local search. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{solution_8cpp_af280e161ed4d1f70cd903bd297d76818}{steepest\+Local\+Search\+Solve}} (int size, int \texorpdfstring{$\ast$}{*}permutation, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}current\+Score, int \texorpdfstring{$\ast$}{*}num\+Evaluations, int \texorpdfstring{$\ast$}{*}num\+Performed\+Moves)
-\begin{DoxyCompactList}\small\item\em Solves a QAP instance with steepest local search. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{solution_8cpp_acf7c83d146368f9f3c805e4229515257}{iterative\+Improvement\+Fast}} (int size, int \texorpdfstring{$\ast$}{*}permutation, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}current\+Score, int \texorpdfstring{$\ast$}{*}num\+Evaluations, int \texorpdfstring{$\ast$}{*}num\+Performed\+Moves)
+\begin{DoxyCompactList}\small\item\em Solves a QAP instance with the quick iterative improvement method. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{solution_8cpp_a2bd1525fa16a826e26b9060a6a86f04d}{steepest\+Local\+Search\+Solve}} (int size, int \texorpdfstring{$\ast$}{*}permutation, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}current\+Score, int \texorpdfstring{$\ast$}{*}num\+Evaluations, int \texorpdfstring{$\ast$}{*}num\+Performed\+Moves)
+\begin{DoxyCompactList}\small\item\em Solves a QAP instance with steepest local search. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{solution_8cpp_a67362304a963aef3f8e57bf140c522a0}{random\+Walk}} (int size, int \texorpdfstring{$\ast$}{*}solution, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}best\+Score, int duration\+Nano, int \texorpdfstring{$\ast$}{*}num\+Evaluations, int \texorpdfstring{$\ast$}{*}num\+Best\+Solution\+Updates)
+\begin{DoxyCompactList}\small\item\em Solves a QAP instance with random walk. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{solution_8cpp_ab743105f5ebfc32db4b5f9ada7daa8c6}{random\+Search}} (int size, int \texorpdfstring{$\ast$}{*}solution, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixA, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrixB, int \texorpdfstring{$\ast$}{*}best\+Score, int duration\+Nano, int \texorpdfstring{$\ast$}{*}num\+Evaluations, int \texorpdfstring{$\ast$}{*}num\+Best\+Solution\+Updates)
+\begin{DoxyCompactList}\small\item\em Solves a QAP instance with random search. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -37,6 +48,20 @@ int \texorpdfstring{$\ast$}{*} anti\+Heuristic\+Solve (\begin{DoxyParamCaption}\
 
 
 Solves the QAP problem with a simple anti-\/heuristics (tries to find a very poor solution quickly). 
+
+The antiheuristic works as follows\+:
+\begin{DoxyEnumerate}
+\item Compute the row sums for both matrices\+:
+\begin{DoxyItemize}
+\item {\ttfamily matrixA} (flow matrix)\+: Represents the interaction intensity between facilities.
+\item {\ttfamily matrixB} (distance matrix)\+: Represents the physical distances between locations.
+\end{DoxyItemize}
+\item Rank the facilities based on descending order of interaction intensity (higher flow first).
+\item Rank the locations based on descending order of distance sum (farther locations first).
+\item Assign the facility with the highest flow sum to the location with the highest distance sum, the second-\/highest flow facility to the second-\/farthest distance location, and so on.
+\end{DoxyEnumerate}
+
+This method aims to decrease the risk of multiplying high values in matrix A and matrix B by one another, achieving relatively poor solution quickly.
 
 
 \begin{DoxyParams}{Parameters}
@@ -106,15 +131,25 @@ A score representing the final solution.
 {\footnotesize\ttfamily \label{solution_8cpp_a9a98833e9773a9874e489dd76c8f7443} 
 void get2\+Neighborhood\+Moves (\begin{DoxyParamCaption}\item[{std\+::pair$<$ int, int $>$ \texorpdfstring{$\ast$}{*}}]{pairs}{, }\item[{int}]{n}{}\end{DoxyParamCaption})}
 
-\Hypertarget{solution_8cpp_a79b7e4b3839070f0bdfcc5e544fa9c84}\index{solution.cpp@{solution.cpp}!greedyLocalSearchSolve@{greedyLocalSearchSolve}}
+\Hypertarget{solution_8cpp_a0911fa015409e7b7d64e6f8de118b14e}\index{solution.cpp@{solution.cpp}!greedyLocalSearchSolve@{greedyLocalSearchSolve}}
 \index{greedyLocalSearchSolve@{greedyLocalSearchSolve}!solution.cpp@{solution.cpp}}
 \doxysubsubsection{\texorpdfstring{greedyLocalSearchSolve()}{greedyLocalSearchSolve()}}
-{\footnotesize\ttfamily \label{solution_8cpp_a79b7e4b3839070f0bdfcc5e544fa9c84} 
-void greedy\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{permutation}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Evaluations}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Moves}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{solution_8cpp_a0911fa015409e7b7d64e6f8de118b14e} 
+int \texorpdfstring{$\ast$}{*} greedy\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{permutation}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Evaluations}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Performed\+Moves}{}\end{DoxyParamCaption})}
 
 
 
 Solves a QAP instance with greedy local search. 
+
+The function follows these steps\+:
+\begin{DoxyEnumerate}
+\item Generate all possible 2-\/opt moves (swaps of two positions).
+\item Evaluate each move by computing its change on the objective function (delta score).
+\item Apply the first move that improves the objective function.
+\item Repeat until no further improving move is found.
+\end{DoxyEnumerate}
+
+This heuristic provides a quick improvement over an initial solution and guarantees the final solution terminating in the local optimum.
 
 
 \begin{DoxyParams}{Parameters}
@@ -130,9 +165,12 @@ Solves a QAP instance with greedy local search.
 \hline
 {\em num\+Evaluations} & the number of perfomed delta evaluations, at the start should be 0. \\
 \hline
-{\em num\+Moves} & the number of performed moves, at the start should be 0. \\
+{\em num\+Performed\+Moves} & the number of performed moves, at the start should be 0. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array representing the permutation (solution). 
+\end{DoxyReturn}
 \Hypertarget{solution_8cpp_a758e19b769b197cd3fb0383f88d22fde}\index{solution.cpp@{solution.cpp}!heuristicSolve@{heuristicSolve}}
 \index{heuristicSolve@{heuristicSolve}!solution.cpp@{solution.cpp}}
 \doxysubsubsection{\texorpdfstring{heuristicSolve()}{heuristicSolve()}}
@@ -141,7 +179,21 @@ int \texorpdfstring{$\ast$}{*} heuristic\+Solve (\begin{DoxyParamCaption}\item[{
 
 
 
-Solves the QAP problem with a simple heuristics. 
+Solves the QAP problem with a simple heuristic. 
+
+The heuristic works as follows\+:
+\begin{DoxyEnumerate}
+\item Compute the row sums for both matrices\+:
+\begin{DoxyItemize}
+\item {\ttfamily matrixA} (flow matrix)\+: Represents the interaction intensity between facilities.
+\item {\ttfamily matrixB} (distance matrix)\+: Represents the physical distances between locations.
+\end{DoxyItemize}
+\item Rank the facilities based on descending order of interaction intensity (higher flow first).
+\item Rank the locations based on ascending order of distance sum (closer locations first).
+\item Assign the facility with the highest flow sum to the location with the smallest distance sum, the second-\/highest flow facility to the second-\/smallest distance location, and so on.
+\end{DoxyEnumerate}
+
+This method aims to decrease the risk of multiplying high values in matrix A and matrix B by one another, achieving relatively good solution quickly.
 
 
 \begin{DoxyParams}{Parameters}
@@ -150,6 +202,85 @@ Solves the QAP problem with a simple heuristics.
 {\em matrixA} & matrix A of QAP, matrix of flows. \\
 \hline
 {\em matrixB} & matrix B of QAP, matrix of distances. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array representing the permutation (solution). 
+\end{DoxyReturn}
+\Hypertarget{solution_8cpp_adc88ea204c47834c6248d6d0c5adb1a8}\index{solution.cpp@{solution.cpp}!heuristicSolveNonDeterministic@{heuristicSolveNonDeterministic}}
+\index{heuristicSolveNonDeterministic@{heuristicSolveNonDeterministic}!solution.cpp@{solution.cpp}}
+\doxysubsubsection{\texorpdfstring{heuristicSolveNonDeterministic()}{heuristicSolveNonDeterministic()}}
+{\footnotesize\ttfamily \label{solution_8cpp_adc88ea204c47834c6248d6d0c5adb1a8} 
+int \texorpdfstring{$\ast$}{*} heuristic\+Solve\+Non\+Deterministic (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{solution}{}\end{DoxyParamCaption})}
+
+
+
+Solves the QAP problem with a simple non-\/deterministic heuristic. 
+
+The heuristic works as follows\+:
+\begin{DoxyEnumerate}
+\item Compute the row sums for both matrices\+:
+\begin{DoxyItemize}
+\item {\ttfamily matrixA} (flow matrix)\+: Represents the interaction intensity between facilities.
+\item {\ttfamily matrixB} (distance matrix)\+: Represents the physical distances between locations.
+\end{DoxyItemize}
+\item Rank the facilities based on descending order of interaction intensity (higher flow first).
+\item Rank the locations based on ascending order of distance sum (closer locations first).
+\item Assign the facility with the highest flow sum to the location with the smallest distance sum, the second-\/highest flow facility to the second-\/smallest distance location, and so on.
+\begin{DoxyItemize}
+\item if two indexes have the same value of flow in matrixA, then there exists a 50\% of switching the indexes, introducing non-\/determinism
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+This method aims to decrease the risk of multiplying high values in matrix A and matrix B by one another, achieving relatively good solution quickly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size of the permutation. \\
+\hline
+{\em matrixA} & matrix A of QAP, matrix of flows. \\
+\hline
+{\em matrixB} & matrix B of QAP, matrix of distances. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array representing the permutation (solution). 
+\end{DoxyReturn}
+\Hypertarget{solution_8cpp_acf7c83d146368f9f3c805e4229515257}\index{solution.cpp@{solution.cpp}!iterativeImprovementFast@{iterativeImprovementFast}}
+\index{iterativeImprovementFast@{iterativeImprovementFast}!solution.cpp@{solution.cpp}}
+\doxysubsubsection{\texorpdfstring{iterativeImprovementFast()}{iterativeImprovementFast()}}
+{\footnotesize\ttfamily \label{solution_8cpp_acf7c83d146368f9f3c805e4229515257} 
+int \texorpdfstring{$\ast$}{*} iterative\+Improvement\+Fast (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{permutation}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Evaluations}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Performed\+Moves}{}\end{DoxyParamCaption})}
+
+
+
+Solves a QAP instance with the quick iterative improvement method. 
+
+The function follows these steps\+:
+\begin{DoxyEnumerate}
+\item Generate \textquotesingle{}dont look bits\textquotesingle{}.
+\item Check for improving moves.
+\item Update the \textquotesingle{}dont look bits array\textquotesingle{}
+\item Repeat until no further improving move is found.
+\end{DoxyEnumerate}
+
+This heuristic provides a quick improvement over an initial solution and guarantees speed-\/up at a slight performance cost.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & integer representing the size of the instance. \\
+\hline
+{\em permutation} & an array representing the current solution. \\
+\hline
+{\em matrixA} & a 2d-\/array representing the matrix of flows. \\
+\hline
+{\em matrixB} & a 2d-\/array representing the matrix of distances. \\
+\hline
+{\em current\+Score} & the current score of the solution. \\
+\hline
+{\em num\+Evaluations} & the number of perfomed delta evaluations, at the start should be 0. \\
+\hline
+{\em num\+Performed\+Moves} & the number of performed moves, at the start should be 0. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -172,15 +303,105 @@ Performs a move exchanging two elements by index.
 {\em move} & pair representing the move by indexes. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{solution_8cpp_af280e161ed4d1f70cd903bd297d76818}\index{solution.cpp@{solution.cpp}!steepestLocalSearchSolve@{steepestLocalSearchSolve}}
+\Hypertarget{solution_8cpp_ab743105f5ebfc32db4b5f9ada7daa8c6}\index{solution.cpp@{solution.cpp}!randomSearch@{randomSearch}}
+\index{randomSearch@{randomSearch}!solution.cpp@{solution.cpp}}
+\doxysubsubsection{\texorpdfstring{randomSearch()}{randomSearch()}}
+{\footnotesize\ttfamily \label{solution_8cpp_ab743105f5ebfc32db4b5f9ada7daa8c6} 
+int \texorpdfstring{$\ast$}{*} random\+Search (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{solution}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{best\+Score}{, }\item[{int}]{duration\+Nano}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Evaluations}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Best\+Solution\+Updates}{}\end{DoxyParamCaption})}
+
+
+
+Solves a QAP instance with random search. 
+
+The function follows these steps\+:
+\begin{DoxyEnumerate}
+\item Start from a randomly perturbed solution.
+\item Iteratively produce a new, random solution
+\item If a new, better solution is found then update the best found score
+\item Continue until the time budget (duration\+Nano) is exhausted.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & integer representing the size of the instance. \\
+\hline
+{\em solution} & an array representing the current solution. \\
+\hline
+{\em matrixA} & a 2d-\/array representing the matrix of flows. \\
+\hline
+{\em matrixB} & a 2d-\/array representing the matrix of distances. \\
+\hline
+{\em best\+Score} & the score of the best solution found. \\
+\hline
+{\em duration\+Nano} & running time limit in nanoseconds. \\
+\hline
+{\em num\+Evaluations} & the number of perfomed delta evaluations, at the start should be 0. \\
+\hline
+{\em num\+Best\+Solution\+Updates} & the number of best solution updates, at the start should be 0. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+best solution found. 
+\end{DoxyReturn}
+\Hypertarget{solution_8cpp_a67362304a963aef3f8e57bf140c522a0}\index{solution.cpp@{solution.cpp}!randomWalk@{randomWalk}}
+\index{randomWalk@{randomWalk}!solution.cpp@{solution.cpp}}
+\doxysubsubsection{\texorpdfstring{randomWalk()}{randomWalk()}}
+{\footnotesize\ttfamily \label{solution_8cpp_a67362304a963aef3f8e57bf140c522a0} 
+int \texorpdfstring{$\ast$}{*} random\+Walk (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{solution}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{best\+Score}{, }\item[{int}]{duration\+Nano}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Evaluations}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Best\+Solution\+Updates}{}\end{DoxyParamCaption})}
+
+
+
+Solves a QAP instance with random walk. 
+
+The function follows these steps\+:
+\begin{DoxyEnumerate}
+\item Start from a randomly perturbed solution.
+\item Iteratively apply random moves and compute their impact.
+\item If an improving perturbation is found, update the best solution discovered by the method.
+\item Continue until the time budget (duration\+Nano) is exhausted.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & integer representing the size of the instance. \\
+\hline
+{\em solution} & an array representing the current solution. \\
+\hline
+{\em matrixA} & a 2d-\/array representing the matrix of flows. \\
+\hline
+{\em matrixB} & a 2d-\/array representing the matrix of distances. \\
+\hline
+{\em best\+Score} & the score of the best solution found. \\
+\hline
+{\em duration\+Nano} & running time limit in nanoseconds. \\
+\hline
+{\em num\+Evaluations} & the number of perfomed delta evaluations, at the start should be 0. \\
+\hline
+{\em num\+Best\+Solution\+Updates} & the number of best solution updates, at the start should be 0. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+best solution found. 
+\end{DoxyReturn}
+\Hypertarget{solution_8cpp_a2bd1525fa16a826e26b9060a6a86f04d}\index{solution.cpp@{solution.cpp}!steepestLocalSearchSolve@{steepestLocalSearchSolve}}
 \index{steepestLocalSearchSolve@{steepestLocalSearchSolve}!solution.cpp@{solution.cpp}}
 \doxysubsubsection{\texorpdfstring{steepestLocalSearchSolve()}{steepestLocalSearchSolve()}}
-{\footnotesize\ttfamily \label{solution_8cpp_af280e161ed4d1f70cd903bd297d76818} 
-void steepest\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{permutation}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Evaluations}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Performed\+Moves}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{solution_8cpp_a2bd1525fa16a826e26b9060a6a86f04d} 
+int \texorpdfstring{$\ast$}{*} steepest\+Local\+Search\+Solve (\begin{DoxyParamCaption}\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{permutation}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixA}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrixB}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Evaluations}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+Performed\+Moves}{}\end{DoxyParamCaption})}
 
 
 
 Solves a QAP instance with steepest local search. 
+
+The function follows these steps\+:
+\begin{DoxyEnumerate}
+\item Generate all possible 2-\/opt moves (swaps of two positions).
+\item Evaluate each move by computing its change on the objective function (delta score).
+\item Apply the move that improves the objective function the most.
+\item Repeat until no further improving move is found.
+\end{DoxyEnumerate}
+
+This heuristic provides a quick improvement over an initial solution and guarantees the final solution terminating in the local optimum.
 
 
 \begin{DoxyParams}{Parameters}
@@ -196,6 +417,9 @@ Solves a QAP instance with steepest local search.
 \hline
 {\em num\+Evaluations} & the number of perfomed delta evaluations, at the start should be 0. \\
 \hline
-{\em num\+Moves} & the number of performed moves, at the start should be 0. \\
+{\em num\+Performed\+Moves} & the number of performed moves, at the start should be 0. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array representing the permutation (solution). 
+\end{DoxyReturn}

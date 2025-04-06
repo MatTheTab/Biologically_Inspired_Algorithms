@@ -88,7 +88,27 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
-<p>Repository for biologically inspired algorithms classes. </p>
+<p>Repository for biologically inspired algorithms classes.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+How to run the experiments:</h1>
+<ol type="1">
+<li>Build the main program <br  />
+ <code>g++ -o bio_alg <a class="el" href="main_8cpp.html">main.cpp</a> <a class="el" href="random_8cpp.html">random.cpp</a> <a class="el" href="Problem_8cpp.html">Problem.cpp</a> <a class="el" href="solution_8cpp.html">solution.cpp</a> <a class="el" href="utils_8cpp.html">utils.cpp</a> -std=c++17</code></li>
+<li>Create a batch script for running the runtime evaluations e.g.:<br  />
+ <code>python .\<a class="el" href="create__batch_8py.html">create_batch.py</a> data/qap/ results/runtime_results.txt p.txt batch_files/run_runtime.bat --mode runtime</code></li>
+<li>Run the runtime evaluation batch script e.g.:<br  />
+ <code>.\batch_files/run_runtime.bat</code></li>
+<li>Copy the mean runtime of greedyLS algorithm for each instance into <a class="el" href="create__batch_8py.html">create_batch.py</a></li>
+<li>Create a batch script for running the performance evaluations e.g.:<br  />
+ <code>python .\<a class="el" href="create__batch_8py.html">create_batch.py</a> data/qap/ r.txt results/performance_results.txt batch_files/run_performance.bat --mode performance</code></li>
+<li>Run the performance evaluation batch script e.g.:<br  />
+ <code>.\batch_files/run_performance.bat</code></li>
+<li>Create batch script for running the MSLS number of restarts evaluations e.g.:<br  />
+ <code>python .\<a class="el" href="create__batch_8py.html">create_batch.py</a> data/qap/ r.txt results/MSLS_restarts_results.txt batch_files/run_msls_performance.bat --mode performance_restarts</code></li>
+<li>Run the MSLS number of restarts evaluations batch script e.g.:<br  />
+ <code>.\batch_files/run_msls_performance.bat</code></li>
+<li>Visualize results with LS_Results.ipynb (remember to set appropriate paths to result files) </li>
+</ol>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

@@ -86,7 +86,7 @@ $(function(){ initResizable(false); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classProblem-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Problem Class Reference</div></div>
 </div><!--header-->
@@ -99,24 +99,45 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac381c3c4c6467952fb47852e219c7c6b" id="r_ac381c3c4c6467952fb47852e219c7c6b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac381c3c4c6467952fb47852e219c7c6b">Problem</a> (const std::string &amp;instance_dir, const std::string &amp;instance_name)</td></tr>
-<tr class="memdesc:ac381c3c4c6467952fb47852e219c7c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="classProblem.html" title="Class for storing and loading problem instances.">Problem</a>, loads data from a .dat file.  <br /></td></tr>
-<tr class="separator:ac381c3c4c6467952fb47852e219c7c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a651d2b05d69144acd94346fd8e7290d6" id="r_a651d2b05d69144acd94346fd8e7290d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a651d2b05d69144acd94346fd8e7290d6">Problem</a> (const std::string &amp;instanceDir, const std::string &amp;instanceName)</td></tr>
+<tr class="memdesc:a651d2b05d69144acd94346fd8e7290d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="classProblem.html" title="Class for storing and loading problem instances.">Problem</a>, loads data from a .dat file.  <br /></td></tr>
+<tr class="separator:a651d2b05d69144acd94346fd8e7290d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a839a525ed01c34d57fff42583003d3e7" id="r_a839a525ed01c34d57fff42583003d3e7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a839a525ed01c34d57fff42583003d3e7">~Problem</a> ()</td></tr>
 <tr class="memdesc:a839a525ed01c34d57fff42583003d3e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor to clean up dynamically allocated memory.  <br /></td></tr>
 <tr class="separator:a839a525ed01c34d57fff42583003d3e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ea762c4386c639eff15a13c7d705d13" id="r_a4ea762c4386c639eff15a13c7d705d13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ea762c4386c639eff15a13c7d705d13">loadInstance</a> (const std::string &amp;instance_dir, const std::string &amp;instance_name)</td></tr>
-<tr class="memdesc:a4ea762c4386c639eff15a13c7d705d13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads instance from a .dat and .sln file.  <br /></td></tr>
-<tr class="separator:a4ea762c4386c639eff15a13c7d705d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2d163446ec86c2c559a5b7f4ac22c00" id="r_ae2d163446ec86c2c559a5b7f4ac22c00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2d163446ec86c2c559a5b7f4ac22c00">loadInstance</a> (const std::string &amp;instanceDir, const std::string &amp;instanceName)</td></tr>
+<tr class="memdesc:ae2d163446ec86c2c559a5b7f4ac22c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads instance from a .dat and .sln file.  <br /></td></tr>
+<tr class="separator:ae2d163446ec86c2c559a5b7f4ac22c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e3e66227f7a78ffe5ee5527194797d2" id="r_a7e3e66227f7a78ffe5ee5527194797d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e3e66227f7a78ffe5ee5527194797d2">displayInstance</a> () const</td></tr>
 <tr class="memdesc:a7e3e66227f7a78ffe5ee5527194797d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the matrices.  <br /></td></tr>
 <tr class="separator:a7e3e66227f7a78ffe5ee5527194797d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed70f71fa94327449c6ed0e51f61b659" id="r_aed70f71fa94327449c6ed0e51f61b659"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed70f71fa94327449c6ed0e51f61b659">displayOptimalSolution</a> () const</td></tr>
 <tr class="memdesc:aed70f71fa94327449c6ed0e51f61b659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the optimal solution.  <br /></td></tr>
 <tr class="separator:aed70f71fa94327449c6ed0e51f61b659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3eb24b7fa0197009ac2688ee5ad79ac" id="r_ac3eb24b7fa0197009ac2688ee5ad79ac"><td class="memItemLeft" align="right" valign="top">int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3eb24b7fa0197009ac2688ee5ad79ac">getMatrixA</a> ()</td></tr>
+<tr class="memdesc:ac3eb24b7fa0197009ac2688ee5ad79ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves matrixA of the problem.  <br /></td></tr>
+<tr class="separator:ac3eb24b7fa0197009ac2688ee5ad79ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a624b6501bc45e5eb64092cbab9bce9ac" id="r_a624b6501bc45e5eb64092cbab9bce9ac"><td class="memItemLeft" align="right" valign="top">int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a624b6501bc45e5eb64092cbab9bce9ac">getMatrixB</a> ()</td></tr>
+<tr class="memdesc:a624b6501bc45e5eb64092cbab9bce9ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves matrixB of the problem.  <br /></td></tr>
+<tr class="separator:a624b6501bc45e5eb64092cbab9bce9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a550738385a8c278d54a9207ba4ac34d5" id="r_a550738385a8c278d54a9207ba4ac34d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a550738385a8c278d54a9207ba4ac34d5">getSize</a> ()</td></tr>
+<tr class="memdesc:a550738385a8c278d54a9207ba4ac34d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves size of the problem.  <br /></td></tr>
+<tr class="separator:a550738385a8c278d54a9207ba4ac34d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10b093efe43d24c5c0972b9da8083cca" id="r_a10b093efe43d24c5c0972b9da8083cca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10b093efe43d24c5c0972b9da8083cca">getOptScore</a> ()</td></tr>
+<tr class="memdesc:a10b093efe43d24c5c0972b9da8083cca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves optimal score of the problem.  <br /></td></tr>
+<tr class="separator:a10b093efe43d24c5c0972b9da8083cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed118c2ebbdaef7ec11a605a9fd84cfa" id="r_aed118c2ebbdaef7ec11a605a9fd84cfa"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed118c2ebbdaef7ec11a605a9fd84cfa">getOptSolution</a> ()</td></tr>
+<tr class="memdesc:aed118c2ebbdaef7ec11a605a9fd84cfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the optimal solution of the problem.  <br /></td></tr>
+<tr class="separator:aed118c2ebbdaef7ec11a605a9fd84cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ccd07b973a64d5cafafa34758876259" id="r_a0ccd07b973a64d5cafafa34758876259"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ccd07b973a64d5cafafa34758876259">getInstance</a> ()</td></tr>
+<tr class="memdesc:a0ccd07b973a64d5cafafa34758876259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the problem instance.  <br /></td></tr>
+<tr class="separator:a0ccd07b973a64d5cafafa34758876259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af215255030721b392465ef71dc9cf97f" id="r_af215255030721b392465ef71dc9cf97f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af215255030721b392465ef71dc9cf97f">instance</a></td></tr>
+<tr class="memdesc:af215255030721b392465ef71dc9cf97f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance name.  <br /></td></tr>
+<tr class="separator:af215255030721b392465ef71dc9cf97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35685319c66e423658fc32ee9eefcaa2" id="r_a35685319c66e423658fc32ee9eefcaa2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35685319c66e423658fc32ee9eefcaa2">size</a></td></tr>
 <tr class="memdesc:a35685319c66e423658fc32ee9eefcaa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance size.  <br /></td></tr>
 <tr class="separator:a35685319c66e423658fc32ee9eefcaa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,18 +147,18 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a814dfb2def9c4afb803ee30e63166c2b" id="r_a814dfb2def9c4afb803ee30e63166c2b"><td class="memItemLeft" align="right" valign="top">int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a814dfb2def9c4afb803ee30e63166c2b">matrixB</a></td></tr>
 <tr class="memdesc:a814dfb2def9c4afb803ee30e63166c2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix B.  <br /></td></tr>
 <tr class="separator:a814dfb2def9c4afb803ee30e63166c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af31d3e887e8880d41b18ea3af795ace1" id="r_af31d3e887e8880d41b18ea3af795ace1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af31d3e887e8880d41b18ea3af795ace1">opt_score</a></td></tr>
-<tr class="memdesc:af31d3e887e8880d41b18ea3af795ace1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimal solution score.  <br /></td></tr>
-<tr class="separator:af31d3e887e8880d41b18ea3af795ace1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada4cc39e46aad4884b0f310b5a189619" id="r_ada4cc39e46aad4884b0f310b5a189619"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada4cc39e46aad4884b0f310b5a189619">opt_solution</a></td></tr>
-<tr class="memdesc:ada4cc39e46aad4884b0f310b5a189619"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimal solution vector.  <br /></td></tr>
-<tr class="separator:ada4cc39e46aad4884b0f310b5a189619"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd21b33883d238a9dbd3581c9875d2f8" id="r_afd21b33883d238a9dbd3581c9875d2f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd21b33883d238a9dbd3581c9875d2f8">optScore</a></td></tr>
+<tr class="memdesc:afd21b33883d238a9dbd3581c9875d2f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimal solution score.  <br /></td></tr>
+<tr class="separator:afd21b33883d238a9dbd3581c9875d2f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adce4c8ab03087e1356ea3d6f288308b0" id="r_adce4c8ab03087e1356ea3d6f288308b0"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adce4c8ab03087e1356ea3d6f288308b0">optSolution</a></td></tr>
+<tr class="memdesc:adce4c8ab03087e1356ea3d6f288308b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimal solution vector.  <br /></td></tr>
+<tr class="separator:adce4c8ab03087e1356ea3d6f288308b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for storing and loading problem instances. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac381c3c4c6467952fb47852e219c7c6b" name="ac381c3c4c6467952fb47852e219c7c6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac381c3c4c6467952fb47852e219c7c6b">&#9670;&#160;</a></span>Problem()</h2>
+<a id="a651d2b05d69144acd94346fd8e7290d6" name="a651d2b05d69144acd94346fd8e7290d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a651d2b05d69144acd94346fd8e7290d6">&#9670;&#160;</a></span>Problem()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -145,12 +166,12 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">Problem::Problem </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>instance_dir</em></span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>instanceDir</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>instance_name</em></span>&#160;)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>instanceName</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -158,8 +179,8 @@ Public Attributes</h2></td></tr>
 <p>Constructor for <a class="el" href="classProblem.html" title="Class for storing and loading problem instances.">Problem</a>, loads data from a .dat file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">instance_dir</td><td>Path to instance directory. </td></tr>
-    <tr><td class="paramname">instance_name</td><td>Instance name. </td></tr>
+    <tr><td class="paramname">instanceDir</td><td>Path to instance directory. </td></tr>
+    <tr><td class="paramname">instanceName</td><td>Instance name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -224,8 +245,128 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a4ea762c4386c639eff15a13c7d705d13" name="a4ea762c4386c639eff15a13c7d705d13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ea762c4386c639eff15a13c7d705d13">&#9670;&#160;</a></span>loadInstance()</h2>
+<a id="a0ccd07b973a64d5cafafa34758876259" name="a0ccd07b973a64d5cafafa34758876259"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ccd07b973a64d5cafafa34758876259">&#9670;&#160;</a></span>getInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Problem::getInstance </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves the problem instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>instance </dd></dl>
+
+</div>
+</div>
+<a id="ac3eb24b7fa0197009ac2688ee5ad79ac" name="ac3eb24b7fa0197009ac2688ee5ad79ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3eb24b7fa0197009ac2688ee5ad79ac">&#9670;&#160;</a></span>getMatrixA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ** Problem::getMatrixA </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves matrixA of the problem. </p>
+<dl class="section return"><dt>Returns</dt><dd>matrixA </dd></dl>
+
+</div>
+</div>
+<a id="a624b6501bc45e5eb64092cbab9bce9ac" name="a624b6501bc45e5eb64092cbab9bce9ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a624b6501bc45e5eb64092cbab9bce9ac">&#9670;&#160;</a></span>getMatrixB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ** Problem::getMatrixB </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves matrixB of the problem. </p>
+<dl class="section return"><dt>Returns</dt><dd>matrixB </dd></dl>
+
+</div>
+</div>
+<a id="a10b093efe43d24c5c0972b9da8083cca" name="a10b093efe43d24c5c0972b9da8083cca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10b093efe43d24c5c0972b9da8083cca">&#9670;&#160;</a></span>getOptScore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Problem::getOptScore </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves optimal score of the problem. </p>
+<dl class="section return"><dt>Returns</dt><dd>optScore </dd></dl>
+
+</div>
+</div>
+<a id="aed118c2ebbdaef7ec11a605a9fd84cfa" name="aed118c2ebbdaef7ec11a605a9fd84cfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed118c2ebbdaef7ec11a605a9fd84cfa">&#9670;&#160;</a></span>getOptSolution()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int * Problem::getOptSolution </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves the optimal solution of the problem. </p>
+<dl class="section return"><dt>Returns</dt><dd>optSolution </dd></dl>
+
+</div>
+</div>
+<a id="a550738385a8c278d54a9207ba4ac34d5" name="a550738385a8c278d54a9207ba4ac34d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a550738385a8c278d54a9207ba4ac34d5">&#9670;&#160;</a></span>getSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Problem::getSize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves size of the problem. </p>
+<dl class="section return"><dt>Returns</dt><dd>size </dd></dl>
+
+</div>
+</div>
+<a id="ae2d163446ec86c2c559a5b7f4ac22c00" name="ae2d163446ec86c2c559a5b7f4ac22c00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2d163446ec86c2c559a5b7f4ac22c00">&#9670;&#160;</a></span>loadInstance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -233,12 +374,12 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Problem::loadInstance </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>instance_dir</em></span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>instanceDir</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>instance_name</em></span>&#160;)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>instanceName</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -246,8 +387,8 @@ Public Attributes</h2></td></tr>
 <p>Loads instance from a .dat and .sln file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">instance_dir</td><td>Path to instance directory. </td></tr>
-    <tr><td class="paramname">instance_name</td><td>Instance name. </td></tr>
+    <tr><td class="paramname">instanceDir</td><td>Path to instance directory. </td></tr>
+    <tr><td class="paramname">instanceName</td><td>Instance name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -255,16 +396,48 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="af215255030721b392465ef71dc9cf97f" name="af215255030721b392465ef71dc9cf97f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af215255030721b392465ef71dc9cf97f">&#9670;&#160;</a></span>instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Problem::instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Instance name. </p>
+
+</div>
+</div>
 <a id="a5402633b1b02665afb922a4a1666ef4c" name="a5402633b1b02665afb922a4a1666ef4c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5402633b1b02665afb922a4a1666ef4c">&#9670;&#160;</a></span>matrixA</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int** Problem::matrixA</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Matrix A. </p>
@@ -276,43 +449,67 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int** Problem::matrixB</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Matrix B. </p>
 
 </div>
 </div>
-<a id="af31d3e887e8880d41b18ea3af795ace1" name="af31d3e887e8880d41b18ea3af795ace1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af31d3e887e8880d41b18ea3af795ace1">&#9670;&#160;</a></span>opt_score</h2>
+<a id="afd21b33883d238a9dbd3581c9875d2f8" name="afd21b33883d238a9dbd3581c9875d2f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd21b33883d238a9dbd3581c9875d2f8">&#9670;&#160;</a></span>optScore</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Problem::opt_score</td>
+          <td class="memname">int Problem::optScore</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Optimal solution score. </p>
 
 </div>
 </div>
-<a id="ada4cc39e46aad4884b0f310b5a189619" name="ada4cc39e46aad4884b0f310b5a189619"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada4cc39e46aad4884b0f310b5a189619">&#9670;&#160;</a></span>opt_solution</h2>
+<a id="adce4c8ab03087e1356ea3d6f288308b0" name="adce4c8ab03087e1356ea3d6f288308b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adce4c8ab03087e1356ea3d6f288308b0">&#9670;&#160;</a></span>optSolution</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int* Problem::opt_solution</td>
+          <td class="memname">int* Problem::optSolution</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Optimal solution vector. </p>
@@ -324,11 +521,19 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int Problem::size</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Instance size. </p>

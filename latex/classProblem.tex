@@ -12,28 +12,42 @@ Class for storing and loading problem instances.
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classProblem_ac381c3c4c6467952fb47852e219c7c6b}{Problem}} (const std\+::string \&instance\+\_\+dir, const std\+::string \&instance\+\_\+name)
+\mbox{\hyperlink{classProblem_a651d2b05d69144acd94346fd8e7290d6}{Problem}} (const std\+::string \&instance\+Dir, const std\+::string \&instance\+Name)
 \begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classProblem}{Problem}, loads data from a .dat file. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classProblem_a839a525ed01c34d57fff42583003d3e7}{\texorpdfstring{$\sim$}{\string~}\+Problem}} ()
 \begin{DoxyCompactList}\small\item\em Destructor to clean up dynamically allocated memory. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classProblem_a4ea762c4386c639eff15a13c7d705d13}{load\+Instance}} (const std\+::string \&instance\+\_\+dir, const std\+::string \&instance\+\_\+name)
+void \mbox{\hyperlink{classProblem_ae2d163446ec86c2c559a5b7f4ac22c00}{load\+Instance}} (const std\+::string \&instance\+Dir, const std\+::string \&instance\+Name)
 \begin{DoxyCompactList}\small\item\em Loads instance from a .dat and .sln file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classProblem_a7e3e66227f7a78ffe5ee5527194797d2}{display\+Instance}} () const
 \begin{DoxyCompactList}\small\item\em Displays the matrices. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classProblem_aed70f71fa94327449c6ed0e51f61b659}{display\+Optimal\+Solution}} () const
-\begin{DoxyCompactList}\small\item\em Displays the optimal solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactList}\small\item\em Displays the optimal solution. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classProblem_ac3eb24b7fa0197009ac2688ee5ad79ac}{get\+MatrixA}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves matrixA of the problem. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classProblem_a624b6501bc45e5eb64092cbab9bce9ac}{get\+MatrixB}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves matrixB of the problem. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classProblem_a550738385a8c278d54a9207ba4ac34d5}{get\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves size of the problem. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classProblem_a10b093efe43d24c5c0972b9da8083cca}{get\+Opt\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves optimal score of the problem. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classProblem_aed118c2ebbdaef7ec11a605a9fd84cfa}{get\+Opt\+Solution}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the optimal solution of the problem. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classProblem_a0ccd07b973a64d5cafafa34758876259}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the problem instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
+std\+::string \mbox{\hyperlink{classProblem_af215255030721b392465ef71dc9cf97f}{instance}}
+\begin{DoxyCompactList}\small\item\em Instance name. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classProblem_a35685319c66e423658fc32ee9eefcaa2}{size}}
 \begin{DoxyCompactList}\small\item\em Instance size. \end{DoxyCompactList}\item 
 int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classProblem_a5402633b1b02665afb922a4a1666ef4c}{matrixA}}
 \begin{DoxyCompactList}\small\item\em Matrix A. \end{DoxyCompactList}\item 
 int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classProblem_a814dfb2def9c4afb803ee30e63166c2b}{matrixB}}
 \begin{DoxyCompactList}\small\item\em Matrix B. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{classProblem_af31d3e887e8880d41b18ea3af795ace1}{opt\+\_\+score}}
+int \mbox{\hyperlink{classProblem_afd21b33883d238a9dbd3581c9875d2f8}{opt\+Score}}
 \begin{DoxyCompactList}\small\item\em Optimal solution score. \end{DoxyCompactList}\item 
-int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classProblem_ada4cc39e46aad4884b0f310b5a189619}{opt\+\_\+solution}}
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classProblem_adce4c8ab03087e1356ea3d6f288308b0}{opt\+Solution}}
 \begin{DoxyCompactList}\small\item\em Optimal solution vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -41,11 +55,11 @@ int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classProblem_ada4cc39e46aad4884b
 Class for storing and loading problem instances. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classProblem_ac381c3c4c6467952fb47852e219c7c6b}\index{Problem@{Problem}!Problem@{Problem}}
+\Hypertarget{classProblem_a651d2b05d69144acd94346fd8e7290d6}\index{Problem@{Problem}!Problem@{Problem}}
 \index{Problem@{Problem}!Problem@{Problem}}
 \doxysubsubsection{\texorpdfstring{Problem()}{Problem()}}
-{\footnotesize\ttfamily \label{classProblem_ac381c3c4c6467952fb47852e219c7c6b} 
-Problem\+::\+Problem (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instance\+\_\+dir}{, }\item[{const std\+::string \&}]{instance\+\_\+name}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classProblem_a651d2b05d69144acd94346fd8e7290d6} 
+Problem\+::\+Problem (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instance\+Dir}{, }\item[{const std\+::string \&}]{instance\+Name}{}\end{DoxyParamCaption})}
 
 
 
@@ -53,9 +67,9 @@ Constructor for \doxylink{classProblem}{Problem}, loads data from a .dat file.
 
 
 \begin{DoxyParams}{Parameters}
-{\em instance\+\_\+dir} & Path to instance directory. \\
+{\em instance\+Dir} & Path to instance directory. \\
 \hline
-{\em instance\+\_\+name} & Instance name. \\
+{\em instance\+Name} & Instance name. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classProblem_a839a525ed01c34d57fff42583003d3e7}\index{Problem@{Problem}!````~Problem@{\texorpdfstring{$\sim$}{\string~}Problem}}
@@ -91,11 +105,89 @@ void Problem\+::display\+Optimal\+Solution (\begin{DoxyParamCaption}{}{}\end{Dox
 
 Displays the optimal solution. 
 
-\Hypertarget{classProblem_a4ea762c4386c639eff15a13c7d705d13}\index{Problem@{Problem}!loadInstance@{loadInstance}}
+\Hypertarget{classProblem_a0ccd07b973a64d5cafafa34758876259}\index{Problem@{Problem}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{classProblem_a0ccd07b973a64d5cafafa34758876259} 
+std\+::string Problem\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the problem instance. 
+
+\begin{DoxyReturn}{Returns}
+instance 
+\end{DoxyReturn}
+\Hypertarget{classProblem_ac3eb24b7fa0197009ac2688ee5ad79ac}\index{Problem@{Problem}!getMatrixA@{getMatrixA}}
+\index{getMatrixA@{getMatrixA}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{getMatrixA()}{getMatrixA()}}
+{\footnotesize\ttfamily \label{classProblem_ac3eb24b7fa0197009ac2688ee5ad79ac} 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Problem\+::get\+MatrixA (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves matrixA of the problem. 
+
+\begin{DoxyReturn}{Returns}
+matrixA 
+\end{DoxyReturn}
+\Hypertarget{classProblem_a624b6501bc45e5eb64092cbab9bce9ac}\index{Problem@{Problem}!getMatrixB@{getMatrixB}}
+\index{getMatrixB@{getMatrixB}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{getMatrixB()}{getMatrixB()}}
+{\footnotesize\ttfamily \label{classProblem_a624b6501bc45e5eb64092cbab9bce9ac} 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Problem\+::get\+MatrixB (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves matrixB of the problem. 
+
+\begin{DoxyReturn}{Returns}
+matrixB 
+\end{DoxyReturn}
+\Hypertarget{classProblem_a10b093efe43d24c5c0972b9da8083cca}\index{Problem@{Problem}!getOptScore@{getOptScore}}
+\index{getOptScore@{getOptScore}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{getOptScore()}{getOptScore()}}
+{\footnotesize\ttfamily \label{classProblem_a10b093efe43d24c5c0972b9da8083cca} 
+int Problem\+::get\+Opt\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves optimal score of the problem. 
+
+\begin{DoxyReturn}{Returns}
+opt\+Score 
+\end{DoxyReturn}
+\Hypertarget{classProblem_aed118c2ebbdaef7ec11a605a9fd84cfa}\index{Problem@{Problem}!getOptSolution@{getOptSolution}}
+\index{getOptSolution@{getOptSolution}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{getOptSolution()}{getOptSolution()}}
+{\footnotesize\ttfamily \label{classProblem_aed118c2ebbdaef7ec11a605a9fd84cfa} 
+int \texorpdfstring{$\ast$}{*} Problem\+::get\+Opt\+Solution (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the optimal solution of the problem. 
+
+\begin{DoxyReturn}{Returns}
+opt\+Solution 
+\end{DoxyReturn}
+\Hypertarget{classProblem_a550738385a8c278d54a9207ba4ac34d5}\index{Problem@{Problem}!getSize@{getSize}}
+\index{getSize@{getSize}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \label{classProblem_a550738385a8c278d54a9207ba4ac34d5} 
+int Problem\+::get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves size of the problem. 
+
+\begin{DoxyReturn}{Returns}
+size 
+\end{DoxyReturn}
+\Hypertarget{classProblem_ae2d163446ec86c2c559a5b7f4ac22c00}\index{Problem@{Problem}!loadInstance@{loadInstance}}
 \index{loadInstance@{loadInstance}!Problem@{Problem}}
 \doxysubsubsection{\texorpdfstring{loadInstance()}{loadInstance()}}
-{\footnotesize\ttfamily \label{classProblem_a4ea762c4386c639eff15a13c7d705d13} 
-void Problem\+::load\+Instance (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instance\+\_\+dir}{, }\item[{const std\+::string \&}]{instance\+\_\+name}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classProblem_ae2d163446ec86c2c559a5b7f4ac22c00} 
+void Problem\+::load\+Instance (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instance\+Dir}{, }\item[{const std\+::string \&}]{instance\+Name}{}\end{DoxyParamCaption})}
 
 
 
@@ -103,19 +195,29 @@ Loads instance from a .dat and .sln file.
 
 
 \begin{DoxyParams}{Parameters}
-{\em instance\+\_\+dir} & Path to instance directory. \\
+{\em instance\+Dir} & Path to instance directory. \\
 \hline
-{\em instance\+\_\+name} & Instance name. \\
+{\em instance\+Name} & Instance name. \\
 \hline
 \end{DoxyParams}
 
 
 \doxysubsection{Member Data Documentation}
+\Hypertarget{classProblem_af215255030721b392465ef71dc9cf97f}\index{Problem@{Problem}!instance@{instance}}
+\index{instance@{instance}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{instance}{instance}}
+{\footnotesize\ttfamily \label{classProblem_af215255030721b392465ef71dc9cf97f} 
+std\+::string Problem\+::instance\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Instance name. 
+
 \Hypertarget{classProblem_a5402633b1b02665afb922a4a1666ef4c}\index{Problem@{Problem}!matrixA@{matrixA}}
 \index{matrixA@{matrixA}!Problem@{Problem}}
 \doxysubsubsection{\texorpdfstring{matrixA}{matrixA}}
 {\footnotesize\ttfamily \label{classProblem_a5402633b1b02665afb922a4a1666ef4c} 
-int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Problem\+::matrixA}
+int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Problem\+::matrixA\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -125,27 +227,27 @@ Matrix A.
 \index{matrixB@{matrixB}!Problem@{Problem}}
 \doxysubsubsection{\texorpdfstring{matrixB}{matrixB}}
 {\footnotesize\ttfamily \label{classProblem_a814dfb2def9c4afb803ee30e63166c2b} 
-int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Problem\+::matrixB}
+int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Problem\+::matrixB\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
 Matrix B. 
 
-\Hypertarget{classProblem_af31d3e887e8880d41b18ea3af795ace1}\index{Problem@{Problem}!opt\_score@{opt\_score}}
-\index{opt\_score@{opt\_score}!Problem@{Problem}}
-\doxysubsubsection{\texorpdfstring{opt\_score}{opt\_score}}
-{\footnotesize\ttfamily \label{classProblem_af31d3e887e8880d41b18ea3af795ace1} 
-int Problem\+::opt\+\_\+score}
+\Hypertarget{classProblem_afd21b33883d238a9dbd3581c9875d2f8}\index{Problem@{Problem}!optScore@{optScore}}
+\index{optScore@{optScore}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{optScore}{optScore}}
+{\footnotesize\ttfamily \label{classProblem_afd21b33883d238a9dbd3581c9875d2f8} 
+int Problem\+::opt\+Score\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
 Optimal solution score. 
 
-\Hypertarget{classProblem_ada4cc39e46aad4884b0f310b5a189619}\index{Problem@{Problem}!opt\_solution@{opt\_solution}}
-\index{opt\_solution@{opt\_solution}!Problem@{Problem}}
-\doxysubsubsection{\texorpdfstring{opt\_solution}{opt\_solution}}
-{\footnotesize\ttfamily \label{classProblem_ada4cc39e46aad4884b0f310b5a189619} 
-int\texorpdfstring{$\ast$}{*} Problem\+::opt\+\_\+solution}
+\Hypertarget{classProblem_adce4c8ab03087e1356ea3d6f288308b0}\index{Problem@{Problem}!optSolution@{optSolution}}
+\index{optSolution@{optSolution}!Problem@{Problem}}
+\doxysubsubsection{\texorpdfstring{optSolution}{optSolution}}
+{\footnotesize\ttfamily \label{classProblem_adce4c8ab03087e1356ea3d6f288308b0} 
+int\texorpdfstring{$\ast$}{*} Problem\+::opt\+Solution\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -155,7 +257,7 @@ Optimal solution vector.
 \index{size@{size}!Problem@{Problem}}
 \doxysubsubsection{\texorpdfstring{size}{size}}
 {\footnotesize\ttfamily \label{classProblem_a35685319c66e423658fc32ee9eefcaa2} 
-int Problem\+::size}
+int Problem\+::size\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

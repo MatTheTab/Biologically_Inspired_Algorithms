@@ -16,7 +16,9 @@ int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{utils_
 \begin{DoxyCompactList}\small\item\em Creates the exact copy of a specified matrix. \end{DoxyCompactList}\item 
 int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{utils_8cpp_a37997c576871c68d528884c9e36648a5}{copy\+Array}} (int \texorpdfstring{$\ast$}{*}original, int size)
 \begin{DoxyCompactList}\small\item\em Creates the exact copy of a specified 1-\/D array. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{utils_8cpp_a2393ed90c07a022965f196c15070d4fd}{save\+Results\+To\+File}} (string filename, string algorithm\+Name, string instance, double runtime, int score, int size, int \texorpdfstring{$\ast$}{*}solution, int num\+Evaluations, int num\+Performed\+Moves, int opt\+\_\+score, int \texorpdfstring{$\ast$}{*}opt\+\_\+solution)
+void \mbox{\hyperlink{utils_8cpp_a7f1a8f717e0357c342a4ab02b1a52563}{save\+Runtime\+Results\+To\+File}} (string filename, string algorithm\+Name, string instance, double runtime)
+\begin{DoxyCompactList}\small\item\em Saves the results of an algorithm execution to a text file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8cpp_a64be9645304005a13668f727590ce921}{save\+Performance\+Results\+To\+File}} (string filename, string algorithm\+Name, string instance, int initial\+Score, int score, int size, int \texorpdfstring{$\ast$}{*}solution, int num\+Evaluations, int num\+Performed\+Moves, int num\+Best\+Solution\+Updates, int opt\+Score, int \texorpdfstring{$\ast$}{*}opt\+Solution)
 \begin{DoxyCompactList}\small\item\em Saves the results of an algorithm execution to a text file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -98,11 +100,63 @@ Safely deletes a specified matrix.
 {\em size} & The size of the matrix. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{utils_8cpp_a2393ed90c07a022965f196c15070d4fd}\index{utils.cpp@{utils.cpp}!saveResultsToFile@{saveResultsToFile}}
-\index{saveResultsToFile@{saveResultsToFile}!utils.cpp@{utils.cpp}}
-\doxysubsubsection{\texorpdfstring{saveResultsToFile()}{saveResultsToFile()}}
-{\footnotesize\ttfamily \label{utils_8cpp_a2393ed90c07a022965f196c15070d4fd} 
-void save\+Results\+To\+File (\begin{DoxyParamCaption}\item[{string}]{filename}{, }\item[{string}]{algorithm\+Name}{, }\item[{string}]{instance}{, }\item[{double}]{runtime}{, }\item[{int}]{score}{, }\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{solution}{, }\item[{int}]{num\+Evaluations}{, }\item[{int}]{num\+Performed\+Moves}{, }\item[{int}]{opt\+\_\+score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{opt\+\_\+solution}{}\end{DoxyParamCaption})}
+\Hypertarget{utils_8cpp_a64be9645304005a13668f727590ce921}\index{utils.cpp@{utils.cpp}!savePerformanceResultsToFile@{savePerformanceResultsToFile}}
+\index{savePerformanceResultsToFile@{savePerformanceResultsToFile}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{savePerformanceResultsToFile()}{savePerformanceResultsToFile()}}
+{\footnotesize\ttfamily \label{utils_8cpp_a64be9645304005a13668f727590ce921} 
+void save\+Performance\+Results\+To\+File (\begin{DoxyParamCaption}\item[{string}]{filename}{, }\item[{string}]{algorithm\+Name}{, }\item[{string}]{instance}{, }\item[{int}]{initial\+Score}{, }\item[{int}]{score}{, }\item[{int}]{size}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{solution}{, }\item[{int}]{num\+Evaluations}{, }\item[{int}]{num\+Performed\+Moves}{, }\item[{int}]{num\+Best\+Solution\+Updates}{, }\item[{int}]{opt\+Score}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{opt\+Solution}{}\end{DoxyParamCaption})}
+
+
+
+Saves the results of an algorithm execution to a text file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file where results should be saved. \\
+\hline
+{\em algorithm\+Name} & The name of the algorithm used. \\
+\hline
+{\em instance} & The instance identifier or name. \\
+\hline
+{\em initial\+Score} & The initial score used before LS algorithms. \\
+\hline
+{\em score} & The computed score/result of the algorithm. \\
+\hline
+{\em size} & The size of the solution. \\
+\hline
+{\em solution} & Pointer to an array containing the solution. \\
+\hline
+{\em num\+Evaluations} & The number of evaluations performed during execution. \\
+\hline
+{\em num\+Performed\+Moves} & The number of moves performed by the algorithm. \\
+\hline
+{\em num\+Best\+Solution\+Updates} & The number of best solution updates performed by the algorithm. \\
+\hline
+{\em opt\+Score} & The optimal score of the instance. \\
+\hline
+{\em opt\+Solution} & Pointer to an array containing the optimal solution.\\
+\hline
+\end{DoxyParams}
+The results are written in a tab-\/separated format for easy parsing. Each record is stored in a single line with the following structure\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Algorithm:\ <algorithmName>\ \ \ \ Instance:\ <instance>\ \ \ \ Initial\ Score:\ <initialScore>\ \ \ \ }
+\DoxyCodeLine{Score:\ <score>\ \ \ \ Number\ of\ Evaluations:\ <numEvaluations>\ \ \ \ }
+\DoxyCodeLine{Number\ of\ Performed\ Moves:\ <numPerformedMoves>\ \ \ \ }
+\DoxyCodeLine{Number\ of\ Best\ Solution\ Updates:\ <numBestSolutionUpdates>\ \ \ \ }
+\DoxyCodeLine{Solution:\ <solution\_0>\ <solution\_1>\ ...\ <solution\_n>\ \ \ \ }
+\DoxyCodeLine{Optimal\ Score:\ <optScore>\ \ \ \ }
+\DoxyCodeLine{Optimal\ Solution:\ <optSolution\_0>\ <optSolution\_1>\ ...\ <optSolution\_n>}
+
+\end{DoxyCode}
+
+
+The file is opened in append mode ({\ttfamily ios\+::app}), ensuring that results from multiple runs do not overwrite previous entries. If the file cannot be opened, an error message is displayed. \Hypertarget{utils_8cpp_a7f1a8f717e0357c342a4ab02b1a52563}\index{utils.cpp@{utils.cpp}!saveRuntimeResultsToFile@{saveRuntimeResultsToFile}}
+\index{saveRuntimeResultsToFile@{saveRuntimeResultsToFile}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{saveRuntimeResultsToFile()}{saveRuntimeResultsToFile()}}
+{\footnotesize\ttfamily \label{utils_8cpp_a7f1a8f717e0357c342a4ab02b1a52563} 
+void save\+Runtime\+Results\+To\+File (\begin{DoxyParamCaption}\item[{string}]{filename}{, }\item[{string}]{algorithm\+Name}{, }\item[{string}]{instance}{, }\item[{double}]{runtime}{}\end{DoxyParamCaption})}
 
 
 
@@ -117,19 +171,5 @@ Saves the results of an algorithm execution to a text file.
 {\em instance} & The instance identifier or name. \\
 \hline
 {\em runtime} & The execution time of the algorithm in seconds. \\
-\hline
-{\em score} & The computed score/result of the algorithm. \\
-\hline
-{\em size} & The size of the solution. \\
-\hline
-{\em solution} & Pointer to an array containing the solution. \\
-\hline
-{\em num\+Evaluations} & The number of evaluations performed during execution. \\
-\hline
-{\em num\+Performed\+Moves} & The number of moves performed by the algorithm. \\
-\hline
-{\em opt\+\_\+score} & The optimal score of the instance. \\
-\hline
-{\em opt\+\_\+solution} & Pointer to an array containing the optimal solution. \\
 \hline
 \end{DoxyParams}

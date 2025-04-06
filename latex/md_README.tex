@@ -4,4 +4,23 @@
 \Hypertarget{md_README_autotoc_md0}%
 
 
-Repository for biologically inspired algorithms classes. 
+Repository for biologically inspired algorithms classes.\hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{How to run the experiments\+:}{How to run the experiments\+:}}\label{md_README_autotoc_md1}
+
+\begin{DoxyEnumerate}
+\item Build the main program ~\newline
+ {\ttfamily g++ -\/o bio\+\_\+alg \doxylink{main_8cpp}{main.\+cpp} \doxylink{random_8cpp}{random.\+cpp} \doxylink{Problem_8cpp}{Problem.\+cpp} \doxylink{solution_8cpp}{solution.\+cpp} \doxylink{utils_8cpp}{utils.\+cpp} -\/std=c++17}
+\item Create a batch script for running the runtime evaluations e.\+g.\+:~\newline
+ {\ttfamily python .\textbackslash{}\doxylink{create__batch_8py}{create\+\_\+batch.\+py} data/qap/ results/runtime\+\_\+results.\+txt p.\+txt batch\+\_\+files/run\+\_\+runtime.\+bat -\/-\/mode runtime}
+\item Run the runtime evaluation batch script e.\+g.\+:~\newline
+ {\ttfamily .\textbackslash{}batch\+\_\+files/run\+\_\+runtime.\+bat}
+\item Copy the mean runtime of greedy\+LS algorithm for each instance into \doxylink{create__batch_8py}{create\+\_\+batch.\+py}
+\item Create a batch script for running the performance evaluations e.\+g.\+:~\newline
+ {\ttfamily python .\textbackslash{}\doxylink{create__batch_8py}{create\+\_\+batch.\+py} data/qap/ r.\+txt results/performance\+\_\+results.\+txt batch\+\_\+files/run\+\_\+performance.\+bat -\/-\/mode performance}
+\item Run the performance evaluation batch script e.\+g.\+:~\newline
+ {\ttfamily .\textbackslash{}batch\+\_\+files/run\+\_\+performance.\+bat}
+\item Create batch script for running the MSLS number of restarts evaluations e.\+g.\+:~\newline
+ {\ttfamily python .\textbackslash{}\doxylink{create__batch_8py}{create\+\_\+batch.\+py} data/qap/ r.\+txt results/\+MSLS\+\_\+restarts\+\_\+results.\+txt batch\+\_\+files/run\+\_\+msls\+\_\+performance.\+bat -\/-\/mode performance\+\_\+restarts}
+\item Run the MSLS number of restarts evaluations batch script e.\+g.\+:~\newline
+ {\ttfamily .\textbackslash{}batch\+\_\+files/run\+\_\+msls\+\_\+performance.\+bat}
+\item Visualize results with LS\+\_\+\+Results.\+ipynb (remember to set appropriate paths to result files) 
+\end{DoxyEnumerate}

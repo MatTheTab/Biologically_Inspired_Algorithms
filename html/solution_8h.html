@@ -109,8 +109,11 @@ Functions</h2></td></tr>
 <tr class="memdesc:accfc1c59c8a91df2e59cd8f603654934"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates score for the QAP problem.  <br /></td></tr>
 <tr class="separator:accfc1c59c8a91df2e59cd8f603654934"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a758e19b769b197cd3fb0383f88d22fde" id="r_a758e19b769b197cd3fb0383f88d22fde"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a758e19b769b197cd3fb0383f88d22fde">heuristicSolve</a> (int size, int **matrixA, int **matrixB, int *solution)</td></tr>
-<tr class="memdesc:a758e19b769b197cd3fb0383f88d22fde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the QAP problem with a simple heuristics.  <br /></td></tr>
+<tr class="memdesc:a758e19b769b197cd3fb0383f88d22fde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the QAP problem with a simple heuristic.  <br /></td></tr>
 <tr class="separator:a758e19b769b197cd3fb0383f88d22fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc88ea204c47834c6248d6d0c5adb1a8" id="r_adc88ea204c47834c6248d6d0c5adb1a8"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc88ea204c47834c6248d6d0c5adb1a8">heuristicSolveNonDeterministic</a> (int size, int **matrixA, int **matrixB, int *solution)</td></tr>
+<tr class="memdesc:adc88ea204c47834c6248d6d0c5adb1a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the QAP problem with a simple non-deterministic heuristic.  <br /></td></tr>
+<tr class="separator:adc88ea204c47834c6248d6d0c5adb1a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1af47c15cba39442584acf31a95720be" id="r_a1af47c15cba39442584acf31a95720be"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1af47c15cba39442584acf31a95720be">antiHeuristicSolve</a> (int size, int **matrixA, int **matrixB, int *solution)</td></tr>
 <tr class="memdesc:a1af47c15cba39442584acf31a95720be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the QAP problem with a simple anti-heuristics (tries to find a very poor solution quickly).  <br /></td></tr>
 <tr class="separator:a1af47c15cba39442584acf31a95720be"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,12 +126,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a3b074e44762d4d4947d406151eedbc04" id="r_a3b074e44762d4d4947d406151eedbc04"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b074e44762d4d4947d406151eedbc04">calculateDelta</a> (int size, int score, int *permutation, std::pair&lt; int, int &gt; move, int **matrixA, int **matrixB)</td></tr>
 <tr class="memdesc:a3b074e44762d4d4947d406151eedbc04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the change in the QAP score.  <br /></td></tr>
 <tr class="separator:a3b074e44762d4d4947d406151eedbc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f6c4e66220ec83e93a95ec24e23f330" id="r_a8f6c4e66220ec83e93a95ec24e23f330"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f6c4e66220ec83e93a95ec24e23f330">greedyLocalSearchSolve</a> (int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numMoves)</td></tr>
-<tr class="memdesc:a8f6c4e66220ec83e93a95ec24e23f330"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a QAP instance with greedy local search.  <br /></td></tr>
-<tr class="separator:a8f6c4e66220ec83e93a95ec24e23f330"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af280e161ed4d1f70cd903bd297d76818" id="r_af280e161ed4d1f70cd903bd297d76818"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af280e161ed4d1f70cd903bd297d76818">steepestLocalSearchSolve</a> (int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves)</td></tr>
-<tr class="memdesc:af280e161ed4d1f70cd903bd297d76818"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a QAP instance with steepest local search.  <br /></td></tr>
-<tr class="separator:af280e161ed4d1f70cd903bd297d76818"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0911fa015409e7b7d64e6f8de118b14e" id="r_a0911fa015409e7b7d64e6f8de118b14e"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0911fa015409e7b7d64e6f8de118b14e">greedyLocalSearchSolve</a> (int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves)</td></tr>
+<tr class="memdesc:a0911fa015409e7b7d64e6f8de118b14e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a QAP instance with greedy local search.  <br /></td></tr>
+<tr class="separator:a0911fa015409e7b7d64e6f8de118b14e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf7c83d146368f9f3c805e4229515257" id="r_acf7c83d146368f9f3c805e4229515257"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf7c83d146368f9f3c805e4229515257">iterativeImprovementFast</a> (int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves)</td></tr>
+<tr class="memdesc:acf7c83d146368f9f3c805e4229515257"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a QAP instance with the quick iterative improvement method.  <br /></td></tr>
+<tr class="separator:acf7c83d146368f9f3c805e4229515257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bd1525fa16a826e26b9060a6a86f04d" id="r_a2bd1525fa16a826e26b9060a6a86f04d"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bd1525fa16a826e26b9060a6a86f04d">steepestLocalSearchSolve</a> (int size, int *permutation, int **matrixA, int **matrixB, int *currentScore, int *numEvaluations, int *numPerformedMoves)</td></tr>
+<tr class="memdesc:a2bd1525fa16a826e26b9060a6a86f04d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a QAP instance with steepest local search.  <br /></td></tr>
+<tr class="separator:a2bd1525fa16a826e26b9060a6a86f04d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67362304a963aef3f8e57bf140c522a0" id="r_a67362304a963aef3f8e57bf140c522a0"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67362304a963aef3f8e57bf140c522a0">randomWalk</a> (int size, int *solution, int **matrixA, int **matrixB, int *bestScore, int durationNano, int *numEvaluations, int *numBestSolutionUpdates)</td></tr>
+<tr class="memdesc:a67362304a963aef3f8e57bf140c522a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a QAP instance with random walk.  <br /></td></tr>
+<tr class="separator:a67362304a963aef3f8e57bf140c522a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab743105f5ebfc32db4b5f9ada7daa8c6" id="r_ab743105f5ebfc32db4b5f9ada7daa8c6"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab743105f5ebfc32db4b5f9ada7daa8c6">randomSearch</a> (int size, int *solution, int **matrixA, int **matrixB, int *bestScore, int durationNano, int *numEvaluations, int *numBestSolutionUpdates)</td></tr>
+<tr class="memdesc:ab743105f5ebfc32db4b5f9ada7daa8c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a QAP instance with random search.  <br /></td></tr>
+<tr class="separator:ab743105f5ebfc32db4b5f9ada7daa8c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a1af47c15cba39442584acf31a95720be" name="a1af47c15cba39442584acf31a95720be"></a>
@@ -161,6 +173,17 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Solves the QAP problem with a simple anti-heuristics (tries to find a very poor solution quickly). </p>
+<p>The antiheuristic works as follows:</p><ol type="1">
+<li>Compute the row sums for both matrices:<ul>
+<li><code>matrixA</code> (flow matrix): Represents the interaction intensity between facilities.</li>
+<li><code>matrixB</code> (distance matrix): Represents the physical distances between locations.</li>
+</ul>
+</li>
+<li>Rank the facilities based on descending order of interaction intensity (higher flow first).</li>
+<li>Rank the locations based on descending order of distance sum (farther locations first).</li>
+<li>Assign the facility with the highest flow sum to the location with the highest distance sum, the second-highest flow facility to the second-farthest distance location, and so on.</li>
+</ol>
+<p>This method aims to decrease the risk of multiplying high values in matrix A and matrix B by one another, achieving relatively poor solution quickly.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">size</td><td>The size of the permutation. </td></tr>
@@ -306,14 +329,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8f6c4e66220ec83e93a95ec24e23f330" name="a8f6c4e66220ec83e93a95ec24e23f330"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f6c4e66220ec83e93a95ec24e23f330">&#9670;&#160;</a></span>greedyLocalSearchSolve()</h2>
+<a id="a0911fa015409e7b7d64e6f8de118b14e" name="a0911fa015409e7b7d64e6f8de118b14e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0911fa015409e7b7d64e6f8de118b14e">&#9670;&#160;</a></span>greedyLocalSearchSolve()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void greedyLocalSearchSolve </td>
+          <td class="memname">int * greedyLocalSearchSolve </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
         </tr>
@@ -345,12 +368,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>numMoves</em></span>&#160;)</td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>numPerformedMoves</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Solves a QAP instance with greedy local search. </p>
+<p>The function follows these steps:</p><ol type="1">
+<li>Generate all possible 2-opt moves (swaps of two positions).</li>
+<li>Evaluate each move by computing its change on the objective function (delta score).</li>
+<li>Apply the first move that improves the objective function.</li>
+<li>Repeat until no further improving move is found.</li>
+</ol>
+<p>This heuristic provides a quick improvement over an initial solution and guarantees the final solution terminating in the local optimum.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">size</td><td>integer representing the size of the instance. </td></tr>
@@ -359,10 +389,11 @@ Functions</h2></td></tr>
     <tr><td class="paramname">matrixB</td><td>a 2d-array representing the matrix of distances. </td></tr>
     <tr><td class="paramname">currentScore</td><td>the current score of the solution. </td></tr>
     <tr><td class="paramname">numEvaluations</td><td>the number of perfomed delta evaluations, at the start should be 0. </td></tr>
-    <tr><td class="paramname">numMoves</td><td>the number of performed moves, at the start should be 0. </td></tr>
+    <tr><td class="paramname">numPerformedMoves</td><td>the number of performed moves, at the start should be 0. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>An array representing the permutation (solution). </dd></dl>
 
 </div>
 </div>
@@ -395,12 +426,147 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Solves the QAP problem with a simple heuristics. </p>
+<p>Solves the QAP problem with a simple heuristic. </p>
+<p>The heuristic works as follows:</p><ol type="1">
+<li>Compute the row sums for both matrices:<ul>
+<li><code>matrixA</code> (flow matrix): Represents the interaction intensity between facilities.</li>
+<li><code>matrixB</code> (distance matrix): Represents the physical distances between locations.</li>
+</ul>
+</li>
+<li>Rank the facilities based on descending order of interaction intensity (higher flow first).</li>
+<li>Rank the locations based on ascending order of distance sum (closer locations first).</li>
+<li>Assign the facility with the highest flow sum to the location with the smallest distance sum, the second-highest flow facility to the second-smallest distance location, and so on.</li>
+</ol>
+<p>This method aims to decrease the risk of multiplying high values in matrix A and matrix B by one another, achieving relatively good solution quickly.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">size</td><td>The size of the permutation. </td></tr>
     <tr><td class="paramname">matrixA</td><td>matrix A of QAP, matrix of flows. </td></tr>
     <tr><td class="paramname">matrixB</td><td>matrix B of QAP, matrix of distances. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An array representing the permutation (solution). </dd></dl>
+
+</div>
+</div>
+<a id="adc88ea204c47834c6248d6d0c5adb1a8" name="adc88ea204c47834c6248d6d0c5adb1a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc88ea204c47834c6248d6d0c5adb1a8">&#9670;&#160;</a></span>heuristicSolveNonDeterministic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int * heuristicSolveNonDeterministic </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **</td>          <td class="paramname"><span class="paramname"><em>matrixA</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **</td>          <td class="paramname"><span class="paramname"><em>matrixB</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>solution</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Solves the QAP problem with a simple non-deterministic heuristic. </p>
+<p>The heuristic works as follows:</p><ol type="1">
+<li>Compute the row sums for both matrices:<ul>
+<li><code>matrixA</code> (flow matrix): Represents the interaction intensity between facilities.</li>
+<li><code>matrixB</code> (distance matrix): Represents the physical distances between locations.</li>
+</ul>
+</li>
+<li>Rank the facilities based on descending order of interaction intensity (higher flow first).</li>
+<li>Rank the locations based on ascending order of distance sum (closer locations first).</li>
+<li>Assign the facility with the highest flow sum to the location with the smallest distance sum, the second-highest flow facility to the second-smallest distance location, and so on.<ul>
+<li>if two indexes have the same value of flow in matrixA, then there exists a 50% of switching the indexes, introducing non-determinism</li>
+</ul>
+</li>
+</ol>
+<p>This method aims to decrease the risk of multiplying high values in matrix A and matrix B by one another, achieving relatively good solution quickly.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>The size of the permutation. </td></tr>
+    <tr><td class="paramname">matrixA</td><td>matrix A of QAP, matrix of flows. </td></tr>
+    <tr><td class="paramname">matrixB</td><td>matrix B of QAP, matrix of distances. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An array representing the permutation (solution). </dd></dl>
+
+</div>
+</div>
+<a id="acf7c83d146368f9f3c805e4229515257" name="acf7c83d146368f9f3c805e4229515257"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf7c83d146368f9f3c805e4229515257">&#9670;&#160;</a></span>iterativeImprovementFast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int * iterativeImprovementFast </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>permutation</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **</td>          <td class="paramname"><span class="paramname"><em>matrixA</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **</td>          <td class="paramname"><span class="paramname"><em>matrixB</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>currentScore</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>numEvaluations</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>numPerformedMoves</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Solves a QAP instance with the quick iterative improvement method. </p>
+<p>The function follows these steps:</p><ol type="1">
+<li>Generate 'dont look bits'.</li>
+<li>Check for improving moves.</li>
+<li>Update the 'dont look bits array'</li>
+<li>Repeat until no further improving move is found.</li>
+</ol>
+<p>This heuristic provides a quick improvement over an initial solution and guarantees speed-up at a slight performance cost.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>integer representing the size of the instance. </td></tr>
+    <tr><td class="paramname">permutation</td><td>an array representing the current solution. </td></tr>
+    <tr><td class="paramname">matrixA</td><td>a 2d-array representing the matrix of flows. </td></tr>
+    <tr><td class="paramname">matrixB</td><td>a 2d-array representing the matrix of distances. </td></tr>
+    <tr><td class="paramname">currentScore</td><td>the current score of the solution. </td></tr>
+    <tr><td class="paramname">numEvaluations</td><td>the number of perfomed delta evaluations, at the start should be 0. </td></tr>
+    <tr><td class="paramname">numPerformedMoves</td><td>the number of performed moves, at the start should be 0. </td></tr>
   </table>
   </dd>
 </dl>
@@ -438,14 +604,160 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af280e161ed4d1f70cd903bd297d76818" name="af280e161ed4d1f70cd903bd297d76818"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af280e161ed4d1f70cd903bd297d76818">&#9670;&#160;</a></span>steepestLocalSearchSolve()</h2>
+<a id="ab743105f5ebfc32db4b5f9ada7daa8c6" name="ab743105f5ebfc32db4b5f9ada7daa8c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab743105f5ebfc32db4b5f9ada7daa8c6">&#9670;&#160;</a></span>randomSearch()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void steepestLocalSearchSolve </td>
+          <td class="memname">int * randomSearch </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>solution</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **</td>          <td class="paramname"><span class="paramname"><em>matrixA</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **</td>          <td class="paramname"><span class="paramname"><em>matrixB</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>bestScore</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>durationNano</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>numEvaluations</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>numBestSolutionUpdates</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Solves a QAP instance with random search. </p>
+<p>The function follows these steps:</p><ol type="1">
+<li>Start from a randomly perturbed solution.</li>
+<li>Iteratively produce a new, random solution</li>
+<li>If a new, better solution is found then update the best found score</li>
+<li>Continue until the time budget (durationNano) is exhausted.</li>
+</ol>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>integer representing the size of the instance. </td></tr>
+    <tr><td class="paramname">solution</td><td>an array representing the current solution. </td></tr>
+    <tr><td class="paramname">matrixA</td><td>a 2d-array representing the matrix of flows. </td></tr>
+    <tr><td class="paramname">matrixB</td><td>a 2d-array representing the matrix of distances. </td></tr>
+    <tr><td class="paramname">bestScore</td><td>the score of the best solution found. </td></tr>
+    <tr><td class="paramname">durationNano</td><td>running time limit in nanoseconds. </td></tr>
+    <tr><td class="paramname">numEvaluations</td><td>the number of perfomed delta evaluations, at the start should be 0. </td></tr>
+    <tr><td class="paramname">numBestSolutionUpdates</td><td>the number of best solution updates, at the start should be 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>best solution found. </dd></dl>
+
+</div>
+</div>
+<a id="a67362304a963aef3f8e57bf140c522a0" name="a67362304a963aef3f8e57bf140c522a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67362304a963aef3f8e57bf140c522a0">&#9670;&#160;</a></span>randomWalk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int * randomWalk </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>solution</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **</td>          <td class="paramname"><span class="paramname"><em>matrixA</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **</td>          <td class="paramname"><span class="paramname"><em>matrixB</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>bestScore</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>durationNano</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>numEvaluations</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>numBestSolutionUpdates</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Solves a QAP instance with random walk. </p>
+<p>The function follows these steps:</p><ol type="1">
+<li>Start from a randomly perturbed solution.</li>
+<li>Iteratively apply random moves and compute their impact.</li>
+<li>If an improving perturbation is found, update the best solution discovered by the method.</li>
+<li>Continue until the time budget (durationNano) is exhausted.</li>
+</ol>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>integer representing the size of the instance. </td></tr>
+    <tr><td class="paramname">solution</td><td>an array representing the current solution. </td></tr>
+    <tr><td class="paramname">matrixA</td><td>a 2d-array representing the matrix of flows. </td></tr>
+    <tr><td class="paramname">matrixB</td><td>a 2d-array representing the matrix of distances. </td></tr>
+    <tr><td class="paramname">bestScore</td><td>the score of the best solution found. </td></tr>
+    <tr><td class="paramname">durationNano</td><td>running time limit in nanoseconds. </td></tr>
+    <tr><td class="paramname">numEvaluations</td><td>the number of perfomed delta evaluations, at the start should be 0. </td></tr>
+    <tr><td class="paramname">numBestSolutionUpdates</td><td>the number of best solution updates, at the start should be 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>best solution found. </dd></dl>
+
+</div>
+</div>
+<a id="a2bd1525fa16a826e26b9060a6a86f04d" name="a2bd1525fa16a826e26b9060a6a86f04d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bd1525fa16a826e26b9060a6a86f04d">&#9670;&#160;</a></span>steepestLocalSearchSolve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int * steepestLocalSearchSolve </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
         </tr>
@@ -483,6 +795,13 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Solves a QAP instance with steepest local search. </p>
+<p>The function follows these steps:</p><ol type="1">
+<li>Generate all possible 2-opt moves (swaps of two positions).</li>
+<li>Evaluate each move by computing its change on the objective function (delta score).</li>
+<li>Apply the move that improves the objective function the most.</li>
+<li>Repeat until no further improving move is found.</li>
+</ol>
+<p>This heuristic provides a quick improvement over an initial solution and guarantees the final solution terminating in the local optimum.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">size</td><td>integer representing the size of the instance. </td></tr>
@@ -491,10 +810,11 @@ Functions</h2></td></tr>
     <tr><td class="paramname">matrixB</td><td>a 2d-array representing the matrix of distances. </td></tr>
     <tr><td class="paramname">currentScore</td><td>the current score of the solution. </td></tr>
     <tr><td class="paramname">numEvaluations</td><td>the number of perfomed delta evaluations, at the start should be 0. </td></tr>
-    <tr><td class="paramname">numMoves</td><td>the number of performed moves, at the start should be 0. </td></tr>
+    <tr><td class="paramname">numPerformedMoves</td><td>the number of performed moves, at the start should be 0. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>An array representing the permutation (solution). </dd></dl>
 
 </div>
 </div>
