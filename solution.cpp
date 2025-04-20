@@ -5,6 +5,10 @@
 #include <algorithm>
 #include <chrono>
 #include <iostream>
+#include <cmath>
+#include <random>
+#include <cstring>
+#include <unordered_set>
 
 int calculateScore(int size, int* permutation, int** matrixA, int** matrixB){
     int score = 0;
@@ -206,6 +210,89 @@ int* greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** mat
     return permutation;
 }
 
+double initializeTempreture(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore){
+    double avrDifference = 0.0;
+    double acceptanceProbability = 0.95;
+    std::pair<int, int> move;
+    int deltaDifference;
+    for (int i=0; i<100; i++){
+        move = getRandomPair(size);
+        deltaDifference = calculateDelta(size, *currentScore, permutation, move, matrixA, matrixB);
+        if (deltaDifference < 0){deltaDifference *= -1;}
+        avrDifference += deltaDifference;
+    }
+    avrDifference /= 100;
+    if (avrDifference == 0.0) {
+        throw std::invalid_argument("Average difference must not be zero.");
+    }
+    return -avrDifference / std::log(acceptanceProbability);
+}
+
+int* simulatedAnnealing(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves){
+    int best_found = *currentScore;
+    int* best_solution = new int[size];
+    std::memcpy(best_solution, permutation, sizeof(int) * size);
+    double temperature;
+    temperature = initializeTempreture(size, permutation, matrixA, matrixB, currentScore);
+    bool improvement = true;
+    int deltaScore;
+    int numAvailableMoves = (size * (size - 1)) / 2;
+    int markovChainMoves = numAvailableMoves/5;
+    if (markovChainMoves < 1) {markovChainMoves = 2;}
+    int movesNoDrop = 0;
+    std::pair<int, int>* moves = new std::pair<int, int>[numAvailableMoves];
+    std::pair<int, int> move;
+    double acceptanceProbability;
+
+    double randomVal;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(0.0, 1.0);
+    
+    while (improvement || temperature > 0.01) {
+        improvement = false;
+        get2NeighborhoodMoves(moves, size);
+        for (int i = 0; i < numAvailableMoves; i++){
+            movesNoDrop += 1;
+            move = moves[i];
+            deltaScore = calculateDelta(size, *currentScore, permutation, move, matrixA, matrixB);
+            *numEvaluations += 1;
+            if (deltaScore < 0){
+                *currentScore += deltaScore;
+                if (*currentScore < best_found){
+                    best_found = *currentScore;
+                    std::memcpy(best_solution, permutation, sizeof(int) * size);
+                }
+                performMove(permutation, move);
+                *numPerformedMoves += 1;
+                improvement = true;
+                break;
+            }
+            else{
+                if ((double)deltaScore / temperature > 20.0) continue; // practically 0 probability -> good for performance
+                acceptanceProbability = std::exp(-1*deltaScore / temperature);
+                randomVal = dis(gen);
+                if (randomVal < acceptanceProbability){
+                    *currentScore += deltaScore;
+                    performMove(permutation, move);
+                    *numPerformedMoves += 1;
+                    break;
+                }
+            }
+        }
+        if (movesNoDrop >= markovChainMoves) {
+            movesNoDrop = 0;
+            temperature = temperature*0.9;
+        }
+    }
+    delete[] moves;
+    std::memcpy(permutation, best_solution, sizeof(int) * size);
+    delete[] best_solution;
+    *currentScore = best_found;
+
+    return permutation;
+}
+
 int* iterativeImprovementFast(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves){
     bool improvement = true;
     int numAvailableMoves = (size * (size - 1)) / 2;
@@ -273,6 +360,94 @@ int* steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** m
         }
     }
     delete[] moves;
+
+    return permutation;
+}
+
+int** initializeTabooList(int size) {
+    int** matrix = new int*[size];
+    for (int i = 0; i < size; ++i) {
+        matrix[i] = new int[size];
+        std::fill(matrix[i], matrix[i] + size, 0);
+    }
+    return matrix;
+}
+
+void deleteTabooList(int** matrix, int size) {
+    for (int i = 0; i < size; ++i) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+}
+
+struct pair_hash {
+    std::size_t operator()(const std::pair<int, int>& p) const {
+        return std::hash<int>()(p.first) ^ (std::hash<int>()(p.second) << 1);
+    }
+};
+
+
+int* tabooSearch(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves){
+    bool improvement = true;
+    bool updated;
+    int numAvailableMoves = (size * (size - 1)) / 2;
+    int stoppingThreshold = numAvailableMoves/10;
+    std::pair<int, int>* moves = new std::pair<int, int>[numAvailableMoves];
+    std::pair<int, int> move;
+    std::pair<int, int> best_move;
+    int deltaScore;
+    int best_delta;
+    int **tabooList = initializeTabooList(size);
+    int tabooTenure = 1;
+    int numNoImprovement = 0;
+    int best_found = *currentScore;
+    int* best_solution = new int[size];
+    std::memcpy(best_solution, permutation, sizeof(int) * size);
+    std::unordered_set<std::pair<int, int>, pair_hash> moveSet;
+
+    while (numNoImprovement < stoppingThreshold) {
+        updated = false;
+        best_delta = 2147483647; //Max integer
+        improvement = false;
+        get2NeighborhoodMoves(moves, size);
+        for (int i = 0; i < numAvailableMoves; i++){
+            move = moves[i];
+            deltaScore = calculateDelta(size, *currentScore, permutation, move, matrixA, matrixB);
+            *numEvaluations += 1;
+            if ((deltaScore < best_delta) && (tabooList[best_move.first][best_move.second] == 0 || *currentScore + deltaScore < best_found)){
+                best_delta = deltaScore;
+                best_move = move;
+                updated = true;
+            }
+        }
+        if (!updated){ break; }
+        if (best_delta < 0){improvement = true; numNoImprovement = 0;}
+        else { numNoImprovement += 1;}
+        *currentScore += best_delta;
+        performMove(permutation, best_move);
+        moveSet.insert(best_move);
+        tabooList[best_move.first][best_move.second] = tabooTenure;
+        *numPerformedMoves += 1;
+        if (*currentScore < best_found){
+            best_found = *currentScore;
+            std::memcpy(best_solution, permutation, sizeof(int) * size);
+        }
+
+        for (auto it = moveSet.begin(); it != moveSet.end(); ) {
+            tabooList[it->first][it->second] -= 1;
+            if (tabooList[it->first][it->second] == 0) {
+                it = moveSet.erase(it);
+            } else {
+                ++it;
+            }
+        }
+    }
+    
+    delete[] moves;
+    deleteTabooList(tabooList, size);
+    *currentScore = best_found;
+    std::memcpy(permutation, best_solution, sizeof(int) * size);
+    delete[] best_solution;
 
     return permutation;
 }

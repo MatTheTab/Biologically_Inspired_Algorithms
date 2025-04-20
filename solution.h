@@ -2,6 +2,7 @@
 #define SOLUTION_H
 
 #include <utility>
+#include <chrono>
 
 /**
  * @brief Calculates score for the QAP problem.
@@ -131,6 +132,55 @@ int calculateDelta(int size, int score, int* permutation, std::pair<int, int> mo
 int* greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
 
 /**
+ * @brief Estimates the initial temperature for Simulated Annealing.
+ * 
+ * This function calculates an average cost difference (delta) between the current solution 
+ * and random neighboring solutions. It then computes an initial temperature that would accept 
+ * such uphill moves with a high predefined probability (typically 95%).
+ * 
+ * Steps:
+ * 1. Sample 100 random 2-opt moves and compute their absolute delta costs.
+ * 2. Compute the average of these absolute delta values.
+ * 3. Apply the formula: T₀ = -ΔE / ln(p), where ΔE is the average difference and p is the acceptance probability (0.95).
+ * 
+ * Throws if average delta is zero to avoid division by zero.
+ * 
+ * @param size Integer representing the problem size.
+ * @param permutation An array representing the current solution.
+ * @param matrixA A 2D array representing the flow matrix.
+ * @param matrixB A 2D array representing the distance matrix.
+ * @param currentScore Pointer to the current score of the solution.
+ * @return A double representing the initial temperature.
+ */
+double initializeTempreture(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore);
+
+/**
+ * @brief Solves a QAP instance using Simulated Annealing.
+ * 
+ * Simulated Annealing is a metaheuristic inspired by the annealing process in metallurgy. 
+ * It allows occasional acceptance of worse solutions to escape local optima.
+ * 
+ * The algorithm follows these steps:
+ * 1. Initialize temperature based on the average cost difference of random moves.
+ * 2. At each iteration, generate a list of 2-opt neighbors (swap moves).
+ * 3. Accept a move if it improves the solution, or with a probability based on temperature if it worsens it.
+ * 4. After a number of moves without improvement (Markov chain length), reduce the temperature.
+ * 5. Continue until no improvement is possible or the temperature drops below a threshold.
+ * 
+ * The best found solution during the process is preserved and returned.
+ * 
+ * @param size Integer representing the problem size.
+ * @param permutation An array representing the initial solution; overwritten by the final solution.
+ * @param matrixA A 2D array representing the flow matrix.
+ * @param matrixB A 2D array representing the distance matrix.
+ * @param currentScore Pointer to the current solution's score; updated in place.
+ * @param numEvaluations Pointer to a counter of how many delta evaluations were performed.
+ * @param numPerformedMoves Pointer to a counter of how many moves were accepted and performed.
+ * @return An array representing the final solution (same pointer as input permutation).
+ */
+int* simulatedAnnealing(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
+
+/**
  * @brief Solves a QAP instance with the quick iterative improvement method.
  * 
  * The function follows these steps:
@@ -173,6 +223,12 @@ int* iterativeImprovementFast(int size, int* permutation, int** matrixA, int** m
  * @return An array representing the permutation (solution).
  */
 int* steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
+
+int** initializeTabooList(int size);
+
+void deleteTabooList(int** matrix, int size);
+
+int* tabooSearch(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
 
 /**
  * @brief Solves a QAP instance with random walk.
