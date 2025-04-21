@@ -62,8 +62,10 @@ int main(int argc, char* argv[]) {
     int tabooScore = initialScore;
     int tabooEvaluations = 0;
     int tabooMoves = 0;
+    int tabooTenure = 4;
+    int numMovesTermination = 20;
 
-    tabooSearch(size, tabooP, matrixA, matrixB, &tabooScore, &tabooEvaluations, &tabooMoves);
+    tabooSearch(size, tabooP, matrixA, matrixB, &tabooScore, &tabooEvaluations, &tabooMoves, tabooTenure, numMovesTermination);
 
     cout << "\n=== Taboo Search ===" << endl;
     cout << "Final Score: " << tabooScore << endl;
@@ -76,8 +78,10 @@ int main(int argc, char* argv[]) {
     int saScore = initialScore;
     int saEvaluations = 0;
     int saMoves = 0;
+    double tempDecrease = 0.9;
+    int markovChainDivisor = 5;
 
-    simulatedAnnealing(size, saP, matrixA, matrixB, &saScore, &saEvaluations, &saMoves);
+    simulatedAnnealing(size, saP, matrixA, matrixB, &saScore, &saEvaluations, &saMoves, tempDecrease, markovChainDivisor);
 
     cout << "\n=== Simulated Annealing ===" << endl;
     cout << "Final Score: " << saScore << endl;

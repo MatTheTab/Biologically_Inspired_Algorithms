@@ -134,14 +134,14 @@ int* greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** mat
 /**
  * @brief Estimates the initial temperature for Simulated Annealing.
  * 
- * This function calculates an average cost difference (delta) between the current solution 
+ * This function calculates an average score difference between the current solution 
  * and random neighboring solutions. It then computes an initial temperature that would accept 
- * such uphill moves with a high predefined probability (typically 95%).
+ * moves with a high predefined probability of 95%.
  * 
  * Steps:
  * 1. Sample 100 random 2-opt moves and compute their absolute delta costs.
  * 2. Compute the average of these absolute delta values.
- * 3. Apply the formula: T₀ = -ΔE / ln(p), where ΔE is the average difference and p is the acceptance probability (0.95).
+ * 3. Apply the formula: c = -(deltaE) / ln(p).
  * 
  * Throws if average delta is zero to avoid division by zero.
  * 
@@ -155,30 +155,31 @@ int* greedyLocalSearchSolve(int size, int* permutation, int** matrixA, int** mat
 double initializeTempreture(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore);
 
 /**
- * @brief Solves a QAP instance using Simulated Annealing.
+ * @brief Solves a QAP instance using Simulated Annealing heuristic.
  * 
- * Simulated Annealing is a metaheuristic inspired by the annealing process in metallurgy. 
- * It allows occasional acceptance of worse solutions to escape local optima.
+ * This function implements the Simulated Annealing metaheuristic for optimizing a Quadratic Assignment Problem (QAP). 
  * 
- * The algorithm follows these steps:
- * 1. Initialize temperature based on the average cost difference of random moves.
- * 2. At each iteration, generate a list of 2-opt neighbors (swap moves).
- * 3. Accept a move if it improves the solution, or with a probability based on temperature if it worsens it.
- * 4. After a number of moves without improvement (Markov chain length), reduce the temperature.
- * 5. Continue until no improvement is possible or the temperature drops below a threshold.
+ * The process follows the following steps:
+ * 1. Initialize temperature based on the current solution.
+ * 2. Generate 2-opt neighborhood moves.
+ * 3. Evaluate each move using a delta score.
+ * 4. Apply improving moves directly; otherwise, accept worse moves probabilisticly.
+ * 5. Reduce the temperature over time based on a decay rate.
+ * 6. Continue until no improvement has been found and the tempreture has reached 0.
+ * 7. Return the best solution found during the process.
  * 
- * The best found solution during the process is preserved and returned.
- * 
- * @param size Integer representing the problem size.
- * @param permutation An array representing the initial solution; overwritten by the final solution.
- * @param matrixA A 2D array representing the flow matrix.
- * @param matrixB A 2D array representing the distance matrix.
- * @param currentScore Pointer to the current solution's score; updated in place.
- * @param numEvaluations Pointer to a counter of how many delta evaluations were performed.
- * @param numPerformedMoves Pointer to a counter of how many moves were accepted and performed.
- * @return An array representing the final solution (same pointer as input permutation).
+ * @param size Integer representing the size of the instance.
+ * @param permutation An array representing the current solution.
+ * @param matrixA A 2D array representing the matrix of flows.
+ * @param matrixB A 2D array representing the matrix of distances.
+ * @param currentScore The current score of the solution.
+ * @param numEvaluations The number of performed delta evaluations; initially should be 0.
+ * @param numPerformedMoves The number of performed moves; initially should be 0.
+ * @param tempDecreaseRate A double value representing the rate at which the temperature decreases. Must be between 0.8 and 0.99
+ * @param markovMovesDivider A parameter to determine the number of Markov Chain moves per temperature level.
+ * @return An array representing the improved solution.
  */
-int* simulatedAnnealing(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
+int* simulatedAnnealing(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves, double tempDecreaseRate, int markovMovesDivider);
 
 /**
  * @brief Solves a QAP instance with the quick iterative improvement method.
@@ -224,11 +225,48 @@ int* iterativeImprovementFast(int size, int* permutation, int** matrixA, int** m
  */
 int* steepestLocalSearchSolve(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
 
+/**
+ * @brief Initializes a taboo list matrix used in Taboo Search.
+ * 
+ * The taboo list prevents recently visited solutions from being revisited for a duration of tabooTenure.
+ * This function allocates and initializes a size by size matrix with zeroes.
+ * 
+ * @param size The size of the problem instance.
+ * @return A 2D array (taboo matrix) with all elements initialized to zero.
+ */
 int** initializeTabooList(int size);
 
+/**
+ * @brief Frees the memory allocated for the taboo list matrix.
+ * 
+ * @param matrix A 2D array representing the taboo list.
+ * @param size The size of the problem instance (number of rows and columns).
+ */
 void deleteTabooList(int** matrix, int size);
 
-int* tabooSearch(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves);
+/**
+ * @brief Solves a QAP instance using Taboo Search metaheuristic.
+ * 
+ * 
+ * The function follows the following steps:
+ * 1. Initialize the taboo list and best-known solution.
+ * 2. Iterate over the 2-opt neighborhood to find the best move not forbidden (or is allowed by aspiration criteria) -> can allow for worse moves if they are the only ones available.
+ * 3. Update the taboo list with the performed move and reduce tenure for old moves.
+ * 4. Continue until a stopping criterion (no improvement for a number of iterations) is reached.
+ * 5. Return the best solution found.
+ * 
+ * @param size Integer representing the size of the instance.
+ * @param permutation An array representing the current solution.
+ * @param matrixA A 2D array representing the matrix of flows.
+ * @param matrixB A 2D array representing the matrix of distances.
+ * @param currentScore The current score of the solution.
+ * @param numEvaluations The number of performed delta evaluations; initially should be 0.
+ * @param numPerformedMoves The number of performed moves; initially should be 0.
+ * @param tabooTenure The number of iterations a move remains forbidden.
+ * @param stoppingThreshold The defined number of iterations without improvement before termination.
+ * @return An array representing the best-found solution.
+ */
+int* tabooSearch(int size, int* permutation, int** matrixA, int** matrixB, int* currentScore, int* numEvaluations, int* numPerformedMoves, int tabooTenure, int stoppingThreshold);
 
 /**
  * @brief Solves a QAP instance with random walk.

@@ -27,16 +27,24 @@ using namespace std;
 // ./bio_alg time random 0 0 data/qap/ bur26a runtime_results.txt steepestLS
 // ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt steepestLS
 // ./bio_alg time random 0 0 data/qap/ bur26a runtime_results.txt iterativeImprovement
+// For simulated annealing: [tempDecreaseRate] [markovMovesDivider]
+// ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt simulatedAnnealing 0.92 5
+// ./bio_alg time random 100 0 data/qap/ bur26a runtime_results.txt simulatedAnnealing 0.92 5
 
-void runTimePerformanceTest(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm);
-void runQualityPerformanceTests(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm, int num_runs, int randomDuration); 
+// For taboo search: [tempDecreaseRate] [markovMovesDivider] [tabooTenure] [stoppingThreshold]
+// ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt tabooSearch 0 0 10 15
+// ./bio_alg time random 100 0 data/qap/ bur26a runtime_results.txt tabooSearch 0 0 10 15
+
+
+void runTimePerformanceTest(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm, double tempDecreaseRate, int markovMovesDivider, int tabooTenure, int stoppingThreshold);
+void runQualityPerformanceTests(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm, int num_runs, int randomDuration, double tempDecreaseRate, int markovMovesDivider, int tabooTenure, int stoppingThreshold); 
 void setRandomSeed();
 void executeLocalSearch(const string& local_search_algorithm, int size, int* P, int** matrixA, int** matrixB, 
-    int* bestScore, int* numEvaluations, int* numMoves);
+    int* bestScore, int* numEvaluations, int* numMoves, double tempDecreaseRate, int markovMovesDivider, int tabooTenure, int stoppingThreshold);
 
 int main(int argc, char* argv[]) {
     if (argc < 6) {
-        cerr << "Usage: " << argv[0] << " <test_type> <algorithm> <num_runs> <random_duration> <problem_folder> <problem_name> <results_file> [<local_search_algorithm>]" << endl;
+        cerr << "Usage: " << argv[0] << " <test_type> <algorithm> <num_runs> <random_duration> <problem_folder> <problem_name> <results_file> [<local_search_algorithm>] [<metaheuristic_params>...]" << endl;
         return 1;
     }
     
@@ -48,13 +56,27 @@ int main(int argc, char* argv[]) {
     string instance_name = argv[6];
     string results_filename = argv[7];
     string local_search_algorithm = (argc > 8) ? argv[8] : "";
+    double tempDecreaseRate = 0.95;
+    int markovMovesDivider = 4;
+    int tabooTenure = 7;
+    int stoppingThreshold = 10;
+
+    if (!local_search_algorithm.empty()) {
+        if (local_search_algorithm == "simulatedAnnealing") {
+            if (argc > 9) tempDecreaseRate = stod(argv[9]);
+            if (argc > 10) markovMovesDivider = stoi(argv[10]);
+        } else if (local_search_algorithm == "tabooSearch") {
+            if (argc > 9) tabooTenure = stoi(argv[9]);
+            if (argc > 10) stoppingThreshold = stoi(argv[10]);
+        }
+    }
 
     Problem problem(instance_dir, instance_name);
 
     if (test_type == "time") {
-        runTimePerformanceTest(algorithm, problem, results_filename, local_search_algorithm);
+        runTimePerformanceTest(algorithm, problem, results_filename, local_search_algorithm, tempDecreaseRate, markovMovesDivider, tabooTenure, stoppingThreshold);
     } else if (test_type == "performance") {
-        runQualityPerformanceTests(algorithm, problem, results_filename, local_search_algorithm, num_runs, randomDuration);
+        runQualityPerformanceTests(algorithm, problem, results_filename, local_search_algorithm, num_runs, randomDuration, tempDecreaseRate, markovMovesDivider, tabooTenure, stoppingThreshold);
     } else {
         cerr << "Unknown test type: " << test_type << endl;
         return 1;
@@ -64,7 +86,8 @@ int main(int argc, char* argv[]) {
 }
 
 void runQualityPerformanceTests(const string& algorithm, Problem& problem, const string& results_filename, 
-    const string& local_search_algorithm, int num_runs, int randomDuration) {
+    const string& local_search_algorithm, int num_runs, int randomDuration, double tempDecreaseRate,
+    int markovMovesDivider, int tabooTenure, int stoppingThreshold) {
 
     int size = problem.getSize();
     int** matrixA = problem.getMatrixA();
@@ -98,7 +121,7 @@ void runQualityPerformanceTests(const string& algorithm, Problem& problem, const
         bestScore = initialScore;
 
         if (!local_search_algorithm.empty()) {
-            executeLocalSearch(local_search_algorithm, size, P, matrixA, matrixB, &bestScore, &numEvaluations, &numMoves);
+            executeLocalSearch(local_search_algorithm, size, P, matrixA, matrixB, &bestScore, &numEvaluations, &numMoves, tempDecreaseRate, markovMovesDivider, tabooTenure, stoppingThreshold);
             string combinedAlgorithm = algorithm.substr(0, 1) + local_search_algorithm;
             savePerformanceResultsToFile(results_filename, combinedAlgorithm, instance, initialScore, bestScore, size, P,
                 numEvaluations, numMoves, numBestSolutionUpdates, optScore, optSolution);
@@ -118,7 +141,8 @@ void runQualityPerformanceTests(const string& algorithm, Problem& problem, const
     delete[] P;
 }
 
-void runTimePerformanceTest(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm) {
+void runTimePerformanceTest(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm,
+    double tempDecreaseRate, int markovMovesDivider, int tabooTenure, int stoppingThreshold) {
     // cout<<results_filename;
     int size = problem.getSize();
     int** matrixA = problem.getMatrixA();
@@ -152,13 +176,41 @@ void runTimePerformanceTest(const string& algorithm, Problem& problem, const str
             return duration_cast<nanoseconds>(high_resolution_clock::now() - start).count() / numRuns;
         };
 
+        auto measureTimeSA = [&](auto searchFunc) {
+            auto start = high_resolution_clock::now();
+            do {
+                setRandomSeed();
+                generateRandomPerturbation(size, P);
+                score = calculateScore(size, P, matrixA, matrixB);
+                searchFunc(size, P, matrixA, matrixB, &score, &numEvaluations, &numMoves, tempDecreaseRate, markovMovesDivider);
+                numRuns++;
+            } while (duration_cast<seconds>(high_resolution_clock::now() - start).count() < 100 && numRuns < 100);
+            return duration_cast<nanoseconds>(high_resolution_clock::now() - start).count() / numRuns;
+        };
+
+        auto measureTimeTaboo = [&](auto searchFunc) {
+            auto start = high_resolution_clock::now();
+            do {
+                setRandomSeed();
+                generateRandomPerturbation(size, P);
+                score = calculateScore(size, P, matrixA, matrixB);
+                searchFunc(size, P, matrixA, matrixB, &score, &numEvaluations, &numMoves, tabooTenure, stoppingThreshold);
+                numRuns++;
+            } while (duration_cast<seconds>(high_resolution_clock::now() - start).count() < 100 && numRuns < 100);
+            return duration_cast<nanoseconds>(high_resolution_clock::now() - start).count() / numRuns;
+        };
+
         if (local_search_algorithm == "greedyLS") {
             totalTime = measureTime(greedyLocalSearchSolve);
         } else if (local_search_algorithm == "steepestLS") {
             totalTime = measureTime(steepestLocalSearchSolve);
         } else if (local_search_algorithm == "iterativeImprovement"){
             totalTime = measureTime(iterativeImprovementFast);
-        }else {
+        }else if (local_search_algorithm == "simulatedAnnealing") {
+            totalTime = measureTimeSA(simulatedAnnealing);
+        } else if (local_search_algorithm == "tabooSearch") {
+            totalTime = measureTimeTaboo(tabooSearch);
+        } else {
             cerr << "Unknown local search algorithm: " << local_search_algorithm << endl;
             return;
         }
@@ -189,13 +241,17 @@ void setRandomSeed() {
 }
 
 void executeLocalSearch(const string& local_search_algorithm, int size, int* P, int** matrixA, int** matrixB,
-    int* bestScore, int* numEvaluations, int* numMoves) {
+    int* bestScore, int* numEvaluations, int* numMoves, double tempDecreaseRate, int markovMovesDivider, int tabooTenure, int stoppingThreshold) {
     if (local_search_algorithm == "greedyLS") {
         greedyLocalSearchSolve(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);
     } else if (local_search_algorithm == "steepestLS") {
         steepestLocalSearchSolve(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);
     } else if (local_search_algorithm == "iterativeImprovement"){
         iterativeImprovementFast(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves);
+    } else if (local_search_algorithm == "simulatedAnnealing") {
+        simulatedAnnealing(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves, tempDecreaseRate, markovMovesDivider);
+    } else if (local_search_algorithm == "tabooSearch") {
+        tabooSearch(size, P, matrixA, matrixB, bestScore, numEvaluations, numMoves, tabooTenure, stoppingThreshold);
     } else {
         cerr << "Unknown local search algorithm: " << local_search_algorithm << endl;
         exit(1);

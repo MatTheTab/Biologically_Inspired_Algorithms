@@ -5,3 +5,5 @@ Algorithm: iterativeImprovement	Instance: bur26a	Runtime: 582319 nanoseconds
 Algorithm: iterativeImprovement	Instance: bur26a	Runtime: 279528 nanoseconds	
 Algorithm: iterativeImprovement	Instance: bur26a	Runtime: 76442 nanoseconds	
 Algorithm: iterativeImprovement	Instance: bur26a	Runtime: 76157 nanoseconds	
+Algorithm: simulatedAnnealing	Instance: bur26a	Runtime: 2.91564e+07 nanoseconds	
+Algorithm: tabooSearch	Instance: bur26a	Runtime: 101725 nanoseconds	
