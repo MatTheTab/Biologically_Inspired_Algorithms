@@ -238,7 +238,7 @@ int* simulatedAnnealing(int size, int* permutation, int** matrixA, int** matrixB
     int deltaScore;
     int numAvailableMoves = (size * (size - 1)) / 2;
     int markovChainMoves = numAvailableMoves/markovMovesDivider;
-    if (markovChainMoves < 1) {markovChainMoves = 2;}
+    if (markovChainMoves < 1) {markovChainMoves = 1;}
     int movesNoDrop = 0;
     std::pair<int, int>* moves = new std::pair<int, int>[numAvailableMoves];
     std::pair<int, int> move;
@@ -249,10 +249,14 @@ int* simulatedAnnealing(int size, int* permutation, int** matrixA, int** matrixB
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(0.0, 1.0);
     
-    while (improvement || temperature > 0.01) {
+    while (improvement || (temperature > 0.01)) {
         improvement = false;
         get2NeighborhoodMoves(moves, size);
         for (int i = 0; i < numAvailableMoves; i++){
+            if (movesNoDrop >= markovChainMoves) {
+                movesNoDrop = 0;
+                temperature = temperature*tempDecreaseRate;
+            }
             movesNoDrop += 1;
             move = moves[i];
             deltaScore = calculateDelta(size, *currentScore, permutation, move, matrixA, matrixB);
@@ -269,8 +273,9 @@ int* simulatedAnnealing(int size, int* permutation, int** matrixA, int** matrixB
                 break;
             }
             else{
-                if ((double)deltaScore / temperature > 20.0) continue; // practically 0 probability -> good for performance
-                acceptanceProbability = std::exp(-1*deltaScore / temperature);
+                if (temperature <= 0.01) continue;
+                if (((double)deltaScore / temperature > 20.0) || ((double)-1*deltaScore / temperature == 0)) continue; // practically 0 probability -> good for performance
+                acceptanceProbability = std::exp((double)-1*deltaScore / temperature);
                 randomVal = dis(gen);
                 if (randomVal < acceptanceProbability){
                     *currentScore += deltaScore;
@@ -280,15 +285,14 @@ int* simulatedAnnealing(int size, int* permutation, int** matrixA, int** matrixB
                 }
             }
         }
-        if (movesNoDrop >= markovChainMoves) {
-            movesNoDrop = 0;
-            temperature = temperature*tempDecreaseRate;
-        }
     }
+
     delete[] moves;
-    std::memcpy(permutation, best_solution, sizeof(int) * size);
+    if (best_found < *currentScore){
+        std::memcpy(permutation, best_solution, sizeof(int) * size);
+        *currentScore = best_found;
+    }
     delete[] best_solution;
-    *currentScore = best_found;
 
     return permutation;
 }
@@ -444,8 +448,10 @@ int* tabooSearch(int size, int* permutation, int** matrixA, int** matrixB, int* 
     
     delete[] moves;
     deleteTabooList(tabooList, size);
-    *currentScore = best_found;
-    std::memcpy(permutation, best_solution, sizeof(int) * size);
+    if (best_found < *currentScore){
+        std::memcpy(permutation, best_solution, sizeof(int) * size);
+        *currentScore = best_found;
+    }
     delete[] best_solution;
 
     return permutation;

@@ -81,12 +81,14 @@ int main(int argc, char* argv[]) {
     double tempDecrease = 0.9;
     int markovChainDivisor = 5;
 
-    simulatedAnnealing(size, saP, matrixA, matrixB, &saScore, &saEvaluations, &saMoves, tempDecrease, markovChainDivisor);
+    saP = simulatedAnnealing(size, saP, matrixA, matrixB, &saScore, &saEvaluations, &saMoves, tempDecrease, markovChainDivisor);
 
     cout << "\n=== Simulated Annealing ===" << endl;
     cout << "Final Score: " << saScore << endl;
     cout << "Evaluations: " << saEvaluations << endl;
     cout << "Moves: " << saMoves << endl;
+    greedyLocalSearchSolve(size, saP, matrixA, matrixB, &saScore, &saEvaluations, &saMoves);
+    cout << "Local Score: " << saScore << endl;
 
     // Cleanup
     delete[] initialP;
