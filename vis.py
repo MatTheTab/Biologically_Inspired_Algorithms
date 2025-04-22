@@ -28,7 +28,9 @@ algorithm_colors = {
     "random": "#ff7f00",
     "randomwalk": "#fdb462",
     "randomsearch": "#984ea3",
-    "iterativeImprovement": "#999999"
+    "iterativeImprovement": "#999999",
+    "simulatedAnnealing": "#fb9a99",
+    "tabooSearch": "#b15928"
 }
 
 def plot_algorithms(save_name, summary, title="Measure", log_scale=False):
