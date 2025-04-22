@@ -27,13 +27,14 @@ using namespace std;
 // ./bio_alg time random 0 0 data/qap/ bur26a runtime_results.txt steepestLS
 // ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt steepestLS
 // ./bio_alg time random 0 0 data/qap/ bur26a runtime_results.txt iterativeImprovement
+
 // For simulated annealing: [tempDecreaseRate] [markovMovesDivider]
 // ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt simulatedAnnealing 0.92 5
 // ./bio_alg time random 100 0 data/qap/ bur26a runtime_results.txt simulatedAnnealing 0.92 5
 
 // For taboo search: [tempDecreaseRate] [markovMovesDivider] [tabooTenure] [stoppingThreshold]
-// ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt tabooSearch 0 0 10 15
-// ./bio_alg time random 100 0 data/qap/ bur26a runtime_results.txt tabooSearch 0 0 10 15
+// ./bio_alg performance random 100 0 data/qap/ bur26a performance_results.txt tabooSearch 10 15
+// ./bio_alg time random 100 0 data/qap/ bur26a runtime_results.txt tabooSearch 10 15
 
 
 void runTimePerformanceTest(const string& algorithm, Problem& problem, const string& results_filename, const string& local_search_algorithm, double tempDecreaseRate, int markovMovesDivider, int tabooTenure, int stoppingThreshold);
