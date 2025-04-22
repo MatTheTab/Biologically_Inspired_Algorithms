@@ -1,0 +1,19 @@
+@echo off
+bio_alg performance random 100 0 data/qap/ wil100 results/sa_ts_performance_results.txt simulatedAnnealing 0.92 5
+bio_alg performance random 100 0 data/qap/ wil100 results/sa_ts_performance_results.txt tabooSearch 25 15
+bio_alg performance random 100 0 data/qap/ lipa80a results/sa_ts_performance_results.txt simulatedAnnealing 0.92 5
+bio_alg performance random 100 0 data/qap/ lipa80a results/sa_ts_performance_results.txt tabooSearch 20 15
+bio_alg performance random 100 0 data/qap/ tai60a results/sa_ts_performance_results.txt simulatedAnnealing 0.92 5
+bio_alg performance random 100 0 data/qap/ tai60a results/sa_ts_performance_results.txt tabooSearch 15 15
+bio_alg performance random 100 0 data/qap/ kra30a results/sa_ts_performance_results.txt simulatedAnnealing 0.92 5
+bio_alg performance random 100 0 data/qap/ kra30a results/sa_ts_performance_results.txt tabooSearch 7 15
+bio_alg performance random 100 0 data/qap/ bur26a results/sa_ts_performance_results.txt simulatedAnnealing 0.92 5
+bio_alg performance random 100 0 data/qap/ bur26a results/sa_ts_performance_results.txt tabooSearch 6 15
+bio_alg performance random 100 0 data/qap/ bur26b results/sa_ts_performance_results.txt simulatedAnnealing 0.92 5
+bio_alg performance random 100 0 data/qap/ bur26b results/sa_ts_performance_results.txt tabooSearch 6 15
+bio_alg performance random 100 0 data/qap/ chr22a results/sa_ts_performance_results.txt simulatedAnnealing 0.92 5
+bio_alg performance random 100 0 data/qap/ chr22a results/sa_ts_performance_results.txt tabooSearch 5 15
+bio_alg performance random 100 0 data/qap/ chr20c results/sa_ts_performance_results.txt simulatedAnnealing 0.92 5
+bio_alg performance random 100 0 data/qap/ chr20c results/sa_ts_performance_results.txt tabooSearch 5 15
+bio_alg performance random 100 0 data/qap/ had14 results/sa_ts_performance_results.txt simulatedAnnealing 0.92 5
+bio_alg performance random 100 0 data/qap/ had14 results/sa_ts_performance_results.txt tabooSearch 3 15
