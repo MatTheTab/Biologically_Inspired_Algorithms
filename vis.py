@@ -27,21 +27,27 @@ algorithm_colors = {
     "antiheuristic": "#a65628",
     "random": "#ff7f00",
     "randomwalk": "#fdb462",
-    "randomsearch": "#984ea3",
+    "randomsearch": "#ff7f00",
     "iterativeImprovement": "#999999",
-    "simulatedAnnealing": "#fb9a99",
-    "tabooSearch": "#b15928"
+    "simulatedAnnealing": "#f781bf",
+    "tabooSearch": "#984ea3"
 }
 
-def plot_algorithms(save_name, summary, title="Measure", log_scale=False):
+def plot_algorithms(save_name, summary, title="Measure", log_scale=False, obscure_old=False):
     plt.figure(figsize=(10, 6))
     sns.set_theme(style="whitegrid")
 
-    algorithms = summary["Algorithm"].unique()
+    # algorithms = summary["Algorithm"].unique()
+    algorithms = algorithm_colors.keys()
+    algorithms = [a for a in algorithms if a in summary["Algorithm"].unique()]
 
     for i, algorithm in enumerate(algorithms):
         subset = summary[summary["Algorithm"] == algorithm]
-        plt.plot(subset["Instance"], subset["mean"], label=f"{algorithm} (Mean)", color=algorithm_colors[algorithm], marker="o", linestyle="-")
+        linestyle = "-"
+        if obscure_old and algorithm not in {"simulatedAnnealing", "tabooSearch"}:
+                linestyle = ":"
+
+        plt.plot(subset["Instance"], subset["mean"], label=f"{algorithm} (Mean)", color=algorithm_colors[algorithm], marker="o", linestyle=linestyle)
         plt.fill_between(subset["Instance"], subset["mean"] - subset["std"], subset["mean"] + subset["std"], alpha=0.2, color=algorithm_colors[algorithm])
 
     plt.xlabel("Instance")
@@ -55,22 +61,26 @@ def plot_algorithms(save_name, summary, title="Measure", log_scale=False):
         full_title += " (Log scale)"
 
     plt.title(full_title)
-    plt.legend()
+    plt.legend(fontsize="small")
     plt.xticks(rotation=45)
     plt.savefig("./plots/" + save_name, format="pdf", bbox_inches="tight")
     plt.show()
 
-
-def plot_std_line(save_name, summary, title="Standard Deviation", overlap=False, log_scale=False):
+def plot_std_line(save_name, summary, title="Standard Deviation", log_scale=False, obscure_old=False):
     plt.figure(figsize=(12, 6))
     sns.set_theme(style="whitegrid")
     
-    algorithms = summary["Algorithm"].unique()
+    # algorithms = summary["Algorithm"].unique()
+    algorithms = algorithm_colors.keys()
+    algorithms = [a for a in algorithms if a in summary["Algorithm"].unique()]
     instances = summary["Instance"].unique()
     
     for i, algorithm in enumerate(algorithms):
+        linestyle = "-"
+        if obscure_old and algorithm not in {"simulatedAnnealing", "tabooSearch"}:
+                linestyle = ":"
         subset = summary[summary["Algorithm"] == algorithm]
-        plt.plot(subset["Instance"], subset["std"], label=f"{algorithm} (std)", color=algorithm_colors[algorithm], marker="o", linestyle="-")
+        plt.plot(subset["Instance"], subset["std"], label=f"{algorithm} (std)", color=algorithm_colors[algorithm], marker="o", linestyle=linestyle)
 
     plt.xlabel("Instance")
     plt.ylabel(title)
@@ -86,7 +96,7 @@ def plot_std_line(save_name, summary, title="Standard Deviation", overlap=False,
     if log_scale:
         plt.yscale("log")
     plt.xticks(np.arange(len(instances)), instances, rotation=45)
-    plt.legend()
+    plt.legend(fontsize="small")
     plt.savefig("./plots/" + save_name, format="pdf", bbox_inches="tight")
     plt.show()
 
@@ -130,56 +140,55 @@ def plot_std_bar(save_name, summary, title="Standard Deviation", overlap=False, 
 def plot_efficiency(save_name, summary, legend=True, show_instances=True, 
                     title="Algorithm Performance: Runtime vs. Solution Quality",
                     log_scale_x=True, log_scale_y=True):
-    
-    plt.figure(figsize=(15, 6))
-    sns.set_theme(style="whitegrid")
 
+    sns.set_theme(style="whitegrid")
+    
     algorithms = summary["Algorithm"].unique()
     instances = summary["Instance"].unique()
-    markers = ["o", "s", "D", "v", "^"]  
     
-    algorithm_legend = {}
+    fig, axes = plt.subplots(3, 3, figsize=(14, 12), sharex=False, sharey=False)
+    fig.suptitle(title, fontsize=16)
+    axes = axes.flatten()
 
-    for i, algorithm in enumerate(algorithms):
-        for j, instance in enumerate(instances):
+    handles_labels = []
+
+    for idx, instance in enumerate(instances):
+        ax = axes[idx]
+        for i, algorithm in enumerate(algorithms):
             subset = summary[(summary["Algorithm"] == algorithm) & (summary["Instance"] == instance)]
             if not subset.empty:
-                if show_instances:
-                    label = label=f"{algorithm} - {instance}"
-                else:
-                    label = algorithm if algorithm not in algorithm_legend else "_nolegend_"
-                plt.errorbar(
-                    subset["mean_quality"], subset["mean_runtime"],
+                label = algorithm
+                line = ax.errorbar(
+                    subset["mean_quality"], subset["mean_runtime"], color=algorithm_colors[algorithm],
                     xerr=subset["std_quality"], yerr=subset["std_runtime"],
-                    fmt=markers[j % len(markers)], color=algorithm_colors[algorithm], label=label,
-                    capsize=3, linestyle="none"
+                    label=label, capsize=3
                 )
-                algorithm_legend[algorithm] = True
+                # Only collect handles once (for the first subplot)
+                if idx == 0:
+                    handles_labels.append((line.lines[0], label))
 
-    plt.ylabel("Runtime [ns] (Mean ± Std)")
-    plt.xlabel("Solution Quality (Mean ± Std)")
-    
-    if log_scale_x:
-        plt.xscale("log")
-    
-    if log_scale_y:
-        plt.yscale("log")
-    
-    full_title = f"{title}"
-    
-    if log_scale_x and log_scale_y:
-        full_title += " (Log scale x y)"
-    elif log_scale_x:
-        full_title += " (Log scale x)"
-    elif log_scale_y:
-        full_title += " (Log scale y)"
+        ax.set_title(instance)
+        ax.set_xlabel("Solution Quality")
+        ax.set_ylabel("Runtime [ns]")
+        if log_scale_x:
+            ax.set_xscale("log")
+        if log_scale_y:
+            ax.set_yscale("log")
 
-    plt.title(full_title)
+    # Hide unused subplots if less than 9 instances
+    for k in range(len(instances), 9):
+        fig.delaxes(axes[k])
+
+    # Create one shared legend outside the subplots
     if legend:
-        plt.legend(loc="upper right", fontsize=9, ncol=5)
+        handles, labels = zip(*handles_labels)
+        fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5,0.95), ncol=5, fontsize=10)
+
+    plt.tight_layout(rect=[0, 0, 1, 0.94])  # leave space for suptitle and legend
     plt.savefig("./plots/" + save_name, format="pdf", bbox_inches="tight")
     plt.show()
 
+    
 def plot_ls_algorithms_comparison(save_name, df, algorithm=""):
     plt.figure(figsize=(10, 6))
     sns.set_theme(style="whitegrid")
